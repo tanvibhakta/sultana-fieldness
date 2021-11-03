@@ -20,7 +20,29 @@ function App() {
     }
 
     const handleAudioUpload = (file) => {
-        console.log(file);
+
+        // Create file and filename
+        const d = new Date();
+        const fileName = `Audio File ${d.getFullYear()}-${d.getMonth()}-${d.getDate()} at ${d.getHours()}.${d.getMinutes()}.${d.getSeconds()}`;
+        const formData = new FormData();
+        formData.append("file", file, fileName);
+
+        // Define parameters of request
+        const requestOptions = {
+            method: 'POST',
+            body: formData,
+            redirect: 'follow'
+        };
+
+        // Execute POST
+        fetch("https://fieldness.com/admin/uploader", requestOptions)
+            .then(response => {
+                console.log("file has been uploaded")
+                response.text()
+            })
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
     }
 
     const handleReset= () => {
@@ -32,25 +54,16 @@ function App() {
         }
         setAudioDetails(reset);
     }
-    
-  return (
-    <div>
-      <h2>Here is an audio experiment</h2>
-      <h4>Start Recording</h4>
-      <h4>Stop Recording </h4>
-      <h4>Play</h4>
-      <h4>Pause</h4>
 
+  return (
         <Recorder
             record={true}
-            title={"New recording"}
+            title={"Fieldness"}
             audioURL={audioDetails.url}
             showUIAudio
             handleAudioStop={data => handleAudioStop(data)}
-            // handleOnChange={(value) => handleOnChange(value, 'firstname')}
             handleAudioUpload={data => handleAudioUpload(data)}
             handleReset={() => handleReset()} />
-    </div>
   );
 }
 
