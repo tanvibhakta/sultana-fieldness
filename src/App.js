@@ -1,8 +1,12 @@
 import "./App.css";
-import { RecordAudio } from "./pages/RecordAudio.jsx";
+import { Bubble } from "./components/Bubble";
 
 const App = () => {
-  return <RecordAudio />;
+  return (
+    <div>
+      <Bubble />
+    </div>
+  );
 };
 
 export default App;
