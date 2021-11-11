@@ -1,10 +1,8 @@
 import "./App.css";
-import {RecordAudio} from "./pages/RecordAudio.jsx";
+import { RecordAudio } from "./pages/RecordAudio.jsx";
 
 const App = () => {
-    return (
-        <RecordAudio/>
-    )
-}
+  return <RecordAudio />;
+};
 
 export default App;
