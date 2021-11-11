@@ -1,10 +1,10 @@
 import "./App.css";
-import { Bubble } from "./components/Bubble";
+import { LandingPage } from "./pages/LandingPage";
 
 const App = () => {
   return (
     <div>
-      <Bubble />
+      <LandingPage />
     </div>
   );
 };
