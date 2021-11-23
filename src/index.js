@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Page1 } from "./pages/Page1";
 import { Questions } from "./components/Questions";
 import { BubbleInput } from "./pages/BubbleInput";
+import { Form } from "./pages/Form";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Route path="page1" element={<Page1 />} />
         <Route path="question" element={<Questions />} />
         <Route path="bubble-input" element={<BubbleInput />} />
+        <Route path="upload" element={<Form />} />
         <Route
           path="*"
           element={
