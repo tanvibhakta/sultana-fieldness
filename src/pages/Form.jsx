@@ -1,6 +1,14 @@
 import "../css/form.css";
+import { useState } from "react";
 
 export const Form = () => {
+  const [seedDescription, setSeedDescription] = useState(null);
+  const handleDescriptionChange = (event) => {
+    setSeedDescription(event.target.value);
+  };
+
+  const handleClick = () => {};
+
   return (
     <form className="form">
       {/* TODO: user identification string */}
@@ -8,6 +16,8 @@ export const Form = () => {
       <textarea
         name="description"
         id="description"
+        value={seedDescription}
+        onChange={handleDescriptionChange}
         rows="5"
         cols="63"
         required
@@ -20,6 +30,7 @@ export const Form = () => {
         type="file"
         name="audio-file"
         id="audio-file"
+        value={seed.media}
         accept="audio/*,image/*"
         required
       />
