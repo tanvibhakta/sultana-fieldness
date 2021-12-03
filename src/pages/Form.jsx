@@ -2,9 +2,27 @@ import "../css/form.css";
 import { useState } from "react";
 
 export const Form = () => {
-  const [seedDescription, setSeedDescription] = useState(null);
-  const handleDescriptionChange = (event) => {
-    setSeedDescription(event.target.value);
+  const [seed, setSeed] = useState({ description: "", media: "" });
+  let tempSeed;
+
+  const handleChange = (event) => {
+
+    switch (event.target.name) {
+      case "description":
+        tempSeed = { ...seed, description: `${event.target.value}` };
+        setSeed(tempSeed);
+        break;
+      case "media":
+        tempSeed = { ...seed, media: `${event.target.value}` };
+        setSeed(tempSeed);
+        break;
+      default:
+        console.error(
+          "Unknown form type. Check if ",
+          event.target.name,
+          " matches any known form field"
+        );
+    }
   };
 
   const handleClick = () => {};
@@ -16,8 +34,8 @@ export const Form = () => {
       <textarea
         name="description"
         id="description"
-        value={seedDescription}
-        onChange={handleDescriptionChange}
+        value={seed.description}
+        onChange={handleChange}
         rows="5"
         cols="63"
         required
