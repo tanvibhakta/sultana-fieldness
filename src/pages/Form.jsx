@@ -2,7 +2,12 @@ import "../css/form.css";
 import { useState, useRef } from "react";
 
 export const Form = () => {
-  const [seed, setSeed] = useState({ description: "", media: "" });
+  const [seed, setSeed] = useState({
+    seedId: "testID1",
+    description: "",
+    media: "",
+    userId: "testUser",
+  });
   const fileInput = useRef();
 
   const handleChange = (event) => {
@@ -21,7 +26,18 @@ export const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     console.log("Now we will pass ", seed, "in a POST to the API");
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(seed),
+    };
+
+    fetch(`http://3.110.164.79:8000/seeds/${seed.seedId}`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log("This is a response from the server", data));
   };
 
   return (
