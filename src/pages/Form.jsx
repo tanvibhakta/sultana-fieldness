@@ -3,25 +3,14 @@ import { useState } from "react";
 
 export const Form = () => {
   const [seed, setSeed] = useState({ description: "", media: "" });
-  let tempSeed;
 
   const handleChange = (event) => {
-
-    switch (event.target.name) {
-      case "description":
-        tempSeed = { ...seed, description: `${event.target.value}` };
-        setSeed(tempSeed);
-        break;
-      case "media":
-        tempSeed = { ...seed, media: `${event.target.value}` };
-        setSeed(tempSeed);
-        break;
-      default:
-        console.error(
-          "Unknown form type. Check if ",
-          event.target.name,
-          " matches any known form field"
-        );
+    if (event.target.name !== "media")
+      setSeed({
+        [event.target.name]: event.target.value,
+      });
+    else {
+      //    Update the state using a ref
     }
   };
 
@@ -41,13 +30,13 @@ export const Form = () => {
         required
       />
       {/*TODO: map location picker*/}
-      <label for="audio-file">
+      <label for="media">
         Upload an audio file OR an image file that makes up the seed (required)
       </label>
       <input
         type="file"
-        name="audio-file"
-        id="audio-file"
+        name="media"
+        id="media"
         value={seed.media}
         accept="audio/*,image/*"
         required
