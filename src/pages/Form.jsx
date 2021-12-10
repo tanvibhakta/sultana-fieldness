@@ -2,19 +2,24 @@ import "../css/form.css";
 import { useState, useRef } from "react";
 
 export const Form = () => {
-  const [seed, setSeed] = useState({
-    seedId: "testID1",
-    description: "",
-    media: "",
-    userId: "testUser",
-  });
+  // TODO: use nanoid to generate
+  const seedId = "testID1";
   const fileInput = useRef();
+  const [seed, setSeed] = useState({
+    description: "",
+    userId: "testUserID1",
+    favouriteWord: "sushi",
+    media: "",
+  });
 
   const handleChange = (event) => {
     if (event.target.name === "media") {
       setSeed({
         ...seed,
-        media: fileInput.current.files[0].name,
+        media: {
+          file: fileInput.current.files[0],
+          name: fileInput.current.files[0].name,
+        },
       });
     } else {
       setSeed({
@@ -27,22 +32,22 @@ export const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log("Now we will pass ", seed, "in a POST to the API");
-
+    const seedObject = getFormData(seed);
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(seed),
+      body: seedObject,
     };
 
-    fetch(`http://3.110.164.79:8000/seeds/${seed.seedId}`, requestOptions)
+    fetch(`http://3.110.164.79:8000/seeds/${seedId}`, requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log("This is a response from the server", data));
+      .then
+      //    TODO: show that seed has been created, option to add another
+      ();
   };
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      {/* TODO: user identification string */}
+      {/* TODO: flow to generate user identification string and favorite word comes first */}
       <label htmlFor="description">Description of sound (required)</label>
       <textarea
         name="description"
@@ -71,3 +76,11 @@ export const Form = () => {
     </form>
   );
 };
+
+const getFormData = (object) =>
+  Object.keys(object).reduce((formData, key) => {
+    if (key === "media") {
+      formData.append("uploadMedia", object[key]["file"], object[key]["name"]);
+    } else formData.append(key, object[key]);
+    return formData;
+  }, new FormData());
