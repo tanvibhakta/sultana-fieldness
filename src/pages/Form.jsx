@@ -1,5 +1,6 @@
-import "../css/form.css";
 import { useState, useRef } from "react";
+import { nanoid } from "nanoid";
+import "../css/form.css";
 
 export const Form = () => {
   const [user, setUser] = useState({
@@ -83,8 +84,7 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
   );
 };
 const SeedUploadForm = ({ seed, setSeed }) => {
-  // TODO: use nanoid to generate
-  const seedId = "testID1";
+  const seedId = nanoid();
   const fileInput = useRef();
 
   const handleChange = (event) => {
