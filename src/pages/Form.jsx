@@ -2,15 +2,90 @@ import "../css/form.css";
 import { useState, useRef } from "react";
 
 export const Form = () => {
+  const [user, setUser] = useState({
+    id: "",
+    favouriteWord: "",
+  });
+
+  const [seed, setSeed] = useState({
+    description: "",
+    userId: user.id,
+    favouriteWord: user.favouriteWord,
+    media: "",
+  });
+
+  return seed.userId ? (
+    <SeedUploadForm seed={seed} setSeed={setSeed} />
+  ) : (
+    <UserCredentialsForm
+      user={user}
+      setUser={setUser}
+      seed={seed}
+      setSeed={setSeed}
+    />
+  );
+};
+
+const getFormData = (object) =>
+  Object.keys(object).reduce((formData, key) => {
+    if (key === "media") {
+      formData.append("uploadMedia", object[key]["file"], object[key]["name"]);
+    } else formData.append(key, object[key]);
+    return formData;
+  }, new FormData());
+
+const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
+  const handleChange = (event) => {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(user);
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    };
+
+    fetch(`http://3.110.164.79:8000/users/${user.id}`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+
+    // TODO: This is bad practice! I should be able to just add css to this form for the actual flow for
+    //  username generation in the app. Refactor so this doesn't suck butt.
+    setSeed({
+      ...seed,
+      userId: user.id,
+      favouriteWord: user.favouriteWord,
+    });
+  };
+
+  return (
+    <form className="form" onSubmit={handleSubmit}>
+      <label htmlFor="id">Enter a username (required)</label>
+      <input type="text" name="id" id="id" onChange={handleChange} required />
+      <label htmlFor="favouriteWork">
+        Enter one word that you like very much! please remember it :) (required)
+      </label>
+      <input
+        type="text"
+        name="favouriteWord"
+        id="favouriteWord"
+        onChange={handleChange}
+        required
+      />
+      <input className="submit" type="submit" value="Submit" />
+    </form>
+  );
+};
+const SeedUploadForm = ({ seed, setSeed }) => {
   // TODO: use nanoid to generate
   const seedId = "testID1";
   const fileInput = useRef();
-  const [seed, setSeed] = useState({
-    description: "",
-    userId: "testUserID1",
-    favouriteWord: "sushi",
-    media: "",
-  });
 
   const handleChange = (event) => {
     if (event.target.name === "media") {
@@ -28,7 +103,6 @@ export const Form = () => {
       });
     }
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -44,10 +118,8 @@ export const Form = () => {
       //    TODO: show that seed has been created, option to add another
       ();
   };
-
   return (
     <form className="form" onSubmit={handleSubmit}>
-      {/* TODO: flow to generate user identification string and favorite word comes first */}
       <label htmlFor="description">Description of sound (required)</label>
       <textarea
         name="description"
@@ -72,15 +144,6 @@ export const Form = () => {
         required
       />
       <input className="submit" type="submit" value="Submit" />
-      {/* TODO: Capture timestamp the submit button was clicked*/}
     </form>
   );
 };
-
-const getFormData = (object) =>
-  Object.keys(object).reduce((formData, key) => {
-    if (key === "media") {
-      formData.append("uploadMedia", object[key]["file"], object[key]["name"]);
-    } else formData.append(key, object[key]);
-    return formData;
-  }, new FormData());
