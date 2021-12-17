@@ -13,6 +13,8 @@ export const Form = () => {
     userId: user.id,
     favouriteWord: user.favouriteWord,
     media: [],
+    lat: "",
+    long: "",
   });
 
   return seed.userId ? (
@@ -111,8 +113,21 @@ const SeedUploadForm = ({ seed, setSeed }) => {
       });
     }
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Get the latitude and the longitude from the URL pasted into the form
+    if (seed.url.split(".")[1] === "openstreetmap") {
+      const queryString = seed.url.split("?")[1];
+      setSeed({
+        ...seed,
+        lat: queryString.split("&")[0].split("mlat=")[1],
+        long: queryString.split("&")[1].split("#")[0].split("mlon=")[1],
+      });
+    } else {
+      // TODO: trigger error: incorrect host for location
+    }
 
     const seedObject = getFormData(seed);
     const requestOptions = {
