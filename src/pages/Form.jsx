@@ -120,38 +120,73 @@ const SeedUploadForm = ({ seed, setSeed }) => {
       body: seedObject,
     };
 
-    fetch(`http://3.110.164.79:8000/seeds/${seedId}`, requestOptions)
-      .then((response) => response.json())
-      .then
-      //    TODO: show that seed has been created, option to add another
-      ();
+    fetch(`http://3.110.164.79:8000/seeds/${seedId}`, requestOptions).then(
+      () => {
+        //  TODO: Validate that the server returns a 200
+        setIsSubmissionSuccessful(true);
+      }
+    );
   };
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <label htmlFor="description">Description of sound (required)</label>
-      <textarea
-        name="description"
-        id="description"
-        value={seed.description}
-        onChange={handleChange}
-        rows="5"
-        cols="63"
-        required
-      />
-      {/*TODO: map location picker*/}
-      <label htmlFor="media">
-        Upload an audio file OR an image file that makes up the seed (required)
-      </label>
-      <input
-        type="file"
-        name="media"
-        id="media"
-        ref={fileInput}
-        onChange={handleChange}
-        accept="audio/*,image/*"
-        required
-      />
-      <input className="submit" type="submit" value="Submit" />
-    </form>
+    <>
+      {isSubmissionSuccessful && (
+        <div className="success-message">
+          {" "}
+          Your seed was successfully created! Submit another:{" "}
+        </div>
+      )}
+      <form className="form" onSubmit={handleSubmit}>
+        <label htmlFor="description">Description of sound (required)</label>
+        <textarea
+          name="description"
+          id="description"
+          value={seed.description}
+          onChange={handleChange}
+          rows="5"
+          cols="63"
+          required
+        />
+        <label htmlFor="audio">
+          Upload an audio file that makes up the seed
+        </label>
+        <input
+          type="file"
+          name="audio"
+          id="audio"
+          ref={fileInputAudio}
+          onChange={handleChange}
+          accept="audio/*"
+        />
+        <label htmlFor="image">
+          Upload an image file that makes up the seed
+        </label>
+        <input
+          type="file"
+          name="image"
+          id="image"
+          ref={fileInputImage}
+          onChange={handleChange}
+          accept="image/*"
+        />
+        <label htmlFor="location">
+          An estimate of where this media was captured (Paste map location from{" "}
+          <a
+            href="https://www.openstreetmap.org"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open Street Maps
+          </a>
+          )
+        </label>
+        <input
+          type="url"
+          name="location"
+          id="location"
+          onChange={handleChange}
+        />
+        <input className="submit" type="submit" value="Submit" />
+      </form>
+    </>
   );
 };

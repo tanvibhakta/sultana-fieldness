@@ -15,3 +15,8 @@
 .submit {
   margin-top: 3rem;
 }
+
+.success-message {
+  padding: 2rem;
+  background-color: lightgreen;
+}
