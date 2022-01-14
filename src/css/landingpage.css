@@ -1,0 +1,121 @@
+body {
+  height: 100vh;
+  background: linear-gradient(180deg, #ddb6e0 0%, #e7c89b 100%);
+}
+
+.button {
+  border-radius: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(251, 243, 64, 0.5) 0%,
+    rgba(164, 122, 42, 0.5) 100%
+  );
+}
+
+.big.button {
+  height: 10rem;
+  width: 10rem;
+}
+
+.medium.button {
+  height: 6rem;
+  width: 6rem;
+}
+
+.small.button {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "buttons buttons buttons"
+    "buttons buttons buttons"
+    "bubbles bubbles bubbles"
+    "bubbles bubbles bubbles"
+    "bubbles bubbles bubbles";
+}
+
+.bubbles {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 0.5fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "different types of columns";
+  grid-area: bubbles;
+}
+
+.different {
+  grid-area: different;
+}
+
+.types {
+  grid-area: types;
+}
+
+.of {
+  grid-area: of;
+}
+
+.columns {
+  grid-area: columns;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "register-user-and-map register-user-and-map register-user-and-map start-journey start-journey"
+    "register-user-and-map register-user-and-map register-user-and-map start-journey start-journey"
+    "register-user-and-map register-user-and-map register-user-and-map start-journey start-journey"
+    "info-button info-button info-button info-button info-button"
+    "user-tab user-tab user-tab user-tab user-tab";
+  grid-area: buttons;
+}
+
+.user-tab {
+  grid-area: user-tab;
+}
+
+.info-button {
+  grid-area: info-button;
+}
+
+.start-journey {
+  grid-area: start-journey;
+}
+
+.register-user-and-map {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . register-user register-user"
+    "map map register-user register-user"
+    "map map . .";
+  grid-area: register-user-and-map;
+}
+
+.register-user {
+  grid-area: register-user;
+}
+
+.map {
+  grid-area: map;
+}
