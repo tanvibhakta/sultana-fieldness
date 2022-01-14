@@ -15,6 +15,7 @@ export const LandingPage = () => {
         </div>
         <div className="register-user-and-map">
           <div className="register-user medium button">
+            {/* TODO: create user sign up form and link it here*/}
             <Link to="/">Register to collect</Link>
           </div>
           <div className="map">
@@ -23,11 +24,13 @@ export const LandingPage = () => {
         </div>
         <div className="info-button">
           <div className="small button">
+            {/* TODO: what sort of thing goes here? */}
             <Link to="/">i</Link>
           </div>
         </div>
         <div className="user-tab tab">
           {/* Show only if cached user id exists / once user has registered*/}
+          {/* TODO: create user profile page and link it here*/}
           <Link to="/">
             <UserIcon></UserIcon>
           </Link>
