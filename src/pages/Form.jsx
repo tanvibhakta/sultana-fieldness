@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { nanoid } from "nanoid";
 import "../css/form.css";
 
 export const Form = () => {
   const [user, setUser] = useState({
     id: "",
+    name: "",
     favouriteWord: "",
   });
 
@@ -13,8 +14,8 @@ export const Form = () => {
     userId: user.id,
     favouriteWord: user.favouriteWord,
     media: [],
-    lat: "",
-    long: "",
+    latitude: "",
+    longitude: "",
   });
 
   return seed.userId ? (
@@ -47,8 +48,18 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
     });
   };
 
+  useEffect(() => {
+    const userId = nanoid();
+
+    setUser({
+      ...user,
+      id: userId,
+    });
+  }, [user.name]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -56,7 +67,9 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
     };
 
     fetch(`http://3.110.164.79:8000/users/${user.id}`, requestOptions).then(
-      (response) => response.json()
+      (response) => {
+        APIResponseResponse(response);
+      }
     );
 
     // TODO: This is bad practice! I should be able to just add css to this form for the actual flow for
@@ -70,8 +83,14 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <label htmlFor="id">Enter a username (required)</label>
-      <input type="text" name="id" id="id" onChange={handleChange} required />
+      <label htmlFor="name">Enter a username (required)</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        onChange={handleChange}
+        required
+      />
       <label htmlFor="favouriteWork">
         Enter one word that you like very much! please remember it :) (required)
       </label>
@@ -114,11 +133,20 @@ const SeedUploadForm = ({ seed, setSeed }) => {
     }
   };
 
+  useEffect(() => {
+    const seedId = nanoid();
+
+    setSeed({
+      ...seed,
+      id: seedId,
+    });
+  }, [seed.desc]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     // Get the latitude and the longitude from the URL pasted into the form
-    if (seed.url.split(".")[1] === "openstreetmap") {
+    if (seed.url && seed.url.split(".")[1] === "openstreetmap") {
       const queryString = seed.url.split("?")[1];
       setSeed({
         ...seed,
@@ -136,9 +164,8 @@ const SeedUploadForm = ({ seed, setSeed }) => {
     };
 
     fetch(`http://3.110.164.79:8000/seeds/${seedId}`, requestOptions).then(
-      () => {
-        //  TODO: Validate that the server returns a 200
-        setIsSubmissionSuccessful(true);
+      (response) => {
+        APIResponseResponse(response, setIsSubmissionSuccessful);
       }
     );
   };
@@ -204,4 +231,17 @@ const SeedUploadForm = ({ seed, setSeed }) => {
       </form>
     </>
   );
+};
+
+const APIResponseResponse = (response, setIsSubmissionSuccessful) => {
+  if (response.status === 201) {
+    setIsSubmissionSuccessful && setIsSubmissionSuccessful(true);
+    console.log("success!");
+  } else if (response.status === 422) {
+    console.error(
+      "There is a mismatch between the fields defined in the frontend and backend schema. Please contact your administrator."
+    );
+  } else {
+    console.error("Unexpected error. Please check your network connection");
+  }
 };
