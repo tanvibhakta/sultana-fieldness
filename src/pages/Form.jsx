@@ -48,19 +48,14 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
     });
   };
 
-  useEffect(
-    () => {
-      const userId = nanoid();
+  useEffect(() => {
+    const userId = nanoid();
 
-      setUser({
-        ...user,
-        id: userId,
-      });
-    },
-    [user.name],
-    user,
-    setUser
-  );
+    setUser({
+      ...user,
+      id: userId,
+    });
+  }, [user.name, user, setUser]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -138,19 +133,14 @@ const SeedUploadForm = ({ seed, setSeed }) => {
     }
   };
 
-  useEffect(
-    () => {
-      const seedId = nanoid();
+  useEffect(() => {
+    const seedId = nanoid();
 
-      setSeed({
-        ...seed,
-        id: seedId,
-      });
-    },
-    [seed.desc],
-    seed,
-    setSeed
-  );
+    setSeed({
+      ...seed,
+      id: seedId,
+    });
+  }, [seed.desc, seed, setSeed]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
