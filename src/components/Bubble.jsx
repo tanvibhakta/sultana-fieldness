@@ -28,3 +28,7 @@ export const Bubble = () => {
     </div>
   );
 };
+
+Bubble.propTypes = {
+  className: PropTypes.string,
+};

@@ -35,7 +35,7 @@ export const LandingPage = () => {
       </div>
       <div className="bubbles">
         <div className="different">
-          <Bubble />
+          <Bubble className="bubble_a" />
           <Bubble />
           <Bubble />
         </div>
