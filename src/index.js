@@ -8,6 +8,7 @@ import { Page1 } from "./pages/Page1";
 import { Questions } from "./components/Questions";
 import { BubbleInput } from "./pages/BubbleInput";
 import { Profile } from "./pages/Profile";
+import { PostRegister, Register } from "./pages/Register";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,8 @@ ReactDOM.render(
         <Route path="page1" element={<Page1 />} />
         <Route path="question" element={<Questions />} />
         <Route path="bubble-input" element={<BubbleInput />} />
+        <Route path="register" element={<Register />} />
+        <Route path="post-register" element={<PostRegister />} />
         {/* TODO: /profile/id see: https://reactrouter.com/docs/en/v6/getting-started/tutorial#listing-the-invoices*/}
         <Route path="profile" element={<Profile />} />
         <Route

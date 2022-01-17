@@ -22,3 +22,7 @@ a {
   overflow: hidden;
   background: linear-gradient(180deg, #ddb6e0 0%, #e7c89b 100%);
 }
+
+.default-page-spacing {
+  padding: 4rem;
+}
