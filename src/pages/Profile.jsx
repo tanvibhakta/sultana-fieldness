@@ -1,4 +1,4 @@
-import "../css/profile.css";
+import "./css/profile.css";
 import { Bubble } from "../components/Bubble";
 import { Link } from "react-router-dom";
 

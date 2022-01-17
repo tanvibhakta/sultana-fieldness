@@ -1,0 +1,89 @@
+body {
+  overflow: hidden;
+}
+
+.register-container {
+  height: 100vh;
+  /* TODO: add svg as background image after figuring out where exactly the file needs to go and the url needs to be*/
+  /*background-image: url("register-jar.svg");*/
+  background: linear-gradient(
+    180deg,
+    rgba(166, 112, 180, 0.47) 0%,
+    rgba(143, 167, 90, 0.49) 60.97%
+  );
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.register-container > * > * {
+  display: block;
+}
+
+.heading {
+  margin-bottom: 1rem;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+label {
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+input {
+  margin-top: 0.5rem;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.hint {
+  font-size: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.submit {
+  margin-top: 3rem;
+  padding: 0.5rem;
+
+  align-self: end;
+  border-bottom: none;
+
+  color: white;
+  background: #7b8567;
+  border-radius: 80%;
+}
+
+.post-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: white;
+  text-align: center;
+}
+
+.post-register-container > * {
+  margin-bottom: 1rem;
+}
+
+.post-register-container > div {
+  margin-bottom: 2rem;
+}
+
+.post-register-container a {
+  font-weight: bold;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

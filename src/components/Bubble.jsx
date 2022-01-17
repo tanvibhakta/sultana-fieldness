@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
-import "../css/bubble.css";
+import "./css/bubble.css";
 import { ReactComponent as BubbleA } from "../assets/bubbles/bubble-a.svg";
 // import { ReactComponent as BubbleB } from "../assets/bubbles/bubble-b.svg";
 // import { ReactComponent as BubbleC } from "../assets/bubbles/bubble-c.svg";
