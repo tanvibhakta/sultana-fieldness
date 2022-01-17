@@ -6,7 +6,7 @@ import { ReactComponent as WorldMap } from "../assets/world-map.svg";
 
 export const LandingPage = () => {
   return (
-    <div className="container">
+    <div className="container landing-page-container">
       <div className="buttons">
         <div className="start-journey">
           <div className="big button">
@@ -31,7 +31,7 @@ export const LandingPage = () => {
         <div className="user-tab tab">
           {/* Show only if cached user id exists / once user has registered*/}
           {/* TODO: create user profile page and link it here*/}
-          <Link to="/">
+          <Link to="profile">
             <UserIcon></UserIcon>
           </Link>
         </div>

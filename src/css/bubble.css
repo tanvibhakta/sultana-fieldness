@@ -4,6 +4,8 @@
 .modal {
   width: 20rem;
   height: 20rem;
+
+  /* TODO: Would be nice to have the bubble be a percentage of the screen, like this*/
   /*width: calc(100vw - 15%);*/
   /*height: calc(100vw - 15%);*/
 
@@ -56,13 +58,6 @@
     "meta user-id-and-audio"
     "meta description"
     "meta collect-and-share";
-}
-
-ReactModal__Content:focus-visible,
-ReactModal__Content--after-open:focus-visible,
-.bubble-container:focus-visible {
-  border: none;
-  outline: none;
 }
 
 .description {
