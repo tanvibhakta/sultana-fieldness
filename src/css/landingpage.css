@@ -57,7 +57,7 @@
     "bubbles bubbles bubbles";
 }
 
-.bubbles {
+.bubbles-container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 0.5fr;
   grid-template-rows: 1fr;

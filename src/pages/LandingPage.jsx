@@ -36,7 +36,7 @@ export const LandingPage = () => {
           </Link>
         </div>
       </div>
-      <div className="bubbles">
+      <div className="bubbles-container">
         <div className="different">
           <Bubble className="bubble_a" />
           <Bubble />
