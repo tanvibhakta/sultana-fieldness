@@ -25,7 +25,7 @@ export const LandingPage = () => {
         <div className="info-button">
           <div className="small button">
             {/* TODO: what sort of thing goes here? */}
-            <Link to="/">i</Link>
+            <Link to="/info">i</Link>
           </div>
         </div>
         <div className="user-tab tab">
