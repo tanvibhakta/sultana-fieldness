@@ -1,5 +1,6 @@
 import "../css/profile.css";
 import { Bubble } from "../components/Bubble";
+import { Link } from "react-router-dom";
 
 export const Profile = () => {
   return (
@@ -9,8 +10,8 @@ export const Profile = () => {
         <span>User id: Zjhgdk</span>
       </div>
       <div className="links">
-        <span>Back to land</span>
-        <span>Start creating</span>
+        <Link to="/">Back to land</Link>
+        <Link to="/question">Start creating</Link>
       </div>
       <div className="created-seeds">
         <div className="bubbles">
