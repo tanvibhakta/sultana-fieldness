@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Page1 } from "./pages/Page1";
 import { Questions } from "./components/Questions";
 import { BubbleInput } from "./pages/BubbleInput";
+import { Profile } from "./pages/Profile";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,8 @@ ReactDOM.render(
         <Route path="page1" element={<Page1 />} />
         <Route path="question" element={<Questions />} />
         <Route path="bubble-input" element={<BubbleInput />} />
+        {/* TODO: /profile/id see: https://reactrouter.com/docs/en/v6/getting-started/tutorial#listing-the-invoices*/}
+        <Route path="profile" element={<Profile />} />
         <Route
           path="*"
           element={
