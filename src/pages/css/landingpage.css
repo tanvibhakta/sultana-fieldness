@@ -1,0 +1,164 @@
+.button {
+  text-align: center;
+
+  border-radius: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(251, 243, 64, 0.5) 0%,
+    rgba(164, 122, 42, 0.5) 100%
+  );
+}
+
+.tab {
+  height: 3.125rem;
+  width: 7.5rem;
+  border-radius: 35px;
+  background: rgba(136, 116, 180, 0.5);
+  margin-right: -3rem;
+}
+
+.tab svg {
+  padding-top: 0.5rem;
+  padding-left: 1.25rem;
+}
+
+/* tODO: would be nice to make these a percentage of the parent so it works across screen sizes*/
+.big.button {
+  height: 10rem;
+  width: 10rem;
+}
+
+.medium.button {
+  height: 6rem;
+  width: 6rem;
+}
+
+.small.button {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.landing-page-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "buttons buttons buttons"
+    "buttons buttons buttons"
+    "bubbles bubbles bubbles"
+    "bubbles bubbles bubbles"
+    "bubbles bubbles bubbles";
+}
+
+.bubbles-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 0.5fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "different types of columns";
+  grid-area: bubbles;
+}
+
+/* TODO: Rename columns (and associated classes) based on their purpose*/
+.different {
+  grid-area: different;
+  display: grid;
+  align-content: end;
+}
+
+.types {
+  grid-area: types;
+  display: grid;
+  align-content: end;
+}
+
+.types::before {
+  height: 100%;
+  content: "";
+  border-left: 3px solid #d7a1f1;
+  filter: blur(5px);
+}
+
+.of {
+  grid-area: of;
+  display: grid;
+  align-content: end;
+}
+
+.columns {
+  grid-area: columns;
+  display: grid;
+  align-content: end;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "register-user-and-map register-user-and-map register-user-and-map start-journey start-journey"
+    "register-user-and-map register-user-and-map register-user-and-map start-journey start-journey"
+    "register-user-and-map register-user-and-map register-user-and-map start-journey start-journey"
+    "register-user-and-map register-user-and-map register-user-and-map start-journey start-journey"
+    "info-button info-button info-button info-button info-button"
+    "user-tab user-tab user-tab user-tab user-tab";
+  grid-area: buttons;
+}
+
+.user-tab {
+  grid-area: user-tab;
+  align-self: center;
+  justify-self: end;
+}
+
+.info-button {
+  grid-area: info-button;
+  align-self: center;
+  justify-self: end;
+  padding-right: 1rem;
+}
+
+.info-button a {
+  font-family: monospace;
+  color: #0009db;
+}
+
+.start-journey {
+  grid-area: start-journey;
+  align-self: end;
+  justify-self: start;
+  margin-left: -1.5rem;
+}
+
+.register-user-and-map {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . register-user register-user"
+    ". . register-user register-user"
+    "map map . ."
+    "map map . .";
+  grid-area: register-user-and-map;
+}
+
+.register-user {
+  margin-top: 0.5rem;
+  grid-area: register-user;
+}
+
+.map {
+  grid-area: map;
+}

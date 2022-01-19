@@ -1,0 +1,33 @@
+.info-container {
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(187, 140, 215, 0.8) 0%,
+    rgba(226, 181, 114, 0.8) 100%
+  );
+
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+}
+
+.info-container a {
+  margin-top: 6rem;
+}
+
+.anatomy-container {
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(210, 200, 213, 0.85) 43.92%,
+    rgba(191, 170, 115, 0.93) 100%
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}

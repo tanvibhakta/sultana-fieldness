@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ddb6e0 0%, #e7c89b 100%);
+}
+
+.default-page-spacing {
+  padding: 4rem;
+}
