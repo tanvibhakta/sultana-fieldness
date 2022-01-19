@@ -1,7 +1,3 @@
-body {
-  overflow: hidden;
-}
-
 .register-container {
   height: 100vh;
   /* TODO: add svg as background image after figuring out where exactly the file needs to go and the url needs to be*/
@@ -24,24 +20,24 @@ body {
   display: block;
 }
 
-.heading {
+.register-container .heading {
   margin-bottom: 1rem;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-form {
+.register-container form {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-label {
+.register-container label {
   margin-top: 1rem;
   margin-bottom: 0.2rem;
 }
 
-input {
+.register-container input {
   margin-top: 0.5rem;
   background: transparent;
   border-top: none;
@@ -49,12 +45,12 @@ input {
   border-right: none;
 }
 
-.hint {
+.register-container .hint {
   font-size: 0.75rem;
   margin-bottom: 0.2rem;
 }
 
-.submit {
+.register-container .submit {
   margin-top: 3rem;
   padding: 0.5rem;
 

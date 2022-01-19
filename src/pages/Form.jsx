@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { nanoid } from "nanoid";
-import "../css/form.css";
+import "./css/form.css";
 
 export const Form = () => {
   const [user, setUser] = useState({

@@ -62,7 +62,7 @@
 
 /*TODO: bubble-container:focus-visible becomes the dark green of the container*/
 
-.description {
+.bubble-container .description {
   grid-area: description;
   display: flex;
   justify-content: center;
@@ -70,7 +70,7 @@
   padding-right: 1rem;
 }
 
-.user-id-and-audio {
+.bubble-container .user-id-and-audio {
   grid-area: user-id-and-audio;
   display: flex;
   justify-content: space-between;
@@ -78,14 +78,14 @@
   padding-right: 3rem;
 }
 
-.collect-and-share {
+.bubble-container .collect-and-share {
   grid-area: collect-and-share;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.meta {
+.bubble-container .meta {
   grid-area: meta;
   display: flex;
   flex-direction: column;
@@ -93,6 +93,6 @@
   align-items: center;
 }
 
-.meta span {
+.bubble-container .meta span {
   transform: rotate(-90deg);
 }

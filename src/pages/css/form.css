@@ -12,11 +12,11 @@
   margin-bottom: 0.5rem;
 }
 
-.submit {
+.form .submit {
   margin-top: 3rem;
 }
 
-.success-message {
+.form .success-message {
   padding: 2rem;
   background-color: lightgreen;
 }

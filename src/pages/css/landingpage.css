@@ -1,4 +1,4 @@
-.button {
+.landing-page-container .button {
   text-align: center;
 
   border-radius: 100%;
@@ -14,7 +14,7 @@
   );
 }
 
-.tab {
+.landing-page-container .tab {
   height: 3.125rem;
   width: 7.5rem;
   border-radius: 35px;
@@ -22,7 +22,7 @@
   margin-right: -3rem;
 }
 
-.tab svg {
+.landing-page-container .tab svg {
   padding-top: 0.5rem;
   padding-left: 1.25rem;
 }
@@ -68,38 +68,38 @@
 }
 
 /* TODO: Rename columns (and associated classes) based on their purpose*/
-.different {
+.landing-page-container .different {
   grid-area: different;
   display: grid;
   align-content: end;
 }
 
-.types {
+.landing-page-container .types {
   grid-area: types;
   display: grid;
   align-content: end;
 }
 
-.types::before {
+.landing-page-container .types::before {
   height: 100%;
   content: "";
   border-left: 3px solid #d7a1f1;
   filter: blur(5px);
 }
 
-.of {
+.landing-page-container .of {
   grid-area: of;
   display: grid;
   align-content: end;
 }
 
-.columns {
+.landing-page-container .columns {
   grid-area: columns;
   display: grid;
   align-content: end;
 }
 
-.buttons {
+.landing-page-container .buttons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -115,32 +115,32 @@
   grid-area: buttons;
 }
 
-.user-tab {
+.landing-page-container .user-tab {
   grid-area: user-tab;
   align-self: center;
   justify-self: end;
 }
 
-.info-button {
+.landing-page-container .info-button {
   grid-area: info-button;
   align-self: center;
   justify-self: end;
   padding-right: 1rem;
 }
 
-.info-button a {
+.landing-page-container .info-button a {
   font-family: monospace;
   color: #0009db;
 }
 
-.start-journey {
+.landing-page-container .start-journey {
   grid-area: start-journey;
   align-self: end;
   justify-self: start;
   margin-left: -1.5rem;
 }
 
-.register-user-and-map {
+.landing-page-container .register-user-and-map {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -154,11 +154,11 @@
   grid-area: register-user-and-map;
 }
 
-.register-user {
+.landing-page-container .register-user {
   margin-top: 0.5rem;
   grid-area: register-user;
 }
 
-.map {
+.landing-page-container .map {
   grid-area: map;
 }
