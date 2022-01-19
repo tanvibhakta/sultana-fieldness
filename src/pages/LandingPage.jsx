@@ -16,7 +16,7 @@ export const LandingPage = () => {
         <div className="register-user-and-map">
           <div className="register-user medium button">
             {/* TODO: create user sign up form and link it here*/}
-            <Link to="/">Register to collect</Link>
+            <Link to="/register">Register to collect</Link>
           </div>
           <div className="map">
             <WorldMap></WorldMap>
