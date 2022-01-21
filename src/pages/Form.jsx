@@ -1,44 +1,39 @@
 import { useEffect, useState, useRef } from "react";
 import { nanoid } from "nanoid";
 import "./css/form.css";
+import { postSeed, putUser } from "../api";
+import { StateMessages } from "../components/StateMessages";
 
 export const Form = () => {
   const [user, setUser] = useState({
-    id: "",
     name: "",
     favouriteWord: "",
   });
 
   const [seed, setSeed] = useState({
     description: "",
-    userId: user.id,
+    userName: user.name,
     favouriteWord: user.favouriteWord,
     media: [],
     latitude: "",
     longitude: "",
   });
 
-  return seed.userId ? (
+  // Check if a user is active. If yes, render seed upload form. If not, ask user to register and then upload seeds.
+  // TODO: This should ideally check if there is a user in local storage.
+  return seed.userName ? (
     <SeedUploadForm seed={seed} setSeed={setSeed} />
   ) : (
-    <UserCredentialsForm
-      user={user}
-      setUser={setUser}
-      seed={seed}
-      setSeed={setSeed}
-    />
+    <>
+      <UserCredentialsForm
+        user={user}
+        setUser={setUser}
+        seed={seed}
+        setSeed={setSeed}
+      />
+    </>
   );
 };
-
-const getFormData = (object) =>
-  Object.keys(object).reduce((formData, key) => {
-    if (key === "media") {
-      object.media.map((item) =>
-        formData.append("uploadMedia[]", item["file"], item["name"])
-      );
-    } else formData.append(key, object[key]);
-    return formData;
-  }, new FormData());
 
 const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
   const handleChange = (event) => {
@@ -48,35 +43,17 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
     });
   };
 
-  useEffect(() => {
-    const userId = nanoid();
-
-    setUser({
-      ...user,
-      id: userId,
-    });
-  }, [user.name]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const requestOptions = {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    };
+    putUser(user);
 
-    fetch(`http://3.110.164.79:8000/users/${user.id}`, requestOptions).then(
-      (response) => {
-        APIResponseResponse(response);
-      }
-    );
-
-    // TODO: This is bad practice! I should be able to just add css to this form for the actual flow for
-    //  username generation in the app. Refactor so this doesn't suck butt.
+    // TODO: This is bad practice! I should be able to just add css to this form
+    //  for the actual flow for username generation in the app. Refactor so this
+    //  doesn't suck butt.
+    console.log(seed);
     setSeed({
       ...seed,
-      userId: user.id,
       favouriteWord: user.favouriteWord,
     });
   };
@@ -105,6 +82,7 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
     </form>
   );
 };
+
 const SeedUploadForm = ({ seed, setSeed }) => {
   const seedId = nanoid();
   const fileInputAudio = useRef();
@@ -112,6 +90,7 @@ const SeedUploadForm = ({ seed, setSeed }) => {
   const [isSubmissionSuccessful, setIsSubmissionSuccessful] = useState(false);
 
   const handleChange = (event) => {
+    // Structure the object so that it's easy for getFormData to work around it
     if (event.target.name === "audio" || event.target.name === "image") {
       const fileInput =
         event.target.name === "audio" ? fileInputAudio : fileInputImage;
@@ -157,26 +136,11 @@ const SeedUploadForm = ({ seed, setSeed }) => {
       // TODO: trigger error: incorrect host for location
     }
 
-    const seedObject = getFormData(seed);
-    const requestOptions = {
-      method: "POST",
-      body: seedObject,
-    };
-
-    fetch(`http://3.110.164.79:8000/seeds/${seedId}`, requestOptions).then(
-      (response) => {
-        APIResponseResponse(response, setIsSubmissionSuccessful);
-      }
-    );
+    postSeed(seed, setIsSubmissionSuccessful);
   };
   return (
     <>
-      {isSubmissionSuccessful && (
-        <div className="success-message">
-          {" "}
-          Your seed was successfully created! Submit another:{" "}
-        </div>
-      )}
+      {isSubmissionSuccessful && <StateMessages status={201} />}
       <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="description">Description of sound (required)</label>
         <textarea
@@ -231,17 +195,4 @@ const SeedUploadForm = ({ seed, setSeed }) => {
       </form>
     </>
   );
-};
-
-const APIResponseResponse = (response, setIsSubmissionSuccessful) => {
-  if (response.status === 201) {
-    setIsSubmissionSuccessful && setIsSubmissionSuccessful(true);
-    console.log("success!");
-  } else if (response.status === 422) {
-    console.error(
-      "There is a mismatch between the fields defined in the frontend and backend schema. Please contact your administrator."
-    );
-  } else {
-    console.error("Unexpected error. Please check your network connection");
-  }
 };
