@@ -10,7 +10,7 @@ export const LandingPage = () => {
       <div className="buttons">
         <div className="start-journey">
           <div className="big button">
-            <Link to="/page1">Start Journey</Link>
+            <Link to="/Story">Start Journey</Link>
           </div>
         </div>
         <div className="register-user-and-map">

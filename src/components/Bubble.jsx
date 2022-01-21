@@ -53,6 +53,7 @@ export const Bubble = ({ className }) => {
               <span>country/city</span>
             </div>
             <div className="collect-and-share">
+              {/* TODO: Add toasts for collecting and copying link*/}
               <CollectionJar></CollectionJar>
               <ShareIcon></ShareIcon>
             </div>

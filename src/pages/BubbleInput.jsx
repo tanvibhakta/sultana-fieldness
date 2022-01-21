@@ -10,7 +10,7 @@ export const BubbleInput = () => {
         <button>Record Audio</button>
         <button>Click picture</button>
         <button type="submit">Skip</button>
-        <Link to="/">
+        <Link to="/created">
           <button type="submit">submit</button>
         </Link>
       </form>

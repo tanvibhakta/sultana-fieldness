@@ -1,0 +1,8 @@
+.question-container {
+  height: 100vh;
+  background: linear-gradient(180deg, #c4b6e0 0%, #eee1ce 100%);
+}
+
+.question-container > * {
+  height: 100vh;
+}
