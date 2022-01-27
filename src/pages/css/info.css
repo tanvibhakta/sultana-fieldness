@@ -31,3 +31,11 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.anatomy-container > div {
+  padding: 0 4rem;
+}
+
+.anatomy-container figcaption {
+  text-align: center;
+}
