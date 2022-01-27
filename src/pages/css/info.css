@@ -1,5 +1,6 @@
 .info-container {
   height: 100vh;
+  padding: 3rem;
   overflow: hidden;
   background: linear-gradient(
     180deg,
