@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as Path } from "../assets/path.svg";
+import { ReactComponent as Ladybird } from "../assets/ladybird.svg";
+import { ReactComponent as Spider } from "../assets/spider.svg";
 import "./css/story.css";
+import floaters from "../assets/floaters.png";
+import floaters2x from "../assets/floaters@2x.png";
+import floaters3x from "../assets/floaters@3x.png";
+import floatersBackground from "../assets/floaters.png";
 
 export const Story = () => {
   const navigate = useNavigate();
   const [pageNumber, setPageNumber] = useState(1);
-  const MAX_PAGE_NUMBER = 6;
+  const MAX_PAGE_NUMBER = 9;
   return (
     <main
       className="container story-container"
@@ -38,13 +45,16 @@ const StoryPages = ({ pageNumber }) => {
     case 1:
       return (
         <div className="story_page_1">
-          <p>Every Journey Needs a Path</p>
+          <Ladybird id="ladybird" />
+          <Path />
+          <p>Every jouney needs a path</p>
         </div>
       );
 
     case 2:
       return (
         <div className="story_page_2">
+          <Path id="path" />
           <p>
             There is always a path. Some paths are easier - like roads. Others,
             like mountain paths are slightly more difficult to find.{" "}
@@ -54,6 +64,7 @@ const StoryPages = ({ pageNumber }) => {
             <p>Each path carries knowledge</p>
             <p>Each path requires a knowledge to pass through it </p>
           </div>
+          <Spider id="spider" />
         </div>
       );
 
@@ -92,6 +103,47 @@ const StoryPages = ({ pageNumber }) => {
           look at your body look up and blink.
         </div>
       );
+
+    case 7:
+      return (
+        <div className="story_page_7">
+          <img
+            srcSet={`${floaters}, ${floaters2x} 2x, ${floaters3x} 3x`}
+            src={floaters}
+          />
+        </div>
+      );
+
+    case 8:
+      return (
+        <div className="story_page_7">
+          <img
+            srcSet={`${floaters}, ${floaters2x} 2x, ${floaters3x} 3x`}
+            src={floaters}
+          />
+        </div>
+      );
+
+    case 9:
+      return (
+        <div
+          className="story_page_9"
+          style={{ backgroundImage: `url(${floatersBackground})` }}
+          // style={{ backgroundImage: `url(${floatersBackground3x}), url(${floatersBackground2x}), url(${floatersBackground})` }}
+        >
+          <p>
+            These floaters are an artefact created by the interface between a
+            being and the enviormnet
+          </p>
+          <p>
+            if you look at the sky or a bright wall right there, those wrigly
+            and alive looking things are not ‘real’. They exist only in our mind
+            or body or somewhere in the middle
+          </p>
+          <p>What artefacts must bats hear?</p>
+        </div>
+      );
+
     default:
       console.error("There's been an issue with page numbers");
   }
