@@ -9,27 +9,31 @@ export const LandingPage = () => {
     <div className="container landing-page-container">
       <div className="buttons">
         <div className="start-journey">
-          <div className="big button">
-            <Link to="/Story">Start Journey</Link>
-          </div>
+          <Link to="/Story">
+            <div className="big button">Start Journey</div>
+          </Link>
         </div>
         <div className="register-user-and-map">
-          <div className="register-user medium button">
-            <Link to="/register">Register to collect</Link>
+          <div className="register-user">
+            <Link to="/register">
+              <div className="medium button">Register to collect</div>
+            </Link>
           </div>
           <div className="map">
             <WorldMap></WorldMap>
           </div>
         </div>
         <div className="info-button">
-          <div className="small button">
-            <Link to="/info">i</Link>
-          </div>
+          <Link to="/info">
+            <div className="small button">i</div>
+          </Link>
         </div>
-        <div className="user-tab tab">
-          {/* TODO: Show only if cached user id exists / once user has registered*/}
+        <div className="user-tab">
           <Link to="profile">
-            <UserIcon></UserIcon>
+            <div className="tab">
+              {/* TODO: Show only if cached user id exists / once user has registered*/}
+              <UserIcon></UserIcon>
+            </div>
           </Link>
         </div>
       </div>
