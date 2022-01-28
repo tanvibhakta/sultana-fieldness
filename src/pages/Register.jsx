@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as ShareIcon } from "../assets/share.svg";
+import { ReactComponent as RegisterJar } from "../assets/register-jar.svg";
+import registerJar from "../assets/register-jar.png";
 import "./css/register.css";
-import { checkIfUserExists, getUser, registerUser } from "../api";
+import { checkIfUserExists, registerUser } from "../api";
 
 export const Register = () => {
   const [user, setUser] = useState({
@@ -48,7 +50,17 @@ export const Register = () => {
     });
   };
   return (
-    <div className="register-container default-page-spacing">
+    <div
+      className="register-container default-page-spacing"
+      style={{
+        background: `url(${registerJar}),     linear-gradient(
+      180deg,
+      rgba(166, 112, 180, 0.47) 0%,
+      rgba(143, 167, 90, 0.49) 60.97%
+    )`,
+        backgroundRepeat: "no-repeat, no-repeat",
+      }}
+    >
       <div className="heading">Register to collect</div>
       <form
         className="form"
