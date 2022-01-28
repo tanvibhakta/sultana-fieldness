@@ -1,0 +1,15 @@
+.message {
+  height: 4rem;
+  width: 100%;
+
+  padding-left: 4rem;
+  padding-top: 2rem;
+}
+
+.success-message {
+  background-color: lightgreen;
+}
+
+.error-message {
+  background-color: indianred;
+}

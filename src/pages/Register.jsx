@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as ShareIcon } from "../assets/share.svg";
 import "./css/register.css";
+import { checkIfUserExists, getUser, registerUser } from "../api";
 
 export const Register = () => {
   const [user, setUser] = useState({
-    id: "",
-    name: "",
+    userName: "",
     favouriteWord: "",
   });
 
@@ -18,38 +18,34 @@ export const Register = () => {
     });
   };
 
-  /* TODO: Warning: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect,
-   * but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. */
-  useEffect(() => {
-    // const userId = nanoid();
-    const userId = "653928";
-
-    setUser({
-      ...user,
-      id: userId,
-    });
-  }, [user.name, user, setUser]);
-
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const requestOptions = {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    };
-
-    fetch(`http://3.110.164.79:8000/users/${user.id}`, requestOptions).then(
-      (response) => {
-        if (response.status === 201) {
-          console.log("created");
-        }
-        // TODO: there seems to be some sort of CORS error le sigh
-        // console.log("post response, post register");
-        // navigate("post-register");
+    await checkIfUserExists(user).then(async (response) => {
+      if (response.status === 200) {
+        navigate("/post-register");
+      } else if (response.status === 401) {
+        // TODO: Add the error message states and render the errors
+        console.error("Please enter the correct favourite word");
+      } else if (response.status === 422) {
+        console.error(
+          "There is a mismatch between the fields defined in the frontend and backend schema. Please " +
+            "contact your administrator."
+        );
+        console.error(response.detail);
+      } else if (response.status === 404) {
+        // If user is not found, it doesn't exist so register the user
+        await registerUser(user).then((response) => {
+          if (response.status === 200) {
+            console.log("user has been registered");
+          } else {
+            console.error(response.status, response.detail);
+          }
+        });
+      } else {
+        console.error(response.status, response.detail);
       }
-    );
+    });
   };
   return (
     <div className="register-container default-page-spacing">
@@ -59,11 +55,11 @@ export const Register = () => {
         onSubmit={handleSubmit}
         formAction="/post-register"
       >
-        <label htmlFor="name">Enter a username (required)</label>
+        <label htmlFor="userName">Enter a username (required)</label>
         <input
           type="text"
-          name="name"
-          id="name"
+          name="userName"
+          id="userName"
           onChange={handleChange}
           required
         />

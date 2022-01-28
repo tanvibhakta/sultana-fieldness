@@ -1,18 +1,18 @@
 import { useEffect, useState, useRef } from "react";
 import { nanoid } from "nanoid";
 import "./css/form.css";
-import { postSeed, putUser } from "../api";
+import { checkIfUserExists, postSeed, registerUser } from "../api";
 import { StateMessages } from "../components/StateMessages";
 
 export const Form = () => {
   const [user, setUser] = useState({
-    name: "",
+    userName: "",
     favouriteWord: "",
   });
 
   const [seed, setSeed] = useState({
     description: "",
-    userName: user.name,
+    userName: user.userName,
     favouriteWord: user.favouriteWord,
     media: [],
     latitude: "",
@@ -43,32 +43,55 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    putUser(user);
-
-    // TODO: This is bad practice! I should be able to just add css to this form
-    //  for the actual flow for username generation in the app. Refactor so this
-    //  doesn't suck butt.
-    console.log(seed);
-    setSeed({
-      ...seed,
-      favouriteWord: user.favouriteWord,
+    await checkIfUserExists(user).then(async (response) => {
+      if (response.status === 200) {
+        // TODO: This is bad practice! I should be able to just add css to this form
+        //  for the actual flow for username generation in the app. Refactor so this
+        //  doesn't suck butt.
+        console.log(seed);
+        setSeed({
+          ...seed,
+          userName: user.userName,
+          favouriteWord: user.favouriteWord,
+        });
+      } else if (response.status === 401) {
+        // TODO: Add the error message states and render the errors
+        console.error("Please enter the correct favourite word");
+      } else if (response.status === 422) {
+        console.error(
+          "There is a mismatch between the fields defined in the frontend and backend schema. Please " +
+            "contact your administrator."
+        );
+        console.error(response.detail);
+      } else if (response.status === 404) {
+        // If user is not found, it doesn't exist so register the user
+        await registerUser(user).then((response) => {
+          if (response.status === 200) {
+            console.log("user has been registered");
+          } else {
+            console.error(response.status, response.detail);
+          }
+        });
+      } else {
+        console.error(response.status, response.detail);
+      }
     });
   };
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <label htmlFor="name">Enter a username (required)</label>
+      <label htmlFor="userName">Enter a username (required)</label>
       <input
         type="text"
-        name="name"
-        id="name"
+        name="userName"
+        id="userName"
         onChange={handleChange}
         required
       />
-      <label htmlFor="favouriteWork">
+      <label htmlFor="favouriteWord">
         Enter one word that you like very much! please remember it :) (required)
       </label>
       <input
@@ -121,7 +144,7 @@ const SeedUploadForm = ({ seed, setSeed }) => {
     });
   }, [seed.desc]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Get the latitude and the longitude from the URL pasted into the form
@@ -136,12 +159,17 @@ const SeedUploadForm = ({ seed, setSeed }) => {
       // TODO: trigger error: incorrect host for location
     }
 
-    postSeed(seed, setIsSubmissionSuccessful);
+    await postSeed(seed, setIsSubmissionSuccessful).then((response) => {
+      if (response.status === 201) {
+        setIsSubmissionSuccessful(true);
+        document.getElementById("seed-form").reset();
+      }
+    });
   };
   return (
     <>
       {isSubmissionSuccessful && <StateMessages status={201} />}
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" id="seed-form" onSubmit={handleSubmit}>
         <label htmlFor="description">Description of sound (required)</label>
         <textarea
           name="description"
