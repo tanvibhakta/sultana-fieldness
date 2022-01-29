@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as ShareIcon } from "../assets/share.svg";
@@ -6,12 +5,16 @@ import { ReactComponent as RegisterJar } from "../assets/register-jar.svg";
 import registerJar from "../assets/register-jar.png";
 import "./css/register.css";
 import { checkIfUserExists, registerUser } from "../api";
+import { useStickyState } from "../lib/useStickyState";
 
 export const Register = () => {
-  const [user, setUser] = useState({
-    userName: "",
-    favouriteWord: "",
-  });
+  const [user, setUser] = useStickyState(
+    {
+      userName: "",
+      favouriteWord: "",
+    },
+    "current-user"
+  );
 
   const handleChange = (event) => {
     setUser({
@@ -39,7 +42,7 @@ export const Register = () => {
         // If user is not found, it doesn't exist so register the user
         await registerUser(user).then((response) => {
           if (response.status === 200) {
-            console.log("user has been registered");
+            navigate("/post-register");
           } else {
             console.error(response.status, response.detail);
           }

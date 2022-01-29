@@ -3,12 +3,16 @@ import { nanoid } from "nanoid";
 import "./css/form.css";
 import { checkIfUserExists, postSeed, registerUser } from "../api";
 import { StateMessages } from "../components/StateMessages";
+import { useStickyState } from "../lib/useStickyState";
 
 export const Form = () => {
-  const [user, setUser] = useState({
-    userName: "",
-    favouriteWord: "",
-  });
+  const [user, setUser] = useStickyState(
+    {
+      userName: "",
+      favouriteWord: "",
+    },
+    "current-user"
+  );
 
   const [seed, setSeed] = useState({
     description: "",
@@ -19,8 +23,8 @@ export const Form = () => {
     longitude: "",
   });
 
-  // Check if a user is active. If yes, render seed upload form. If not, ask user to register and then upload seeds.
-  // TODO: This should ideally check if there is a user in local storage.
+  // Check if a user is registered. If yes, render seed upload form.
+  // If not, ask user to register and then upload seeds.
   return seed.userName ? (
     <SeedUploadForm seed={seed} setSeed={setSeed} />
   ) : (
@@ -48,10 +52,6 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
 
     await checkIfUserExists(user).then(async (response) => {
       if (response.status === 200) {
-        // TODO: This is bad practice! I should be able to just add css to this form
-        //  for the actual flow for username generation in the app. Refactor so this
-        //  doesn't suck butt.
-        console.log(seed);
         setSeed({
           ...seed,
           userName: user.userName,

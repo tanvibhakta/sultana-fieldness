@@ -21,7 +21,7 @@ export const registerUser = (user) => {
     body: JSON.stringify(user),
   };
 
-  return fetch(`${API_URL}/users/${user.name}`, requestOptions);
+  return fetch(`${API_URL}/users/${user.userName}`, requestOptions);
 };
 
 export const postSeed = (seed) => {

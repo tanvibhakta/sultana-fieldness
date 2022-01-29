@@ -28,14 +28,15 @@ export const LandingPage = () => {
             <div className="small button">i</div>
           </Link>
         </div>
-        <div className="user-tab">
-          <Link to="profile">
-            <div className="tab">
-              {/* TODO: Show only if cached user id exists / once user has registered*/}
-              <UserIcon></UserIcon>
-            </div>
-          </Link>
-        </div>
+        {localStorage.getItem("current-user") && (
+          <div className="user-tab">
+            <Link to="profile">
+              <div className="tab">
+                <UserIcon></UserIcon>
+              </div>
+            </Link>
+          </div>
+        )}
       </div>
       <div className="bubbles-container">
         <div className="different">
