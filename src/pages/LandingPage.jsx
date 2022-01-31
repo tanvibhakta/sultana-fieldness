@@ -3,8 +3,12 @@ import { Bubble } from "../components/Bubble";
 import "./css/landingpage.css";
 import { ReactComponent as UserIcon } from "../assets/user.svg";
 import { ReactComponent as WorldMap } from "../assets/world-map.svg";
+import { useContext } from "react";
+import { UserContext } from "../lib/UserContext";
 
 export const LandingPage = () => {
+  const user = useContext(UserContext).user;
+
   return (
     <div className="container landing-page-container">
       <div className="buttons">
@@ -28,7 +32,7 @@ export const LandingPage = () => {
             <div className="small button">i</div>
           </Link>
         </div>
-        {localStorage.getItem("current-user") && (
+        {user.userName && (
           <div className="user-tab">
             <Link to="profile">
               <div className="tab">

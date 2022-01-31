@@ -1,18 +1,12 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { nanoid } from "nanoid";
 import "./css/form.css";
 import { checkIfUserExists, postSeed, registerUser } from "../api";
 import { StateMessages } from "../components/StateMessages";
-import { useStickyState } from "../lib/useStickyState";
+import { UserContext } from "../lib/UserContext";
 
 export const Form = () => {
-  const [user, setUser] = useStickyState(
-    {
-      userName: "",
-      favouriteWord: "",
-    },
-    "current-user"
-  );
+  const { user, setUser } = useContext(UserContext);
 
   const [seed, setSeed] = useState({
     description: "",

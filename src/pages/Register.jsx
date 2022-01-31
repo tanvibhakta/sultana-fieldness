@@ -5,16 +5,11 @@ import { ReactComponent as RegisterJar } from "../assets/register-jar.svg";
 import registerJar from "../assets/register-jar.png";
 import "./css/register.css";
 import { checkIfUserExists, registerUser } from "../api";
-import { useStickyState } from "../lib/useStickyState";
+import { useContext } from "react";
+import { UserContext } from "../lib/UserContext";
 
 export const Register = () => {
-  const [user, setUser] = useStickyState(
-    {
-      userName: "",
-      favouriteWord: "",
-    },
-    "current-user"
-  );
+  const { user, setUser } = useContext(UserContext);
 
   const handleChange = (event) => {
     setUser({
