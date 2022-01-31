@@ -82,6 +82,7 @@ export const BubbleInput = () => {
           required
         />
       </div>
+      <button className="bubble_input-record">REC</button>
       {/* TODO: Record audio here */}
       {/* TODO: Obtain location here */}
       <input
