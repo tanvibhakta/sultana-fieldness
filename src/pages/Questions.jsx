@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ReactComponent as Taste } from "../assets/questions/taste.svg";
+import { ReactComponent as Smell } from "../assets/questions/smell.svg";
+import { ReactComponent as Hear } from "../assets/questions/hear.svg";
+import { ReactComponent as See } from "../assets/questions/see.svg";
+import { ReactComponent as BrainKnows } from "../assets/questions/brain-know.svg";
+import { ReactComponent as BrainDontKnow } from "../assets/questions/brain-dont-know.svg";
 import "./css/question.css";
 
 /**
  * TODO:
- *  - Add input options
  *  - style input options
  *  - position the elements perfectly
  */
@@ -18,6 +23,13 @@ export const Questions = () => {
           questionNumber={questionNumber}
           setQuestionNumber={setQuestionNumber}
         />
+        <button
+          onChange={() => {
+            setQuestionNumber(questionNumber + 1);
+          }}
+        >
+          Next
+        </button>
       </form>
     </div>
   );
@@ -30,19 +42,34 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
     case 1:
       return (
         <div className="question_1">
-          <label className="question_1-label" htmlFor="motorwayDistance">
+          <div className="question_1-label" htmlFor="motorwayDistance">
             How far is a road/ motorway from you?
-          </label>
-          <input
-            className="question_1-input"
-            name="motorwayDistance"
-            id="motorwayDistance"
-            type="range"
-            onChange={() => {
-              setQuestionNumber(questionNumber + 1);
-            }}
-            required
-          />
+          </div>
+          <div className="question_1-input_range">
+            <input
+              className="question_1-input"
+              name="motorwayDistance"
+              id="motorwayDistance"
+              type="range"
+              required
+            />
+            <div className="question_1-datalist">
+              <div value={1}>Can taste it. It’s right here. Very close</div>
+              <div value={2}>Can smell it</div>
+              <div value={3}>Can see it. I’m not on it </div>
+              <div value={4}>Can still hear it</div>
+              <div value={5}>Cant hear it. But I know it</div>
+              <div value={6}>Dont know where the road is. Very far</div>
+            </div>
+            <div className="question_1-datalist-helper">
+              <Taste />
+              <Smell />
+              <Hear />
+              <See />
+              <BrainKnows />
+              <BrainDontKnow />
+            </div>
+          </div>
         </div>
       );
 
@@ -62,6 +89,15 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
             }}
             required
           />
+          <datalist>
+            <option value={1}>on mud/ sand </option>
+            <option value={2}>on tar</option>
+            <option value={3}>on concrete</option>
+            <option value={4}>on marble /tiles / flooring</option>
+            <option value={5}>On garbage</option>
+            <option value={6}>On water</option>
+            <option value={7}>On Mars</option>
+          </datalist>
         </div>
       );
 
@@ -69,7 +105,8 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
       return (
         <div className="question_3">
           <label className="question_3-label" htmlFor="structureAge">
-            Where are your feet located?
+            What is the age of structures around you ? (These structures could
+            be trees, buildings, flyovers or sand dunes )
           </label>
           <input
             className="question_3-input"
@@ -81,6 +118,16 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
             }}
             required
           />
+          <datalist>
+            <option value={1}>older than 5000 years</option>
+            <option value={2}>2000 to 5000 years</option>
+            <option value={3}>1000- 2000 years - the age of a tree</option>
+            <option value={4}>200- 1000 years</option>
+            <option value={5}>50- 200 years</option>
+            <option value={6}>20-50 years</option>
+            <option value={7}>5-20 years</option>
+            <option value={8}>0-5 years</option>
+          </datalist>
         </div>
       );
   }
