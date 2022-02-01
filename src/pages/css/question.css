@@ -6,3 +6,108 @@
 .question-container > * {
   height: 100vh;
 }
+
+.question_1-label {
+  position: absolute;
+  top: 30%;
+  transform: rotate(-55.14deg);
+}
+
+.question_1-input_range {
+  width: 95vh;
+}
+.question_1-input {
+  display: block;
+  width: 100%;
+  margin: 2rem 0;
+
+  position: absolute;
+  top: 40%;
+
+  transform: rotate(-0.18turn);
+}
+
+.question_1-datalist {
+  display: flex;
+  justify-content: space-evenly;
+
+  width: 120%;
+
+  position: absolute;
+  top: 42%;
+  left: 12%;
+
+  transform: rotate(-0.18turn);
+}
+
+.question_1-datalist > * {
+  padding: 0 1rem;
+}
+
+.question_1-datalist-helper {
+  display: flex;
+  justify-content: space-evenly;
+
+  width: 120%;
+
+  position: absolute;
+  top: 32%;
+  left: 12%;
+
+  transform: rotate(-0.18turn);
+}
+
+/**
+  This marks the beginning of styles for the element input of type range
+*/
+
+:root {
+  --track-color: #d8b3e1;
+  --thumb-color: #7a7373;
+}
+
+/* Styles for the thumb*/
+
+/* WebKit/Blink */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid var(--thumb-color);
+  height: 72px;
+  width: 14px;
+  border-radius: 0;
+  background: var(--thumb-color);
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+  border: 1px solid var(--thumb-color);
+  height: 72px;
+  width: 14px;
+  border-radius: 0;
+  background: var(--thumb-color);
+  cursor: pointer;
+}
+
+/* Styles for the track*/
+
+/* WebKit/Blink */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 24px;
+  cursor: pointer;
+  background: var(--track-color);
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: var(--track-color);
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 24px;
+  cursor: pointer;
+  background: var(--track-color);
+}
