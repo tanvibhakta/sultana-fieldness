@@ -9,43 +9,44 @@ import { ReactComponent as BrainDontKnow } from "../assets/questions/brain-dont-
 import "./css/question.css";
 
 /**
- * TODO:
- *  - style input options
- *  - position the elements perfectly
+ * TODO: record responses in state, write api wrapper, post responses to seed
  */
 
 export const Questions = () => {
+  const navigate = useNavigate();
   const [questionNumber, setQuestionNumber] = useState(1);
+  const MAX_QUESTION_NUMBER = 3;
   return (
     <div className="question-container container">
-      <form>
-        <Question
-          questionNumber={questionNumber}
-          setQuestionNumber={setQuestionNumber}
-        />
-      </form>
+      <Question
+        questionNumber={questionNumber}
+        setQuestionNumber={setQuestionNumber}
+      />
+      <button
+        className="button-next"
+        onClick={() => {
+          if (questionNumber < MAX_QUESTION_NUMBER) {
+            setQuestionNumber(questionNumber + 1);
+          } else if (questionNumber === MAX_QUESTION_NUMBER) {
+            navigate("/bubble-input");
+          }
+        }}
+      >
+        Next
+      </button>
     </div>
   );
 };
 
 export const Question = ({ questionNumber, setQuestionNumber }) => {
-  const navigate = useNavigate();
-
   switch (questionNumber) {
     case 1:
       return (
         <div className="question_1">
-          <button
-            onChange={() => {
-              setQuestionNumber(questionNumber + 1);
-            }}
-          >
-            Next
-          </button>
           <div className="question_1-label" htmlFor="motorwayDistance">
             How far is a road/ motorway from you?
           </div>
-          <div className="question_1-input_range">
+          <div className="question_1 input_range">
             <div className="question_1-datalist-helper">
               <Taste />
               <Smell />
@@ -55,7 +56,7 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               <BrainDontKnow />
             </div>
             <input
-              className="question_1-input"
+              className="question_1 input"
               name="motorwayDistance"
               id="motorwayDistance"
               type="range"
@@ -64,7 +65,7 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               step={1}
               required
             />
-            <div className="question_1-datalist">
+            <div className="question_1 datalist">
               <div value={1}>Can taste it. It’s right here</div>
               <div value={2}>Can smell it</div>
               <div value={3}>Can see it. I’m not on it </div>
@@ -89,21 +90,20 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
     case 2:
       return (
         <div className="question_2">
-          <label className="question_2-label" htmlFor="feetLocation">
+          <div className="question_2 label" htmlFor="feetLocation">
             Where are your feet located?
-          </label>
-          <div className="question_2-input_range">
+          </div>
+          <div className="question_2 input_range">
             <input
-              className="question_2-input"
+              className="question_2 input"
               name="feetLocation"
               id="feetLocation"
               type="range"
-              onChange={() => {
-                setQuestionNumber(questionNumber + 1);
-              }}
-              required
+              min={1}
+              max={7}
+              step={1}
             />
-            <div className="question_2-datalist">
+            <div className="question_2 datalist">
               <div value={1}>on mud/ sand </div>
               <div value={2}>on tar</div>
               <div value={3}>on concrete</div>
@@ -119,30 +119,32 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
     case 3:
       return (
         <div className="question_3">
-          <label className="question_3-label" htmlFor="structureAge">
+          <div className="question_3 label" htmlFor="structureAge">
             What is the age of structures around you ? (These structures could
             be trees, buildings, flyovers or sand dunes )
-          </label>
-          <input
-            className="question_3-input"
-            name="structureAge"
-            id="structureAge"
-            type="range"
-            onChange={() => {
-              navigate("/bubble-input");
-            }}
-            required
-          />
-          <datalist>
-            <option value={1}>older than 5000 years</option>
-            <option value={2}>2000 to 5000 years</option>
-            <option value={3}>1000- 2000 years - the age of a tree</option>
-            <option value={4}>200- 1000 years</option>
-            <option value={5}>50- 200 years</option>
-            <option value={6}>20-50 years</option>
-            <option value={7}>5-20 years</option>
-            <option value={8}>0-5 years</option>
-          </datalist>
+          </div>
+          <div className="question_3 input_range">
+            <input
+              className="question_3 input"
+              name="structureAge"
+              id="structureAge"
+              type="range"
+              required
+              min={1}
+              max={8}
+              step={1}
+            />
+            <div className="question_3 datalist">
+              <div value={1}>older than 5000 years</div>
+              <div value={2}>2000 to 5000 years</div>
+              <div value={3}>1000- 2000 years - the age of a tree</div>
+              <div value={4}>200- 1000 years</div>
+              <div value={5}>50- 200 years</div>
+              <div value={6}>20-50 years</div>
+              <div value={7}>5-20 years</div>
+              <div value={8}>0-5 years</div>
+            </div>
+          </div>
         </div>
       );
     default:
