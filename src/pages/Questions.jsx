@@ -46,28 +46,41 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
             How far is a road/ motorway from you?
           </div>
           <div className="question_1-input_range">
+            <div className="question_1-datalist-helper">
+              <Taste />
+              <Smell />
+              <See />
+              <Hear />
+              <BrainKnows />
+              <BrainDontKnow />
+            </div>
             <input
               className="question_1-input"
               name="motorwayDistance"
               id="motorwayDistance"
               type="range"
+              min={1}
+              max={6}
+              step={1}
               required
             />
             <div className="question_1-datalist">
-              <div value={1}>Can taste it. It’s right here. Very close</div>
+              <div value={1}>Can taste it. It’s right here</div>
               <div value={2}>Can smell it</div>
               <div value={3}>Can see it. I’m not on it </div>
               <div value={4}>Can still hear it</div>
               <div value={5}>Cant hear it. But I know it</div>
-              <div value={6}>Dont know where the road is. Very far</div>
+              <div value={6}>Dont know where the road is</div>
             </div>
-            <div className="question_1-datalist-helper">
-              <Taste />
-              <Smell />
-              <Hear />
-              <See />
-              <BrainKnows />
-              <BrainDontKnow />
+            <div className="question_1-scale">
+              <span>
+                Very
+                <br /> close
+              </span>
+              <span>
+                Very
+                <br /> far
+              </span>
             </div>
           </div>
         </div>

@@ -14,47 +14,49 @@
 }
 
 .question_1-input_range {
-  width: 95vh;
+  width: 75vh;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*transform: rotate(-90deg);*/
+  transform: rotate(-67.52deg);
+
+  font-size: 0.75rem;
 }
+
 .question_1-input {
   display: block;
   width: 100%;
   margin: 2rem 0;
-
-  position: absolute;
-  top: 40%;
-
-  transform: rotate(-0.18turn);
 }
 
 .question_1-datalist {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
-  width: 120%;
-
-  position: absolute;
-  top: 42%;
-  left: 12%;
-
-  transform: rotate(-0.18turn);
+  width: 110%;
 }
 
 .question_1-datalist > * {
-  padding: 0 1rem;
+  width: 4rem;
 }
 
 .question_1-datalist-helper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
-  width: 120%;
+  width: 110%;
+}
 
-  position: absolute;
-  top: 32%;
-  left: 12%;
-
-  transform: rotate(-0.18turn);
+.question_1-scale {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-left: -1rem;
 }
 
 /**
