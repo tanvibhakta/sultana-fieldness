@@ -7,7 +7,7 @@ import save from "../assets/save.png";
 import "./css/bubbleinput.css";
 
 export const BubbleInput = () => {
-  const { user, setUser } = useContext(UserContext);
+  const user = useContext(UserContext).user;
   const [seed, setSeed] = useState({
     description: "",
     userName: user.userName,
@@ -17,7 +17,6 @@ export const BubbleInput = () => {
     longitude: "",
   });
 
-  const seedId = nanoid();
   const fileInputAudio = useRef();
   const fileInputImage = useRef();
   const navigate = useNavigate();

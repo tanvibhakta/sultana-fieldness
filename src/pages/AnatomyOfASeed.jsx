@@ -9,6 +9,7 @@ export const AnatomyOfASeed = () => (
       <img
         srcSet={`${anatomy}, ${anatomy2x} 2x, ${anatomy3x} 3x`}
         src={anatomy}
+        alt="A venn diagram displaying the properties of a seed"
       />
       <figcaption>Anatomy of a Seed</figcaption>
     </div>

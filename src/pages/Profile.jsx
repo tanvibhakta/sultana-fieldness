@@ -8,15 +8,18 @@ import { useContext, useEffect } from "react";
 export const Profile = () => {
   const { user, setUser } = useContext(UserContext);
 
-  useEffect(async () => {
-    if (user && user.userName) {
-      await getUser(user.userName).then((response) => {
-        if (response.status === 200) {
-          setUser(response.body);
-        } else {
-          console.error(response.status);
-        }
-      });
+  useEffect(() => {
+    // Async here instead of outer function to prevent race conditions
+    async function fetchData() {
+      if (user && user.userName) {
+        await getUser(user.userName).then((response) => {
+          if (response.status === 200) {
+            setUser(response.body);
+          } else {
+            console.error(response.status);
+          }
+        });
+      }
     }
   }, [user]);
 

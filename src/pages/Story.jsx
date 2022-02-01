@@ -110,6 +110,7 @@ const StoryPages = ({ pageNumber }) => {
           <img
             srcSet={`${floaters}, ${floaters2x} 2x, ${floaters3x} 3x`}
             src={floaters}
+            alt="floaters"
           />
         </div>
       );
@@ -120,6 +121,7 @@ const StoryPages = ({ pageNumber }) => {
           <img
             srcSet={`${floaters}, ${floaters2x} 2x, ${floaters3x} 3x`}
             src={floaters}
+            alt="floaters"
           />
         </div>
       );

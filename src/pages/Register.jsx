@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as ShareIcon } from "../assets/share.svg";
-import { ReactComponent as RegisterJar } from "../assets/register-jar.svg";
 import registerJar from "../assets/register-jar.png";
 import "./css/register.css";
 import { checkIfUserExists, registerUser } from "../api";

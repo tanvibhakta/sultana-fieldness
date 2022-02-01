@@ -23,13 +23,6 @@ export const Questions = () => {
           questionNumber={questionNumber}
           setQuestionNumber={setQuestionNumber}
         />
-        <button
-          onChange={() => {
-            setQuestionNumber(questionNumber + 1);
-          }}
-        >
-          Next
-        </button>
       </form>
     </div>
   );
@@ -42,6 +35,13 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
     case 1:
       return (
         <div className="question_1">
+          <button
+            onChange={() => {
+              setQuestionNumber(questionNumber + 1);
+            }}
+          >
+            Next
+          </button>
           <div className="question_1-label" htmlFor="motorwayDistance">
             How far is a road/ motorway from you?
           </div>
@@ -92,25 +92,27 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
           <label className="question_2-label" htmlFor="feetLocation">
             Where are your feet located?
           </label>
-          <input
-            className="question_2-input"
-            name="feetLocation"
-            id="feetLocation"
-            type="range"
-            onChange={() => {
-              setQuestionNumber(questionNumber + 1);
-            }}
-            required
-          />
-          <datalist>
-            <option value={1}>on mud/ sand </option>
-            <option value={2}>on tar</option>
-            <option value={3}>on concrete</option>
-            <option value={4}>on marble /tiles / flooring</option>
-            <option value={5}>On garbage</option>
-            <option value={6}>On water</option>
-            <option value={7}>On Mars</option>
-          </datalist>
+          <div className="question_2-input_range">
+            <input
+              className="question_2-input"
+              name="feetLocation"
+              id="feetLocation"
+              type="range"
+              onChange={() => {
+                setQuestionNumber(questionNumber + 1);
+              }}
+              required
+            />
+            <div className="question_2-datalist">
+              <div value={1}>on mud/ sand </div>
+              <div value={2}>on tar</div>
+              <div value={3}>on concrete</div>
+              <div value={4}>on marble /tiles / flooring</div>
+              <div value={5}>On garbage</div>
+              <div value={6}>On water</div>
+              <div value={7}>On Mars</div>
+            </div>
+          </div>
         </div>
       );
 
@@ -143,5 +145,7 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
           </datalist>
         </div>
       );
+    default:
+      console.error("The counter has been exceeded. Please refresh the page.");
   }
 };

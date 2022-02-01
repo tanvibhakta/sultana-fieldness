@@ -8,6 +8,7 @@ export const StateMessages = ({ status }) => {
           Your seed was successfully created! Submit another:
         </div>
       );
-      break;
+    default:
+      console.error(status, "There was an error");
   }
 };

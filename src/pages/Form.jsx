@@ -101,7 +101,6 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
 };
 
 const SeedUploadForm = ({ seed, setSeed }) => {
-  const seedId = nanoid();
   const fileInputAudio = useRef();
   const fileInputImage = useRef();
   const [isSubmissionSuccessful, setIsSubmissionSuccessful] = useState(false);
