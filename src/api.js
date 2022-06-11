@@ -1,4 +1,4 @@
-const API_URL = "http://3.110.164.79:8000";
+const API_URL = "http://13.233.54.175:8000";
 
 export const checkIfUserExists = (user) => {
   const requestOptions = {
