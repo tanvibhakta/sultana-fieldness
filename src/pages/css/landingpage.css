@@ -65,6 +65,7 @@
   grid-auto-flow: row;
   grid-template-areas: "different types of columns";
   grid-area: bubbles;
+  justify-self: center;
 }
 
 /* TODO: Rename columns (and associated classes) based on their purpose*/
@@ -97,6 +98,10 @@
   grid-area: columns;
   display: grid;
   align-content: end;
+}
+
+.landing-page-container .column {
+  min-width: 4rem;
 }
 
 .landing-page-container .buttons {

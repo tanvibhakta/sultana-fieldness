@@ -43,12 +43,12 @@ export const LandingPage = () => {
         )}
       </div>
       <div className="bubbles-container">
-        <div className="different">
+        <div className="column different">
           <Bubble className="bubble_a" />
           <Bubble />
           <Bubble />
         </div>
-        <div className="types">
+        <div className="column types">
           <Bubble />
           <Bubble />
           <Bubble />
@@ -57,13 +57,13 @@ export const LandingPage = () => {
           <Bubble />
           <Bubble />
         </div>
-        <div className="of">
+        <div className="column of">
           <Bubble />
           <Bubble />
           <Bubble />
           <Bubble />
         </div>
-        <div className="columns">
+        <div className="column columns">
           <Bubble />
           <Bubble />
         </div>
