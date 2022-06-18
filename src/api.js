@@ -1,4 +1,4 @@
-const API_URL = "http://13.233.54.175:8000";
+const API_URL = "https://api.fieldness.com";
 
 export const checkIfUserExists = (user) => {
   const requestOptions = {
