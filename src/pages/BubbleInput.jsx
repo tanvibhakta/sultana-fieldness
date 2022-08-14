@@ -63,6 +63,29 @@ export const BubbleInput = () => {
     });
   };
 
+  function handleAudioStop(data) {
+    console.log("stop", data);
+  }
+
+  function handleAudioUpload(data) {
+    console.log("upload", data);
+    setSeed({ ...seed, media: [data] });
+  }
+
+  function handleReset() {
+    const reset = {
+      url: null,
+      blob: null,
+      chunks: null,
+      duration: {
+        h: 0,
+        m: 0,
+        s: 0,
+      },
+    };
+    setSeed({ ...seed, media: [reset] });
+  }
+
   // TODO: Ask for permissions for location, audio recording, video recording APIs here
   return (
     <form className="bubble_input-container container" onSubmit={handleSubmit}>
@@ -82,7 +105,18 @@ export const BubbleInput = () => {
           required
         />
       </div>
-      <RecordButton />
+      <RecordButton
+        record={true}
+        title={"New recording"}
+        audioURL={(data) => {
+          return data.url;
+        }}
+        showUIAudio
+        handleAudioStop={(data) => handleAudioStop(data)}
+        handleAudioUpload={(data) => handleAudioUpload(data)}
+        handleReset={() => handleReset()}
+        mimeTypeToUseWhenRecording={`audio/webm`}
+      />
       {/* TODO: Record audio here */}
       {/* TODO: Obtain location here */}
       {/* TODO: handleAudioUpload(record.audioBlob) on button submit*/}
