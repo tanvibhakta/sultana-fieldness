@@ -5,6 +5,7 @@ import { UserContext } from "../lib/UserContext";
 import { postSeed } from "../api";
 import save from "../assets/save.png";
 import "./css/bubbleinput.css";
+import { RecordButton } from "../components/RecordButton";
 
 export const BubbleInput = () => {
   const user = useContext(UserContext).user;
@@ -81,9 +82,10 @@ export const BubbleInput = () => {
           required
         />
       </div>
-      <button className="bubble_input-record">REC</button>
+      <RecordButton />
       {/* TODO: Record audio here */}
       {/* TODO: Obtain location here */}
+      {/* TODO: handleAudioUpload(record.audioBlob) on button submit*/}
       <input
         className="bubble_input-submit"
         type="submit"
