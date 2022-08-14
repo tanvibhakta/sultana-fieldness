@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 
   background: linear-gradient(180deg, #c4b6e0 0%, #eee1ce 100%);
 }
@@ -31,11 +32,11 @@
 .question_1.label {
   position: absolute;
   top: 30%;
-  transform: rotate(-55.14deg);
+  /*transform: rotate(-55.14deg);*/
 }
 
 .question_1 .input_range {
-  transform: rotate(-67.52deg);
+  /*transform: rotate(-67.52deg);*/
   font-size: 0.75rem;
 }
 
@@ -70,16 +71,16 @@
 }
 
 .question_2.label {
-  transform: rotate(-55.14deg);
+  /*transform: rotate(-55.14deg);*/
   position: absolute;
-  top: 30%;
+  top: 0;
 }
 
 .question_2.input_range {
   flex-direction: row;
   position: relative;
   left: -25%;
-  transform: rotate(20deg);
+  /*transform: rotate(20deg);*/
 }
 
 .question_2.input {
@@ -96,17 +97,17 @@
 }
 
 .question_3.label {
-  transform: rotate(-55.14deg);
+  /*transform: rotate(-55.14deg);*/
   width: 60%;
   position: absolute;
-  top: 20%;
+  top: 0;
 }
 
 .question_3.input_range {
   flex-direction: row;
   position: relative;
   left: -20%;
-  transform: rotate(25deg);
+  /*transform: rotate(25deg);*/
 }
 
 .question_3.input {
@@ -124,7 +125,7 @@
   align-items: start;
   margin-left: -14rem;
 
-  transform: rotate(-5deg);
+  /*transform: rotate(-5deg);*/
   position: relative;
   z-index: 4;
 }
