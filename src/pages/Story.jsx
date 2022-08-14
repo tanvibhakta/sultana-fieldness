@@ -13,11 +13,21 @@ export const Story = () => {
   const navigate = useNavigate();
   const [pageNumber, setPageNumber] = useState(1);
   const MAX_PAGE_NUMBER = 9;
+  const goBack = () => {
+    if (pageNumber === 1) {
+      navigate(-1);
+    } else if (pageNumber > 1) {
+      setPageNumber(pageNumber - 1);
+    }
+  };
   return (
     <main
       className="container story-container"
-      onClick={() => {
-        if (pageNumber < MAX_PAGE_NUMBER) {
+      onClick={(e) => {
+        if (e.target.classList.contains("back_button")) {
+          e.preventDefault();
+          goBack();
+        } else if (pageNumber < MAX_PAGE_NUMBER) {
           setPageNumber(pageNumber + 1);
         } else if (pageNumber === MAX_PAGE_NUMBER) {
           navigate("/question");
@@ -25,15 +35,7 @@ export const Story = () => {
       }}
     >
       <StoryPages pageNumber={pageNumber} setPageNumber={setPageNumber} />
-      {/*TODO: This doesn't work right now. Why not, even though it's on top in terms on z-index?*/}
-      <button
-        className="back_button"
-        onClick={() => {
-          if (pageNumber > 1) {
-            setPageNumber(pageNumber - 1);
-          }
-        }}
-      >
+      <button className="back_button" onClick={() => goBack()}>
         {"<<<"}
       </button>
     </main>
