@@ -57,14 +57,10 @@ const StoryPages = ({ pageNumber }) => {
       return (
         <div className="story_page_2">
           <Path id="path" />
-          <p>
-            There is always a path. Some paths are easier - like roads. Others,
-            like mountain paths are slightly more difficult to find.{" "}
+          <p> Some paths are easier.{" "}
           </p>
           <div>
-            <p>But each path has its own story </p>
-            <p>Each path carries knowledge</p>
-            <p>Each path requires a knowledge to pass through it </p>
+            <p>Others, like mountain paths, are slightly more difficult to find. </p>
           </div>
           <Spider id="spider" />
         </div>
@@ -73,23 +69,21 @@ const StoryPages = ({ pageNumber }) => {
     case 3:
       return (
         <div className="story_page_3">
-          <p>
-            You came here, to this screen either by simply by clicking next, or
-            you explored on the previous screens.
-          </p>
-          <div>
-            <p>Exploring new territory is in the nature of every being.</p>
-            <p>
-              Without the possibility of exploration, most beings either die or
-              go insane. Both being ways of leaving behind the limitation of the
-              situation
-            </p>
-          </div>
-        </div>
+          <p> Each path has its own story.</p>
+          <p>Each path carries knowledge.</p>
+          <p> Each path requires a knowledge to pass through it.</p>
+         </div>
       );
 
     case 4:
-      return <div className="story_page_4"></div>;
+      return (
+        <div className="story_page_4">
+          <p> Exploring new territory is in the nature of every being. </p>
+          <p>Without the possibility of exploration, most beings either die or go insane. </p>
+          <p>Both being ways of leaving behind the limitation of the situation. </p>
+        
+        </div>
+      );
 
     case 5:
       return (
@@ -140,10 +134,15 @@ const StoryPages = ({ pageNumber }) => {
             being and the enviormnet
           </p>
           <p>
-            if you look at the sky or a bright wall right there, those wrigly
-            and alive looking things are not ‘real’. They exist only in our mind
-            or body or somewhere in the middle
+            If you look at the sky, you may see small wriggly things that look alive...
           </p>
+          <p>
+            They are not ‘real’. 
+          </p>
+          <p> 
+            They exist somewhere in the middle
+            of our mind and body.
+           </p>
           <p>What artefacts must bats hear?</p>
         </div>
       );
