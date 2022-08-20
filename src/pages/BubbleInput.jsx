@@ -17,6 +17,16 @@ export const BubbleInput = () => {
     latitude: "",
     longitude: "",
   });
+  const [audio, setAudio] = useState({
+    url: null,
+    blob: null,
+    chunks: null,
+    duration: {
+      h: 0,
+      m: 0,
+      s: 0,
+    },
+  });
 
   const fileInputAudio = useRef();
   const fileInputImage = useRef();
@@ -25,6 +35,7 @@ export const BubbleInput = () => {
   const handleChange = (event) => {
     // Structure the object so that it's easy for getFormData to work around it
     if (event.target.name === "audio" || event.target.name === "image") {
+      // what is the point of giving the ref here?
       const fileInput =
         event.target.name === "audio" ? fileInputAudio : fileInputImage;
       setSeed({
@@ -32,7 +43,9 @@ export const BubbleInput = () => {
         media: [
           ...seed.media,
           {
-            file: fileInput.current.files[0],
+            // TODO: Get audio.blog and set it here
+            // file: fileInput.current.files[0],
+            file: audio.blob,
             name: fileInput.current.files[0].name,
           },
         ],
@@ -50,8 +63,10 @@ export const BubbleInput = () => {
     setSeed({
       ...seed,
       id: seedId,
+      media: [{ file: audio && audio.blob, name: `random_blob` }],
     });
-  }, [seed.description]);
+    console.log("In the use effect, ", seed);
+  }, [seed.description, audio]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -65,6 +80,7 @@ export const BubbleInput = () => {
 
   function handleAudioStop(data) {
     console.log("stop", data);
+    setAudio(data);
   }
 
   function handleAudioUpload(data) {
@@ -83,7 +99,8 @@ export const BubbleInput = () => {
         s: 0,
       },
     };
-    setSeed({ ...seed, media: [reset] });
+    setAudio(reset);
+    // setSeed({ ...seed, media: [reset] });
   }
 
   // TODO: Ask for permissions for location, audio recording, video recording APIs here
@@ -108,16 +125,13 @@ export const BubbleInput = () => {
       <RecordButton
         record={true}
         title={"New recording"}
-        audioURL={(data) => {
-          return data.url;
-        }}
+        audioURL={audio.url}
         showUIAudio
         handleAudioStop={(data) => handleAudioStop(data)}
         handleAudioUpload={(data) => handleAudioUpload(data)}
         handleReset={() => handleReset()}
         mimeTypeToUseWhenRecording={`audio/webm`}
       />
-      {/* TODO: Record audio here */}
       {/* TODO: Obtain location here */}
       {/* TODO: handleAudioUpload(record.audioBlob) on button submit*/}
       <input
