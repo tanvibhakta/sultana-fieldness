@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "./css/recordbutton.css";
+
 const audioType = "audio/*";
 
 export class RecordButton extends Component {
@@ -96,7 +98,7 @@ export class RecordButton extends Component {
       this.stream = stream;
     } else {
       this.setState({ medianotFound: true });
-      console.log("Media Decives will work only with SSL.....");
+      console.error("Media Decives will work only with SSL.....");
     }
   }
 
@@ -125,7 +127,7 @@ export class RecordButton extends Component {
         track.stop();
       });
     } else {
-      console.log("No Tracks Found");
+      console.error("No Tracks Found");
     }
 
     this.mediaRecorder.stop();
@@ -162,7 +164,7 @@ export class RecordButton extends Component {
     const audioURL = window.URL.createObjectURL(blob);
     // append videoURL to list of saved videos for rendering
     const audios = [audioURL];
-    this.setState({ audios, audioBlob: blob });
+    this.setState({ audios: audios, audioBlob: blob });
     this.props.handleAudioStop({
       url: audioURL,
       blob: blob,
@@ -183,115 +185,68 @@ export class RecordButton extends Component {
       <div className="recorder_library_box">
         <div className="recorder_box">
           <div className="recorder_box_inner">
-            {!this.props.hideHeader ? (
-              <div className="reco_header">
-                <h2 className="h2">{title}</h2>
-                <span className="close_icons"></span>
+            <div className="record_section">
+              <div className="btn_wrapper">
+                <button
+                  onClick={() =>
+                    this.props.handleAudioUpload(this.state.audioBlob)
+                  }
+                  className="btn upload_btn"
+                  disabled={this.props.uploadButtonDisabled}
+                >
+                  Upload
+                </button>
+                <button
+                  onClick={(e) => this.handleReset(e)}
+                  className="btn clear_btn"
+                >
+                  Clear
+                </button>
               </div>
-            ) : null}
-            {!medianotFound ? (
-              <div className="record_section">
-                <div className="btn_wrapper">
-                  <button
-                    onClick={() =>
-                      this.props.handleAudioUpload(this.state.audioBlob)
-                    }
-                    className="btn upload_btn"
-                    disabled={this.props.uploadButtonDisabled}
-                  >
-                    Upload
-                  </button>
-                  <button
-                    onClick={(e) => this.handleReset(e)}
-                    className="btn clear_btn"
-                  >
-                    Clear
-                  </button>
-                </div>
-                <div className="duration_section">
-                  <div className="audio_section">
-                    {audioURL !== null && showUIAudio ? (
-                      <audio controls>
-                        <source src={audios[0]} type="audio/ogg" />
-                        <source src={audios[0]} type="audio/mpeg" />
-                      </audio>
-                    ) : null}
-                  </div>
-                  <div className="duration">
-                    <span className="mins">
-                      {time.m !== undefined
-                        ? `${time.m <= 9 ? "0" + time.m : time.m}`
-                        : "00"}
-                    </span>
-                    <span className="divider">:</span>
-                    <span className="secs">
-                      {time.s !== undefined
-                        ? `${time.s <= 9 ? "0" + time.s : time.s}`
-                        : "00"}
-                    </span>
-                  </div>
-                  {!recording ? (
-                    <p className="help">Press the microphone to record</p>
+              <div className="duration_section">
+                <div className="audio_section">
+                  {audioURL !== null && showUIAudio ? (
+                    <audio controls>
+                      <source src={audios[0]} type="audio/ogg" />
+                      <source src={audios[0]} type="audio/mpeg" />
+                    </audio>
                   ) : null}
                 </div>
+                <div className="duration">
+                  <span className="mins">
+                    {time.m !== undefined
+                      ? `${time.m <= 9 ? "0" + time.m : time.m}`
+                      : "00"}
+                  </span>
+                  <span className="divider">:</span>
+                  <span className="secs">
+                    {time.s !== undefined
+                      ? `${time.s <= 9 ? "0" + time.s : time.s}`
+                      : "00"}
+                  </span>
+                </div>
                 {!recording ? (
-                  <a
-                    onClick={(e) => this.startRecording(e)}
-                    href=" #"
-                    className="mic_icon"
-                  >
-                    {/* <img src={microphone} width={30} height={30} alt="Microphone icons" /> */}
-                    <span className="microphone_icon_sec">
-                      <svg
-                        className="mic_icon_svg"
-                        version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 1000 1000"
-                        enableBackground="new 0 0 1000 1000"
-                      >
-                        <g>
-                          <path d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z" />
-                        </g>
-                      </svg>
-                    </span>
-                  </a>
-                ) : (
-                  <div className="record_controller">
-                    <a
-                      onClick={(e) => this.stopRecording(e)}
-                      href=" #"
-                      className="icons stop"
-                    >
-                      <span className="stop_icon">Stop Icon</span>
-                      {/* <img src={stopIcon} width={20} height={20} alt="Stop icons" /> */}
-
-                      {/* <span className={`${styles.icons} ${styles.FaStop}`}></span> */}
-                    </a>
-                    <a
-                      onClick={
-                        !pauseRecord
-                          ? (e) => this.handleAudioPause(e)
-                          : (e) => this.handleAudioStart(e)
-                      }
-                      href=" #"
-                      className="icons pause"
-                    >
-                      {pauseRecord ? (
-                        <span className="play_icons">Play Icon</span>
-                      ) : (
-                        <span className="pause_icons">Pause Icon</span>
-                      )}
-                    </a>
-                  </div>
-                )}
+                  <p className="help">Press the microphone to record</p>
+                ) : null}
               </div>
-            ) : (
-              <p style={{ color: "#fff", marginTop: 30, fontSize: 25 }}>
-                Seems the site is Non-SSL
-              </p>
-            )}
+              {!recording ? (
+                <a
+                  href="#"
+                  onClick={(e) => this.startRecording(e)}
+                  className="record_button-record"
+                >
+                  REC
+                </a>
+              ) : (
+                <a
+                  href="#"
+                  onClick={(e) => this.stopRecording(e)}
+                  className="record_button-record"
+                >
+                  <span className="stop" />
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
