@@ -175,11 +175,7 @@ export class RecordButton extends Component {
 
   render() {
     const { recording, audios, time, medianotFound, pauseRecord } = this.state;
-    const { showUIAudio, title, audioURL, disableFullUI } = this.props;
-
-    if (disableFullUI) {
-      return null;
-    }
+    const { title } = this.props;
 
     return (
       <div className="recorder_library_box">
@@ -187,15 +183,6 @@ export class RecordButton extends Component {
           <div className="recorder_box_inner">
             <div className="record_section">
               <div className="btn_wrapper">
-                <button
-                  onClick={() =>
-                    this.props.handleAudioUpload(this.state.audioBlob)
-                  }
-                  className="btn upload_btn"
-                  disabled={this.props.uploadButtonDisabled}
-                >
-                  Upload
-                </button>
                 <button
                   onClick={(e) => this.handleReset(e)}
                   className="btn clear_btn"

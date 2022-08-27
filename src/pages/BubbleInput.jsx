@@ -80,13 +80,7 @@ export const BubbleInput = () => {
   };
 
   function handleAudioStop(data) {
-    console.log("stop", data);
     setAudio(data);
-  }
-
-  function handleAudioUpload(data) {
-    console.log("upload", data);
-    setSeed({ ...seed, media: [data] });
   }
 
   function handleReset() {
