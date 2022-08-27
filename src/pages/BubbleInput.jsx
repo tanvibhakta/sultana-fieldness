@@ -6,6 +6,7 @@ import { postSeed } from "../api";
 import save from "../assets/save.png";
 import "./css/bubbleinput.css";
 import { RecordButton } from "../components/RecordButton";
+import { AudioTrack } from "../components/AudioTrack";
 
 export const BubbleInput = () => {
   const user = useContext(UserContext).user;
@@ -105,41 +106,49 @@ export const BubbleInput = () => {
 
   // TODO: Ask for permissions for location, audio recording, video recording APIs here
   return (
-    <form className="bubble_input-container container" onSubmit={handleSubmit}>
-      <div className="bubble_input-description">
-        <label htmlFor="description" className="bubble_input-description-label">
-          Input Text
-        </label>
-        {/*TODO: Put a WISYWIG here, perhaps TinyMCE?*/}
-        <textarea
-          name="description"
-          id="description"
-          className="bubble_input-description-input"
-          value={seed?.description}
-          onChange={handleChange}
-          rows="5"
-          cols="63"
-          required
+    <>
+      <form
+        className="bubble_input-container container"
+        onSubmit={handleSubmit}
+      >
+        <div className="bubble_input-description">
+          <label
+            htmlFor="description"
+            className="bubble_input-description-label"
+          >
+            Input Text
+          </label>
+          {/*TODO: Put a WISYWIG here, perhaps TinyMCE?*/}
+          <textarea
+            name="description"
+            id="description"
+            className="bubble_input-description-input"
+            value={seed?.description}
+            onChange={handleChange}
+            rows="5"
+            cols="63"
+            required
+          />
+        </div>
+        <RecordButton
+          record={true}
+          title={"New recording"}
+          audioURL={audio.url}
+          handleAudioStop={(data) => handleAudioStop(data)}
+          handleReset={() => handleReset()}
+          mimeTypeToUseWhenRecording={`audio/webm`}
         />
-      </div>
-      <RecordButton
-        record={true}
-        title={"New recording"}
-        audioURL={audio.url}
-        showUIAudio
-        handleAudioStop={(data) => handleAudioStop(data)}
-        handleAudioUpload={(data) => handleAudioUpload(data)}
-        handleReset={() => handleReset()}
-        mimeTypeToUseWhenRecording={`audio/webm`}
-      />
-      {/* TODO: Obtain location here */}
-      {/* TODO: handleAudioUpload(record.audioBlob) on button submit*/}
-      <input
-        className="bubble_input-submit"
-        type="submit"
-        value="Save>>"
-        style={{ background: `url(${save})`, backgroundPosition: "center" }}
-      />
-    </form>
+        {/* TODO: Obtain location here */}
+        {/* TODO: handleAudioUpload(record.audioBlob) on button submit*/}
+        <input
+          className="bubble_input-submit"
+          type="submit"
+          value="Save>>"
+          style={{ background: `url(${save})`, backgroundPosition: "center" }}
+        />
+      </form>
+      {audio.url !== null && <AudioTrack audios={[audio.url]} />}
+      <div>Here's another thing</div>
+    </>
   );
 };

@@ -204,14 +204,6 @@ export class RecordButton extends Component {
                 </button>
               </div>
               <div className="duration_section">
-                <div className="audio_section">
-                  {audioURL !== null && showUIAudio ? (
-                    <audio controls>
-                      <source src={audios[0]} type="audio/ogg" />
-                      <source src={audios[0]} type="audio/mpeg" />
-                    </audio>
-                  ) : null}
-                </div>
                 <div className="duration">
                   <span className="mins">
                     {time.m !== undefined
