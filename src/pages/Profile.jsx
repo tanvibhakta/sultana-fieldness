@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../lib/UserContext";
 import { getUser } from "../api";
 import { useContext, useEffect } from "react";
+import MantisComputer from "../assets/gifs/mantis_computer.gif";
 
 export const Profile = () => {
   const { user, setUser } = useContext(UserContext);
@@ -26,7 +27,7 @@ export const Profile = () => {
   return (
     <div className="container profile-container">
       <div className="id">
-        <span>big grasshopper gif</span>
+        <img src={MantisComputer} alt="loading..." />
         <span>User Name: {user?.userName}</span>
       </div>
       <div className="links">
