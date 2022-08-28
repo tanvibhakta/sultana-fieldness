@@ -11,11 +11,9 @@ import { ReactComponent as AudioIcon } from "../assets/audio.svg";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as ShareIcon } from "../assets/share.svg";
 
-// TODO: reclassify bubble types from alphabet based system to purpose based system
-// TODO: switch case that renders correct svg given type
-
 export const Bubble = ({ className }, props) => {
   const [showModal, setShowModal] = useState(false);
+  // TODO: bubble number should be initialized with seed.answers.bubbleNumber
   const [bubbleNumber, setBubbleNumber] = useState(null);
 
   const getBubble = (props) => {
