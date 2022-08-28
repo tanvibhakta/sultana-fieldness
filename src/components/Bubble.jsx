@@ -16,18 +16,37 @@ import { ReactComponent as ShareIcon } from "../assets/share.svg";
 
 export const Bubble = ({ className }) => {
   const [showModal, setShowModal] = useState(false);
+
+  // This will instantiate for every time the component is rerendered.
+  // It should only instantiate for the first time the component is rendered.
+  const getBubble = (props) => {
+    // get number between 1 to 5
+    const max = 5;
+    const min = 1;
+    const bubbleNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    switch (bubbleNumber) {
+      case 1:
+        return <Bubble1 {...props} />;
+      case 2:
+        return <Bubble2 {...props} />;
+      case 3:
+        return <Bubble3 {...props} />;
+      case 4:
+        return <Bubble4 {...props} />;
+      case 5:
+        return <Bubble5 {...props} />;
+    }
+  };
   // TODO: set size by determining width as percentage of it's parent?
   return (
     <div>
-      <Bubble1
-        onClick={() => {
+      {getBubble({
+        onClick: () => {
           setShowModal(true);
-        }}
-        style={{ height: "3.75rem" }}
-        className={`${className}`}
-      >
-        bub
-      </Bubble1>
+        },
+        style: { height: "3.75rem" },
+        className: className,
+      })}
       <div className={`bubble`}>
         <Modal
           isOpen={showModal}
