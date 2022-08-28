@@ -45,7 +45,7 @@ export const getFormData = (object) =>
     if (key === "media") {
       object.media.map((item) => {
         console.log(item);
-        formData.append("uploadMedia", item["file"], item["name"]);
+        formData.append("uploadMedia", item["file"]);
       });
     } else formData.append(key, object[key]);
     return formData;

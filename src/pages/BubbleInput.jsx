@@ -22,6 +22,7 @@ export const BubbleInput = () => {
     url: null,
     blob: null,
     chunks: null,
+    base64data: null,
     duration: {
       h: 0,
       m: 0,
@@ -64,14 +65,12 @@ export const BubbleInput = () => {
     setSeed({
       ...seed,
       id: seedId,
-      media: [{ file: audio && audio.blob, name: `random_blob` }],
+      media: [{ file: audio && audio.base64data, name: `random_blob` }],
     });
-    console.log("In the use effect, ", seed);
   }, [seed.description, audio]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     await postSeed(seed).then((response) => {
       if (response.status === 201) {
         navigate("/created");
@@ -80,7 +79,13 @@ export const BubbleInput = () => {
   };
 
   function handleAudioStop(data) {
-    setAudio(data);
+    // get base64 string from blob and save it
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64data = reader.result;
+      setAudio({ ...data, base64data: base64data });
+    };
+    reader.readAsDataURL(data.blob);
   }
 
   function handleReset() {
@@ -88,6 +93,7 @@ export const BubbleInput = () => {
       url: null,
       blob: null,
       chunks: null,
+      base64data: null,
       duration: {
         h: 0,
         m: 0,
@@ -142,7 +148,6 @@ export const BubbleInput = () => {
         />
       </form>
       {audio.url !== null && <AudioTrack audios={[audio.url]} />}
-      <div>Here's another thing</div>
     </>
   );
 };

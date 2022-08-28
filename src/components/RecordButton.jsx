@@ -14,7 +14,6 @@ export class RecordButton extends Component {
       audios: [],
       audioBlob: null,
       stream: null,
-      base64: null,
     };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
@@ -163,14 +162,6 @@ export class RecordButton extends Component {
     const blob = new Blob(this.chunks, { type: audioType });
     // generate video url from blob
     const audioURL = window.URL.createObjectURL(blob);
-
-    // get base64 string from blob and save it
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const base64data = reader.result;
-      this.setState({ base64: base64data });
-    };
-    reader.readAsDataURL(blob);
 
     // append videoURL to list of saved videos for rendering
     const audios = [audioURL];
