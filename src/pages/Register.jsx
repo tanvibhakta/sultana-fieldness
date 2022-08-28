@@ -6,6 +6,7 @@ import "./css/register.css";
 import { checkIfUserExists, registerUser } from "../api";
 import { useContext } from "react";
 import { UserContext } from "../lib/UserContext";
+import BlueFlower from "../assets/gifs/blue_flower.gif";
 
 export const Register = () => {
   const { user, setUser } = useContext(UserContext);
@@ -88,6 +89,7 @@ export const Register = () => {
           required
         />
         <input className="submit" type="submit" value="submit>>" />
+        <img src={BlueFlower} className="blue_flower" />
       </form>
     </div>
   );
