@@ -2,13 +2,11 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
 import "./css/bubble.css";
-import { ReactComponent as BubbleA } from "../assets/bubbles/bubble-a.svg";
-// import { ReactComponent as BubbleB } from "../assets/bubbles/bubble-b.svg";
-// import { ReactComponent as BubbleC } from "../assets/bubbles/bubble-c.svg";
-// import { ReactComponent as BubbleD } from "../assets/bubbles/bubble-d.svg";
-// import { ReactComponent as BubbleE } from "../assets/bubbles/bubble-e.svg";
-// import { ReactComponent as BubbleF } from "../assets/bubbles/bubble-f.svg";
-// import { ReactComponent as BubbleG } from "../assets/bubbles/bubble-g.svg";
+import { ReactComponent as Bubble1 } from "../assets/bubbles/bubble-1.svg";
+import { ReactComponent as Bubble2 } from "../assets/bubbles/bubble-2.svg";
+import { ReactComponent as Bubble3 } from "../assets/bubbles/bubble-3.svg";
+import { ReactComponent as Bubble4 } from "../assets/bubbles/bubble-4.svg";
+import { ReactComponent as Bubble5 } from "../assets/bubbles/bubble-5.svg";
 import { ReactComponent as AudioIcon } from "../assets/audio.svg";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as ShareIcon } from "../assets/share.svg";
@@ -18,16 +16,18 @@ import { ReactComponent as ShareIcon } from "../assets/share.svg";
 
 export const Bubble = ({ className }) => {
   const [showModal, setShowModal] = useState(false);
+  // TODO: set size by determining width as percentage of it's parent?
   return (
     <div>
-      <BubbleA
+      <Bubble1
         onClick={() => {
           setShowModal(true);
         }}
+        style={{ height: "3.75rem" }}
         className={`${className}`}
       >
         bub
-      </BubbleA>
+      </Bubble1>
       <div className={`bubble`}>
         <Modal
           isOpen={showModal}
