@@ -23,9 +23,6 @@ export const LandingPage = () => {
               <div className="medium button">Register to collect</div>
             </Link>
           </div>
-          <div className="map">
-            <WorldMap></WorldMap>
-          </div>
         </div>
         <div className="info-button">
           <Link to="/info">
