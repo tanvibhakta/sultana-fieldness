@@ -1,9 +1,0 @@
-<svg width="44" height="42" viewBox="0 0 44 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path id="Ellipse 13" d="M44 17.5C44 31.031 33.031 42 19.5 42C5.96903 42 0.500023 34.531 0.500023 21C0.500023 7.46902 -0.530953 0 13 0C26.531 0 44 3.96902 44 17.5Z" fill="url(#paint0_radial_197_433)" fill-opacity="0.5"/>
-<defs>
-<radialGradient id="paint0_radial_197_433" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(19.5 17.5) rotate(90) scale(24.5)">
-<stop stop-color="#ADA0C4"/>
-<stop offset="1" stop-color="#6C509A"/>
-</radialGradient>
-</defs>
-</svg>
