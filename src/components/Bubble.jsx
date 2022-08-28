@@ -14,16 +14,16 @@ import { ReactComponent as ShareIcon } from "../assets/share.svg";
 // TODO: reclassify bubble types from alphabet based system to purpose based system
 // TODO: switch case that renders correct svg given type
 
-export const Bubble = ({ className }) => {
+export const Bubble = ({ className }, props) => {
   const [showModal, setShowModal] = useState(false);
+  const [bubbleNumber, setBubbleNumber] = useState(null);
 
-  // This will instantiate for every time the component is rerendered.
-  // It should only instantiate for the first time the component is rendered.
   const getBubble = (props) => {
-    // get number between 1 to 5
-    const max = 5;
-    const min = 1;
-    const bubbleNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    if (bubbleNumber === null) {
+      const max = 5;
+      const min = 1;
+      setBubbleNumber(Math.floor(Math.random() * (max - min + 1)) + min);
+    }
     switch (bubbleNumber) {
       case 1:
         return <Bubble1 {...props} />;
@@ -46,6 +46,7 @@ export const Bubble = ({ className }) => {
         },
         style: { height: "3.75rem" },
         className: className,
+        ...props,
       })}
       <div className={`bubble`}>
         <Modal
