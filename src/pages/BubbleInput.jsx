@@ -5,6 +5,7 @@ import { UserContext } from "../lib/UserContext";
 import { postSeed } from "../api";
 import save from "../assets/save.png";
 import "./css/bubbleinput.css";
+import MushroomNet from "../assets/gifs/mushroom_net.gif";
 
 export const BubbleInput = () => {
   const user = useContext(UserContext).user;
@@ -90,6 +91,8 @@ export const BubbleInput = () => {
         value="Save>>"
         style={{ background: `url(${save})`, backgroundPosition: "center" }}
       />
+      {/*TODO: fix the css with this page!!*/}
+      <img src={MushroomNet} alt="mushroom" className="mushroom_net" />
     </form>
   );
 };

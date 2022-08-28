@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Bubble } from "../components/Bubble";
 import "./css/landingpage.css";
 import { ReactComponent as UserIcon } from "../assets/user.svg";
-import { ReactComponent as WorldMap } from "../assets/world-map.svg";
 import { useContext } from "react";
 import { UserContext } from "../lib/UserContext";
 
