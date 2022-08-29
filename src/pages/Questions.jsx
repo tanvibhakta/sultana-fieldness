@@ -15,7 +15,7 @@ import "./css/question.css";
 export const Questions = () => {
   const navigate = useNavigate();
   const [questionNumber, setQuestionNumber] = useState(1);
-  const MAX_QUESTION_NUMBER = 3;
+  const MAX_QUESTION_NUMBER = 4;
   return (
     <div className="question-container container">
       <Question
@@ -44,16 +44,41 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
       return (
         <div className="question_1">
           <div className="question_1-label" htmlFor="motorwayDistance">
+            how wet are you with the sound around you ?
+          </div>
+          <div className="question_0 set">
+            <input
+              className="question_0 input"
+              name="motorwayDistance"
+              id="motorwayDistance"
+              type="range"
+              min={1}
+              max={3}
+              step={1}
+              required
+            />
+            <div className="question_1-datalist-helper">
+              <span>dry</span>
+              <span>damp</span>
+              <span>soaked</span>
+            </div>
+          </div>
+        </div>
+      );
+    case 2:
+      return (
+        <div className="question_1">
+          <div className="question_1-label" htmlFor="motorwayDistance">
             How far is a road/ motorway from you?
           </div>
-          <div className="question_1 input_range">
+          <div>
             <div className="question_1-datalist-helper">
-              <Taste />
-              <Smell />
-              <See />
-              <Hear />
-              <BrainKnows />
-              <BrainDontKnow />
+              <span value={1}>1</span>
+              <span value={2}>2</span>
+              <span value={3}>3</span>
+              <span value={4}>4</span>
+              <span value={5}>5</span>
+              <span value={6}>6</span>
             </div>
             <input
               className="question_1 input"
@@ -65,35 +90,42 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               step={1}
               required
             />
-            <div className="question_1 datalist">
-              <div value={1}>Can taste it. It’s right here</div>
-              <div value={2}>Can smell it</div>
-              <div value={3}>Can see it. I’m not on it </div>
-              <div value={4}>Can still hear it</div>
-              <div value={5}>Cant hear it. But I know it</div>
-              <div value={6}>Dont know where the road is</div>
+            <div className="question_1-datalist-helper">
+              <Taste />
+              <Smell />
+              <See />
+              <Hear />
+              <BrainKnows />
+              <BrainDontKnow />
             </div>
-            <div className="question_1-scale">
-              <span>
-                Very
-                <br /> close
-              </span>
-              <span>
-                Very
-                <br /> far
-              </span>
-            </div>
+          </div>
+          <div className="options">
+            <div>1. Can taste it. It’s right here</div>
+            <div>2. Can smell it</div>
+            <div>3. Can see it. I’m not on it</div>
+            <div>4. Can still hear it</div>
+            <div>5. Cant hear it, but I know of it</div>
+            <div>6. Don't know where the road is</div>
           </div>
         </div>
       );
 
-    case 2:
+    case 3:
       return (
-        <div className="question_2">
+        <div className="question_1">
           <div className="question_2 label" htmlFor="feetLocation">
-            Where are your feet located?
+            My feet is located on...
           </div>
           <div className="question_2 input_range">
+            <div className="question_1-datalist-helper">
+              <span value={1}>1</span>
+              <span value={2}>2</span>
+              <span value={3}>3</span>
+              <span value={4}>4</span>
+              <span value={5}>5</span>
+              <span value={6}>6</span>
+              <span value={7}>7</span>
+            </div>
             <input
               className="question_2 input"
               name="feetLocation"
@@ -103,46 +135,66 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               max={7}
               step={1}
             />
-            <div className="question_2 datalist">
-              <div value={1}>on mud/ sand </div>
-              <div value={2}>on tar</div>
-              <div value={3}>on concrete</div>
-              <div value={4}>on marble /tiles / flooring</div>
-              <div value={5}>On garbage</div>
-              <div value={6}>On water</div>
-              <div value={7}>On Mars</div>
-            </div>
+          </div>
+          <div className="question_2 options">
+            <div>1. mud/soil/ sand </div>
+            <div>2. tar</div>
+            <div>3. concrete</div>
+            <div>4. tiles/flooring/processed stone</div>
+            <div>5. garbage</div>
+            <div>6. water</div>
+            <div>7. Mars</div>
           </div>
         </div>
       );
 
-    case 3:
+    case 4:
       return (
         <div className="question_3">
           <div className="question_3 label" htmlFor="structureAge">
             What is the age of structures around you ? (These structures could
             be trees, buildings, flyovers or sand dunes )
           </div>
-          <div className="question_3 input_range">
-            <input
-              className="question_3 input"
-              name="structureAge"
-              id="structureAge"
-              type="range"
-              required
-              min={1}
-              max={8}
-              step={1}
-            />
+          <div className="question_3">
             <div className="question_3 datalist">
-              <div value={1}>older than 5000 years</div>
-              <div value={2}>2000 to 5000 years</div>
-              <div value={3}>1000- 2000 years - the age of a tree</div>
-              <div value={4}>200- 1000 years</div>
-              <div value={5}>50- 200 years</div>
-              <div value={6}>20-50 years</div>
-              <div value={7}>5-20 years</div>
-              <div value={8}>0-5 years</div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="olderThan5000"
+                  name="olderThan5000"
+                />
+                <label htmlFor="olderThan5000">older than 5000 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="2000to5000" name="2000to5000" />
+                <label htmlFor="2000to5000">2000 to 5000 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="ageOfTree" name="ageOfTree" />
+                <label htmlFor="ageOfTree">
+                  1000- 2000 years - the age of a tree
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="200to1000" name="200to1000" />
+                <label htmlFor="200to1000">200- 1000 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="50to200" name="50to200" />
+                <label htmlFor="50to200">50- 200 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="20to50" name="20to50" />
+                <label htmlFor="20to50">20-50 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="5to20" name="5to20" />
+                <label htmlFor="5to20">5-20 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="0to5" name="0to5" />
+                <label htmlFor="0to5">0-5 years</label>
+              </div>
             </div>
           </div>
         </div>
