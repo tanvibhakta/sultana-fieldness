@@ -1,17 +1,13 @@
 .landing-page-container .button {
   text-align: center;
 
-  border-radius: 100%;
+  border-radius: 2rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(251, 243, 64, 0.5) 0%,
-    rgba(164, 122, 42, 0.5) 100%
-  );
+  background: linear-gradient(180deg, #f7d8ba 0%, #ddafd2 100%);
 }
 
 .landing-page-container .tab {
@@ -29,13 +25,13 @@
 
 /* tODO: would be nice to make these a percentage of the parent so it works across screen sizes*/
 .big.button {
-  height: 10rem;
+  height: 2rem;
   width: 10rem;
 }
 
 .medium.button {
-  height: 6rem;
-  width: 6rem;
+  height: 2rem;
+  width: 9rem;
 }
 
 .small.button {
