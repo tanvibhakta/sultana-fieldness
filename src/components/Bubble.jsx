@@ -43,16 +43,16 @@ export const Bubble = ({ className }, props) => {
           setShowModal(true);
         },
         style: { height: "3.75rem" },
-        className: className,
+        className: `bubble ${className}`,
         ...props,
       })}
-      <div className={`bubble`}>
+      <div>
         <Modal
           isOpen={showModal}
           onRequestClose={() => {
             setShowModal(false);
           }}
-          className={"modal green-background"}
+          className={"modal purple-background"}
           overlayClassName={"overlay"}
         >
           <div className="bubble-container">
