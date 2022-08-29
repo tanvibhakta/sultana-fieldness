@@ -14,7 +14,7 @@ import "./css/question.css";
 
 export const Questions = () => {
   const navigate = useNavigate();
-  const [questionNumber, setQuestionNumber] = useState(1);
+  const [questionNumber, setQuestionNumber] = useState(0);
   const MAX_QUESTION_NUMBER = 4;
   return (
     <div className="question-container container">
@@ -40,6 +40,12 @@ export const Questions = () => {
 
 export const Question = ({ questionNumber, setQuestionNumber }) => {
   switch (questionNumber) {
+    case 0:
+      return (
+        <div className="question_beginning">
+          Close your eyes and listen to the sounds around you...
+        </div>
+      );
     case 1:
       return (
         <div className="question_1">
@@ -152,8 +158,8 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
       return (
         <div className="question_3">
           <div className="question_3 label" htmlFor="structureAge">
-            What is the age of structures around you ? (These structures could
-            be trees, buildings, flyovers or sand dunes )
+            The age of structures around me is .. ( these structures could be
+            mountains, oceans, rocks, dunes, trees, buildings, bridges etc.)
           </div>
           <div className="question_3">
             <div className="question_3 datalist">

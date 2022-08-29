@@ -54,6 +54,8 @@
 }
 
 .story_page_3 {
+  justify-content: center !important;
+
   background: radial-gradient(
     50.01% 50.01% at 82.11% 49.99%,
     #486327 0%,
@@ -62,6 +64,8 @@
 }
 
 .story_page_4 {
+  justify-content: center !important;
+
   background: radial-gradient(
     50.01% 50.01% at 82.11% 49.99%,
     #a2a444 0%,
@@ -99,6 +103,8 @@
   color: black;
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
+
+  justify-content: center !important;
 }
 
 .back_button {

@@ -9,12 +9,12 @@ export const Created = () => {
   const [gifName, setGifName] = useState(OldMac);
   // TODO:
   // show gif for 2s
-  //  show ok for 1s
-  //  automatically navigate to landing
+  // show ok for 1s
+  // automatically navigate to landing
   return (
     <div className="created-container container" onClick={() => navigate("/")}>
       <img src={gifName} />
-      <Ok />
+      {/*<Ok />*/}
     </div>
   );
 };
