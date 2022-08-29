@@ -2,133 +2,129 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   background: linear-gradient(180deg, #c4b6e0 0%, #eee1ce 100%);
 }
 
-.button-next {
-  align-self: end;
-  margin-top: -2rem;
-  margin-right: 2rem;
-}
+/*.input_range {*/
+/*  width: 75vh;*/
+/*  height: 92vh;*/
 
-.input_range {
-  width: 75vh;
-  height: 92vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
 
 .input {
-  display: block;
-  width: 100%;
+  max-height: 24px;
 }
 
-.question_1.label {
-  position: absolute;
-  top: 30%;
-  /*transform: rotate(-55.14deg);*/
+.question_1 {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .question_1 .input_range {
-  /*transform: rotate(-67.52deg);*/
   font-size: 0.75rem;
+  /*transform: rotate(-90deg);*/
 }
 
-.question_1 .input {
-  margin: 2rem 0;
+.question_1 span {
+  display: inline;
 }
 
-.datalist {
-  display: flex;
-  justify-content: space-between;
+/*.question_1 .input {*/
+/*  margin: 2rem 0;*/
+/*}*/
 
-  width: 110%;
-}
+/*.datalist {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
 
-.question_1.datalist > * {
-  width: 4rem;
-}
+/*  width: 110%;*/
+/*}*/
+
+/*.question_1.datalist > * {*/
+/*  width: 4rem;*/
+/*}*/
 
 .question_1-datalist-helper {
   display: flex;
   justify-content: space-between;
-
-  width: 110%;
 }
 
-.question_1-scale {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 0.75rem;
-  margin-left: -1rem;
-}
+/*.question_1-scale {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  width: 100%;*/
+/*  margin-top: 0.75rem;*/
+/*  margin-left: -1rem;*/
+/*}*/
 
-.question_2.label {
-  /*transform: rotate(-55.14deg);*/
-  position: absolute;
-  top: 0;
-}
+/*.question_2.label {*/
+/*  !*transform: rotate(-55.14deg);*!*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*}*/
 
-.question_2.input_range {
-  flex-direction: row;
-  position: relative;
-  left: -25%;
-  /*transform: rotate(20deg);*/
-}
+/*.question_2.input_range {*/
+/*  flex-direction: row;*/
+/*  position: relative;*/
+/*  left: -25%;*/
+/*  !*transform: rotate(20deg);*!*/
+/*}*/
 
-.question_2.input {
-  width: 95vh;
-  transform: rotate(-90deg);
-}
+/*.question_2.input {*/
+/*  width: 95vh;*/
+/*  transform: rotate(-90deg);*/
+/*}*/
 
-.question_2.datalist {
-  width: fit-content;
-  height: 80vh;
-  flex-direction: column-reverse;
-  align-items: start;
-  margin-left: -15rem;
-}
+/*.question_2.datalist {*/
+/*  width: fit-content;*/
+/*  height: 80vh;*/
+/*  flex-direction: column-reverse;*/
+/*  align-items: start;*/
+/*  margin-left: -15rem;*/
+/*}*/
 
-.question_3.label {
-  /*transform: rotate(-55.14deg);*/
-  width: 60%;
-  position: absolute;
-  top: 0;
-}
+/*.question_3.label {*/
+/*  !*transform: rotate(-55.14deg);*!*/
+/*  width: 60%;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*}*/
 
-.question_3.input_range {
-  flex-direction: row;
-  position: relative;
-  left: -20%;
-  /*transform: rotate(25deg);*/
-}
+/*.question_3.input_range {*/
+/*  flex-direction: row;*/
+/*  position: relative;*/
+/*  left: -20%;*/
+/*  !*transform: rotate(25deg);*!*/
+/*}*/
 
-.question_3.input {
-  width: 95vh;
-  transform: rotate(-90deg);
+/*.question_3.input {*/
+/*  width: 95vh;*/
+/*  transform: rotate(-90deg);*/
 
-  position: relative;
-  z-index: 2;
-}
+/*  position: relative;*/
+/*  z-index: 2;*/
+/*}*/
 
-.question_3.datalist {
-  width: fit-content;
-  height: 75vh;
-  flex-direction: column-reverse;
-  align-items: start;
-  margin-left: -14rem;
+/*.question_3.datalist {*/
+/*  width: fit-content;*/
+/*  height: 75vh;*/
+/*  flex-direction: column-reverse;*/
+/*  align-items: start;*/
+/*  margin-left: -14rem;*/
 
-  /*transform: rotate(-5deg);*/
-  position: relative;
-  z-index: 4;
-}
+/*  !*transform: rotate(-5deg);*!*/
+/*  position: relative;*/
+/*  z-index: 4;*/
+/*}*/
 
 /**
   This marks the beginning of styles for the element input of type range

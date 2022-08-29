@@ -48,12 +48,12 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
           </div>
           <div className="question_1 input_range">
             <div className="question_1-datalist-helper">
-              <Taste />
-              <Smell />
-              <See />
-              <Hear />
-              <BrainKnows />
-              <BrainDontKnow />
+              <span value={1}>1</span>
+              <span value={2}>2</span>
+              <span value={3}>3</span>
+              <span value={4}>4</span>
+              <span value={5}>5</span>
+              <span value={6}>6</span>
             </div>
             <input
               className="question_1 input"
@@ -65,24 +65,32 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               step={1}
               required
             />
-            <div className="question_1 datalist">
-              <div value={1}>Can taste it. It’s right here</div>
-              <div value={2}>Can smell it</div>
-              <div value={3}>Can see it. I’m not on it </div>
-              <div value={4}>Can still hear it</div>
-              <div value={5}>Cant hear it. But I know it</div>
-              <div value={6}>Dont know where the road is</div>
+            <div className="question_1-datalist-helper">
+              <Taste />
+              <Smell />
+              <See />
+              <Hear />
+              <BrainKnows />
+              <BrainDontKnow />
             </div>
-            <div className="question_1-scale">
-              <span>
-                Very
-                <br /> close
-              </span>
-              <span>
-                Very
-                <br /> far
-              </span>
-            </div>
+            {/*<div className="question_1-scale">*/}
+            {/*  <span>*/}
+            {/*    Very*/}
+            {/*    <br /> close*/}
+            {/*  </span>*/}
+            {/*  <span>*/}
+            {/*    Very*/}
+            {/*    <br /> far*/}
+            {/*  </span>*/}
+            {/*</div>*/}
+          </div>
+          <div className="options">
+            <div>1. Can taste it. It’s right here</div>
+            <div>2. Can smell it</div>
+            <div>3. Can see it. I’m not on it </div>
+            <div>4. Can still hear it</div>
+            <div>5. Cant hear it. But I know it</div>
+            <div>6. Dont know where the road is</div>
           </div>
         </div>
       );
