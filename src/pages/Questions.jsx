@@ -112,11 +112,20 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
 
     case 3:
       return (
-        <div className="question_2">
+        <div className="question_1">
           <div className="question_2 label" htmlFor="feetLocation">
-            Where are your feet located?
+            My feet is located on...
           </div>
           <div className="question_2 input_range">
+            <div className="question_1-datalist-helper">
+              <span value={1}>1</span>
+              <span value={2}>2</span>
+              <span value={3}>3</span>
+              <span value={4}>4</span>
+              <span value={5}>5</span>
+              <span value={6}>6</span>
+              <span value={7}>7</span>
+            </div>
             <input
               className="question_2 input"
               name="feetLocation"
@@ -126,15 +135,15 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               max={7}
               step={1}
             />
-            <div className="question_2 datalist">
-              <div value={1}>on mud/ sand </div>
-              <div value={2}>on tar</div>
-              <div value={3}>on concrete</div>
-              <div value={4}>on marble /tiles / flooring</div>
-              <div value={5}>On garbage</div>
-              <div value={6}>On water</div>
-              <div value={7}>On Mars</div>
-            </div>
+          </div>
+          <div className="question_2 options">
+            <div>1. mud/soil/ sand </div>
+            <div>2. tar</div>
+            <div>3. concrete</div>
+            <div>4. tiles/flooring/processed stone</div>
+            <div>5. garbage</div>
+            <div>6. water</div>
+            <div>7. Mars</div>
           </div>
         </div>
       );
