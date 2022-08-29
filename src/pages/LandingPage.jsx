@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { Bubble } from "../components/Bubble";
 import "./css/landingpage.css";
-import { ReactComponent as UserIcon } from "../assets/user.svg";
 import { useContext } from "react";
 import { UserContext } from "../lib/UserContext";
+import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
+import { ReactComponent as EmptySeed } from "../assets/empty_seed.svg";
+import { ReactComponent as Arrow } from "../assets/arrow.svg";
 
 export const LandingPage = () => {
   const user = useContext(UserContext).user;
@@ -11,32 +13,21 @@ export const LandingPage = () => {
   return (
     <div className="container landing-page-container">
       <div className="buttons">
-        <div className="start-journey">
-          <Link to="/Story">
-            <div className="big button">Start Journey</div>
-          </Link>
-        </div>
-        <div className="register-user-and-map">
-          <div className="register-user">
-            <Link to="/register">
-              <div className="medium button">Register to collect</div>
-            </Link>
-          </div>
-        </div>
-        <div className="info-button">
-          <Link to="/info">
-            <div className="small button">i</div>
-          </Link>
-        </div>
-        {user.userName && (
-          <div className="user-tab">
-            <Link to="profile">
-              <div className="tab">
-                <UserIcon></UserIcon>
-              </div>
-            </Link>
-          </div>
-        )}
+        <Link to="/info" className="button">
+          i
+        </Link>
+        <Link to="/register" className="button">
+          sign up/ login
+        </Link>
+        <Link to="/profile" className="button">
+          <CollectionJar />
+        </Link>
+        <Link to="/question" className="button">
+          <EmptySeed />
+        </Link>
+        <Link to="/story" className="button">
+          <Arrow className="arrow right" />
+        </Link>
       </div>
       <div className="bubbles-container">
         <div className="column different">
