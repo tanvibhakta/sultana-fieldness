@@ -27,8 +27,6 @@ Fieldness started with the need to create a tool for myself to practice listenin
         </p>
       </div>
       <Link to="/anatomy-of-a-seed">Anatomy of a seed >></Link>
-    </div>
-    </div>
       <Link to="">More >></Link>
     </div>
     
