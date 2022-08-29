@@ -15,7 +15,7 @@ import "./css/question.css";
 export const Questions = () => {
   const navigate = useNavigate();
   const [questionNumber, setQuestionNumber] = useState(1);
-  const MAX_QUESTION_NUMBER = 3;
+  const MAX_QUESTION_NUMBER = 4;
   return (
     <div className="question-container container">
       <Question
@@ -41,6 +41,31 @@ export const Questions = () => {
 export const Question = ({ questionNumber, setQuestionNumber }) => {
   switch (questionNumber) {
     case 1:
+      return (
+        <div className="question_1">
+          <div className="question_1-label" htmlFor="motorwayDistance">
+            how wet are you with the sound around you ?
+          </div>
+          <div>
+            <input
+              className="question_0 input"
+              name="motorwayDistance"
+              id="motorwayDistance"
+              type="range"
+              min={1}
+              max={3}
+              step={1}
+              required
+            />
+            <div className="question_1-datalist-helper">
+              <span>soaked</span>
+              <span>damp</span>
+              <span>dry</span>
+            </div>
+          </div>
+        </div>
+      );
+    case 2:
       return (
         <div className="question_1">
           <div className="question_1-label" htmlFor="motorwayDistance">
@@ -73,16 +98,6 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               <BrainKnows />
               <BrainDontKnow />
             </div>
-            {/*<div className="question_1-scale">*/}
-            {/*  <span>*/}
-            {/*    Very*/}
-            {/*    <br /> close*/}
-            {/*  </span>*/}
-            {/*  <span>*/}
-            {/*    Very*/}
-            {/*    <br /> far*/}
-            {/*  </span>*/}
-            {/*</div>*/}
           </div>
           <div className="options">
             <div>1. Can taste it. It’s right here</div>
@@ -95,7 +110,7 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
         </div>
       );
 
-    case 2:
+    case 3:
       return (
         <div className="question_2">
           <div className="question_2 label" htmlFor="feetLocation">
@@ -124,7 +139,7 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
         </div>
       );
 
-    case 3:
+    case 4:
       return (
         <div className="question_3">
           <div className="question_3 label" htmlFor="structureAge">
