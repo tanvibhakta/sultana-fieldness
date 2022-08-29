@@ -22,16 +22,17 @@ a {
 .container {
   height: 100vh;
   overflow: hidden;
+
   background: linear-gradient(
-    269.79deg,
-    #5e72cd -31.92%,
-    #f1c08e 20.46%,
-    #c1ce9f 52.35%,
-    #5a4d8e 103.98%
+    270deg,
+    #5a4d8e 0%,
+    #e8bfca 20.83%,
+    #b97c7a 44.83%,
+    #c3d29e 71.35%,
+    #5a4d8e 100%
   );
-  /*background: linear-gradient(90deg, #ddb6e0, #e7c89b);*/
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 60s ease infinite;
 }
 
 .default-page-spacing {
