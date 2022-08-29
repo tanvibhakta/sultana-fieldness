@@ -43,7 +43,9 @@ export const Bubble = ({ className }, props) => {
           setShowModal(true);
         },
         style: { height: "3.75rem" },
-        className: `bubble ${className}`,
+        // TODO: The bubble should only bounce once a seed has been created, and is added to the homescreen.
+        // className: `bubble ${className}`,
+        className: `${className}`,
         ...props,
       })}
       <div>
