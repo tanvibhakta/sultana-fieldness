@@ -109,7 +109,7 @@ export const PostRegister = () => {
         the internet
       </div>
 
-      <Link className to="/">
+      <Link className="button" to="/">
         continue exploring>>
       </Link>
     </div>
