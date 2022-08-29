@@ -23,6 +23,10 @@
   width: 100%;
 }
 
+.question_0.set {
+  transform: rotate(-15deg);
+}
+
 .question_1 {
   height: 50%;
   display: flex;

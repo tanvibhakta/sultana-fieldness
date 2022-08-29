@@ -46,7 +46,7 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
           <div className="question_1-label" htmlFor="motorwayDistance">
             how wet are you with the sound around you ?
           </div>
-          <div>
+          <div className="question_0 set">
             <input
               className="question_0 input"
               name="motorwayDistance"
@@ -58,9 +58,9 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               required
             />
             <div className="question_1-datalist-helper">
-              <span>soaked</span>
-              <span>damp</span>
               <span>dry</span>
+              <span>damp</span>
+              <span>soaked</span>
             </div>
           </div>
         </div>
