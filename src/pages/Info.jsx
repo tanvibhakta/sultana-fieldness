@@ -26,7 +26,6 @@ export const Info = () => {
         <p>
           You are invited to listen to fellow non human beings and share these
           encounters as seeds on the platform.
-          <br /> Conceptualized and designed by Sultana Zana.
         </p>
         <Link to="/anatomy-of-a-seed" style={{ textDecoration: "underline" }}>
           Anatomy of a seed >>
