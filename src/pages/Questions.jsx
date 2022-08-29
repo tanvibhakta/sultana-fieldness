@@ -102,10 +102,10 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
           <div className="options">
             <div>1. Can taste it. It’s right here</div>
             <div>2. Can smell it</div>
-            <div>3. Can see it. I’m not on it </div>
+            <div>3. Can see it. I’m not on it</div>
             <div>4. Can still hear it</div>
-            <div>5. Cant hear it. But I know it</div>
-            <div>6. Dont know where the road is</div>
+            <div>5. Cant hear it, but I know of it</div>
+            <div>6. Don't know where the road is</div>
           </div>
         </div>
       );
