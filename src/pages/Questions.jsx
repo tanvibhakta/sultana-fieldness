@@ -71,7 +71,7 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
           <div className="question_1-label" htmlFor="motorwayDistance">
             How far is a road/ motorway from you?
           </div>
-          <div className="question_1 input_range">
+          <div>
             <div className="question_1-datalist-helper">
               <span value={1}>1</span>
               <span value={2}>2</span>
