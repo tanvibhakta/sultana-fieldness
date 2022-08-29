@@ -131,26 +131,46 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
             What is the age of structures around you ? (These structures could
             be trees, buildings, flyovers or sand dunes )
           </div>
-          <div className="question_3 input_range">
-            <input
-              className="question_3 input"
-              name="structureAge"
-              id="structureAge"
-              type="range"
-              required
-              min={1}
-              max={8}
-              step={1}
-            />
+          <div className="question_3">
             <div className="question_3 datalist">
-              <div value={1}>older than 5000 years</div>
-              <div value={2}>2000 to 5000 years</div>
-              <div value={3}>1000- 2000 years - the age of a tree</div>
-              <div value={4}>200- 1000 years</div>
-              <div value={5}>50- 200 years</div>
-              <div value={6}>20-50 years</div>
-              <div value={7}>5-20 years</div>
-              <div value={8}>0-5 years</div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="olderThan5000"
+                  name="olderThan5000"
+                />
+                <label htmlFor="olderThan5000">older than 5000 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="2000to5000" name="2000to5000" />
+                <label htmlFor="2000to5000">2000 to 5000 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="ageOfTree" name="ageOfTree" />
+                <label htmlFor="ageOfTree">
+                  1000- 2000 years - the age of a tree
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="200to1000" name="200to1000" />
+                <label htmlFor="200to1000">200- 1000 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="50to200" name="50to200" />
+                <label htmlFor="50to200">50- 200 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="20to50" name="20to50" />
+                <label htmlFor="20to50">20-50 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="5to20" name="5to20" />
+                <label htmlFor="5to20">5-20 years</label>
+              </div>
+              <div>
+                <input type="checkbox" id="0to5" name="0to5" />
+                <label htmlFor="0to5">0-5 years</label>
+              </div>
             </div>
           </div>
         </div>
