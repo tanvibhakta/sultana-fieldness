@@ -44,15 +44,10 @@
 }
 
 .register-container .submit {
-  margin-top: 3rem;
-  padding: 0.5rem;
-
-  align-self: end;
   border-bottom: none;
 
-  color: white;
-  background: #7b8567;
-  border-radius: 80%;
+  background: linear-gradient(180deg, #c9df98 0%, #c7aecd 100%);
+  color: white !important;
 }
 
 .post-register-container {

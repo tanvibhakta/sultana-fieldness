@@ -17,7 +17,7 @@ export const LandingPage = () => {
           i
         </Link>
         <Link to="/register" className="button">
-          sign up/ login
+          Sign Up/Login
         </Link>
         <Link to="/profile" className="button">
           <CollectionJar />

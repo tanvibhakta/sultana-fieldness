@@ -59,7 +59,7 @@ export const Register = () => {
         backgroundRepeat: "no-repeat, no-repeat",
       }}
     >
-      <div className="heading">Register to collect</div>
+      <div className="heading">Log in/Sign up</div>
       <form
         className="form"
         onSubmit={handleSubmit}
@@ -74,7 +74,7 @@ export const Register = () => {
           required
         />
         <label htmlFor="favouriteWork">
-          Type in your favoraite word (this is the magic word for your profile):
+          Type in your favorite word (this is the magic word for your profile):
         </label>
         <div className="hint">
           You will have to remember this word to access your profile when you
@@ -88,7 +88,7 @@ export const Register = () => {
           onChange={handleChange}
           required
         />
-        <input className="submit" type="submit" value="submit>>" />
+        <input className="button submit" type="submit" value="submit>>" />
         <img src={BlueFlower} className="blue_flower" />
       </form>
     </div>
