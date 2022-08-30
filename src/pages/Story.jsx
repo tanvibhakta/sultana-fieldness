@@ -7,7 +7,10 @@ import "./css/story.css";
 import floaters from "../assets/floaters.png";
 import floaters2x from "../assets/floaters@2x.png";
 import floaters3x from "../assets/floaters@3x.png";
-import floatersBackground from "../assets/floaters.png";
+import floatersMid from "../assets/floaters-mid.jpg";
+import floatersMid3x from "../assets/floaters-mid@3x.jpg";
+import floatersLarge from "../assets/floaters-large.jpg";
+import floatersLarge3x from "../assets/floaters-large@3x.jpg";
 
 export const Story = () => {
   const navigate = useNavigate();
@@ -57,14 +60,11 @@ const StoryPages = ({ pageNumber }) => {
       return (
         <div className="story_page_2">
           <Path id="path" />
-          <p>
-            There is always a path. Some paths are easier - like roads. Others,
-            like mountain paths are slightly more difficult to find.{" "}
-          </p>
+          <p> Some paths are easier. </p>
           <div>
-            <p>But each path has its own story </p>
-            <p>Each path carries knowledge</p>
-            <p>Each path requires a knowledge to pass through it </p>
+            <p>
+              Others, like mountain paths, are slightly more difficult to find.{" "}
+            </p>
           </div>
           <Spider id="spider" />
         </div>
@@ -73,23 +73,25 @@ const StoryPages = ({ pageNumber }) => {
     case 3:
       return (
         <div className="story_page_3">
-          <p>
-            You came here, to this screen either by simply by clicking next, or
-            you explored on the previous screens.
-          </p>
-          <div>
-            <p>Exploring new territory is in the nature of every being.</p>
-            <p>
-              Without the possibility of exploration, most beings either die or
-              go insane. Both being ways of leaving behind the limitation of the
-              situation
-            </p>
-          </div>
+          <p> Each path has its own story.</p>
+          <p>Each path carries knowledge.</p>
+          <p> Each path requires a knowledge to pass through it.</p>
         </div>
       );
 
     case 4:
-      return <div className="story_page_4"></div>;
+      return (
+        <div className="story_page_4">
+          <p> Exploring new territory is in the nature of every being. </p>
+          <p>
+            Without the possibility of exploration, most beings either die or go
+            insane.{" "}
+          </p>
+          <p>
+            Both being ways of leaving behind the limitation of the situation.{" "}
+          </p>
+        </div>
+      );
 
     case 5:
       return (
@@ -119,10 +121,10 @@ const StoryPages = ({ pageNumber }) => {
 
     case 8:
       return (
-        <div className="story_page_7">
+        <div className="story_page_8">
           <img
-            srcSet={`${floaters}, ${floaters2x} 2x, ${floaters3x} 3x`}
-            src={floaters}
+            srcSet={`${floatersMid}, ${floatersMid3x} 3x`}
+            src={floatersMid}
             alt="floaters"
           />
         </div>
@@ -132,18 +134,20 @@ const StoryPages = ({ pageNumber }) => {
       return (
         <div
           className="story_page_9"
-          style={{ backgroundImage: `url(${floatersBackground})` }}
-          // style={{ backgroundImage: `url(${floatersBackground3x}), url(${floatersBackground2x}), url(${floatersBackground})` }}
+          style={{
+            backgroundImage: `url(${floatersLarge}), url(${floatersLarge3x})`,
+          }}
         >
           <p>
             These floaters are an artefact created by the interface between a
             being and the enviormnet
           </p>
           <p>
-            if you look at the sky or a bright wall right there, those wrigly
-            and alive looking things are not ‘real’. They exist only in our mind
-            or body or somewhere in the middle
+            If you look at the sky, you may see small wriggly things that look
+            alive...
           </p>
+          <p>They are not ‘real’.</p>
+          <p>They exist somewhere in the middle of our mind and body.</p>
           <p>What artefacts must bats hear?</p>
         </div>
       );

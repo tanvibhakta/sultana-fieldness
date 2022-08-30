@@ -7,6 +7,7 @@ import save from "../assets/save.png";
 import "./css/bubbleinput.css";
 import { RecordButton } from "../components/RecordButton";
 import { AudioTrack } from "../components/AudioTrack";
+import MushroomNet from "../assets/gifs/mushroom_net.gif";
 
 export const BubbleInput = () => {
   const user = useContext(UserContext).user;

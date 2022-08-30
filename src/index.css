@@ -19,12 +19,55 @@ a {
   color: white;
 }
 
+.button {
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  min-width: max-content;
+}
+
+.arrow {
+  width: 3.25rem;
+}
+
+.arrow.right {
+  transform: rotate(-90deg);
+}
+
 .container {
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(180deg, #ddb6e0 0%, #e7c89b 100%);
+
+  background: linear-gradient(
+    270deg,
+    #5a4d8e 0%,
+    #e8bfca 20.83%,
+    #b97c7a 44.83%,
+    #c3d29e 71.35%,
+    #5a4d8e 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient 60s ease infinite;
 }
 
 .default-page-spacing {
   padding: 4rem;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

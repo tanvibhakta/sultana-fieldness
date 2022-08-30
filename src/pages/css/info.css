@@ -1,7 +1,7 @@
 .info-container {
   height: 100vh;
   padding: 3rem;
-  overflow: hidden;
+  overflow: scroll;
   background: linear-gradient(
     180deg,
     rgba(187, 140, 215, 0.8) 0%,

@@ -43,6 +43,10 @@
   background-color: rgba(0, 0, 0, 0.25);
 }
 
+.bubble {
+  animation: bubbleBounce 3s ease 0s normal forwards;
+}
+
 .bubble-container {
   height: 100%;
   width: 100%;
@@ -59,6 +63,9 @@
 }
 
 /*TODO: bubble-container:focus-visible becomes the dark green of the container*/
+/*.bubble-container:focus-visible {*/
+/*  border: #6b9259;*/
+/*}*/
 
 .bubble-container .description {
   grid-area: description;
@@ -93,4 +100,50 @@
 
 .bubble-container .meta span {
   transform: rotate(-90deg);
+}
+
+@keyframes bubbleBounce {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 1;
+    transform: translateY(-45px);
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  40% {
+    animation-timing-function: ease-in;
+    transform: translateY(-24px);
+  }
+
+  65% {
+    animation-timing-function: ease-in;
+    transform: translateY(-12px);
+  }
+
+  82% {
+    animation-timing-function: ease-in;
+    transform: translateY(-6px);
+  }
+
+  93% {
+    animation-timing-function: ease-in;
+    transform: translateY(-4px);
+  }
+
+  25%,
+  55%,
+  75%,
+  87% {
+    animation-timing-function: ease-out;
+    transform: translateY(0px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }

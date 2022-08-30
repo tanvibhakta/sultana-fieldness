@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../lib/UserContext";
 import { getUser } from "../api";
 import { useContext, useEffect } from "react";
+import MantisComputer from "../assets/gifs/mantis_computer.gif";
+import { ReactComponent as EmptySeed } from "../assets/empty_seed.svg";
 
 export const Profile = () => {
   const { user, setUser } = useContext(UserContext);
@@ -26,14 +28,17 @@ export const Profile = () => {
   return (
     <div className="container profile-container">
       <div className="id">
-        <span>big grasshopper gif</span>
+        <img src={MantisComputer} alt="loading..." />
         <span>User Name: {user?.userName}</span>
       </div>
       <div className="links">
         <Link to="/">Back to land</Link>
-        <Link to="/question">Start creating</Link>
+        <Link to="/question" className="button">
+          <EmptySeed />
+        </Link>
       </div>
       <div className="created-seeds">
+        {/* TODO: Populate from API */}
         <div className="bubbles">
           <Bubble />
           <Bubble />
@@ -43,6 +48,7 @@ export const Profile = () => {
         <span className="label">created seeds</span>
       </div>
       <div className="collected-seeds">
+        {/* TODO: Populate from API */}
         <div className="bubbles">
           <Bubble />
           <Bubble />

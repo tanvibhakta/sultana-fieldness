@@ -49,3 +49,7 @@ export const getFormData = (object) =>
     } else formData.append(key, object[key]);
     return formData;
   }, new FormData());
+
+// TODO: add a 'bubblenumber' field to the 'answers' object that stores a
+//  random number between one and five. This will determine the type of bubble that
+//  the seed will look like

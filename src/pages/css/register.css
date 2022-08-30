@@ -44,15 +44,10 @@
 }
 
 .register-container .submit {
-  margin-top: 3rem;
-  padding: 0.5rem;
-
-  align-self: end;
   border-bottom: none;
 
-  color: white;
-  background: #7b8567;
-  border-radius: 80%;
+  background: linear-gradient(180deg, #c9df98 0%, #c7aecd 100%);
+  color: white !important;
 }
 
 .post-register-container {
@@ -62,6 +57,12 @@
 
   color: white;
   text-align: center;
+
+  background: linear-gradient(
+    180deg,
+    rgba(223, 186, 213, 0.95) 0%,
+    rgba(176, 187, 152, 0.95) 100%
+  );
 }
 
 .post-register-container > * {
@@ -73,6 +74,11 @@
 }
 
 .post-register-container a {
-  font-weight: bold;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, #c9df98 0%, #c7aecd 100%);
+}
+
+.blue_flower {
+  position: fixed;
+  bottom: 1rem;
+  width: 30%;
 }
