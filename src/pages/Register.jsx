@@ -36,7 +36,7 @@ export const Register = () => {
       } else if (response.status === 404) {
         // If user is not found, it doesn't exist so register the user
         await registerUser(user).then((response) => {
-          if (response.status === 200) {
+          if (response.status === 200 || response.status === 201) {
             navigate("/post-register");
           } else {
             console.error(response.status, response.detail);
