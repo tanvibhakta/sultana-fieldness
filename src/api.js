@@ -43,10 +43,9 @@ export const postSeed = (seed) => {
 export const getFormData = (object) =>
   Object.keys(object).reduce((formData, key) => {
     if (key === "media") {
-      object.media.map((item) => {
-        console.log(item);
-        formData.append("uploadMedia", item["file"]);
-      });
+      object.media.map((item) =>
+        formData.append("uploadMedia", item["file"], item["name"])
+      );
     } else formData.append(key, object[key]);
     return formData;
   }, new FormData());
