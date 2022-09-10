@@ -14,15 +14,22 @@ export const Profile = () => {
     // Async here instead of outer function to prevent race conditions
     async function fetchData() {
       if (user && user.userName) {
-        await getUser(user.userName).then((response) => {
-          if (response.status === 200) {
-            setUser(response.body);
-          } else {
+        await getUser(user.userName)
+          .then((response) => {
+            if (response.status === 200) {
+              return response.json();
+            }
+          })
+          .then((data) => {
+            setUser(data);
+          })
+          .catch((response) => {
             console.error(response.status);
-          }
-        });
+          });
       }
     }
+
+    fetchData();
   }, [user]);
 
   return (
