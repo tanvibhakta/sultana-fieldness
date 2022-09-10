@@ -16,6 +16,7 @@ export const BubbleInput = () => {
     media: [],
     latitude: "",
     longitude: "",
+    answers: "",
   });
 
   const fileInputAudio = useRef();

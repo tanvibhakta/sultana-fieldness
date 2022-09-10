@@ -16,6 +16,7 @@ export const Questions = () => {
   const navigate = useNavigate();
   const [questionNumber, setQuestionNumber] = useState(0);
   const MAX_QUESTION_NUMBER = 4;
+
   return (
     <div className="question-container container">
       <Question
@@ -39,6 +40,25 @@ export const Questions = () => {
 };
 
 export const Question = ({ questionNumber, setQuestionNumber }) => {
+  const [answers, setAnswers] = useState({
+    ageOfStructures: [],
+    distanceFromMotorway: null,
+    locationOfFeet: null,
+    wetnessOfSound: null,
+  });
+
+  const handleCheckboxChange = (e) => {
+    let ans = answers.ageOfStructures;
+    if (e.target.checked) {
+      ans.push(e.target.value);
+    } else {
+      if (ans.includes(e.target.value)) {
+        ans = ans.filter((item) => item !== e.target.value);
+      }
+    }
+    setAnswers({ ...answers, ageOfStructures: ans });
+  };
+
   switch (questionNumber) {
     case 0:
       return (
@@ -49,15 +69,19 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
     case 1:
       return (
         <div className="question_1">
-          <div className="question_1-label" htmlFor="motorwayDistance">
+          <div className="question_1-label" htmlFor="wetSound">
             how wet are you with the sound around you ?
           </div>
           <div className="question_0 set">
             <input
               className="question_0 input"
-              name="motorwayDistance"
-              id="motorwayDistance"
+              name="wetSound"
+              id="wetSound"
               type="range"
+              onChange={(e) => {
+                console.log("selected", e.target.value);
+                setAnswers({ ...answers, wetnessOfSound: e.target.value });
+              }}
               min={1}
               max={3}
               step={1}
@@ -93,6 +117,13 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               type="range"
               min={1}
               max={6}
+              onChange={(e) => {
+                console.log("selected", e.target.value);
+                setAnswers({
+                  ...answers,
+                  distancefromMotorway: e.target.value,
+                });
+              }}
               step={1}
               required
             />
@@ -115,7 +146,6 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
           </div>
         </div>
       );
-
     case 3:
       return (
         <div className="question_1">
@@ -139,6 +169,13 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
               type="range"
               min={1}
               max={7}
+              onChange={(e) => {
+                console.log("selected", e.target.value);
+                setAnswers({
+                  ...answers,
+                  locationOfFeet: e.target.value,
+                });
+              }}
               step={1}
             />
           </div>
@@ -153,7 +190,6 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
           </div>
         </div>
       );
-
     case 4:
       return (
         <div className="question_3">
@@ -164,41 +200,87 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
           <div className="question_3">
             <div className="question_3 datalist">
               <div>
+                {/* TODO: record the default value of the answer as a value in state - so init state
+                with default value, or use trigger that's broader than onChange*/}
                 <input
                   type="checkbox"
                   id="olderThan5000"
                   name="olderThan5000"
+                  value="olderThan5000"
+                  onChange={(e) => handleCheckboxChange(e)}
                 />
                 <label htmlFor="olderThan5000">older than 5000 years</label>
               </div>
               <div>
-                <input type="checkbox" id="2000to5000" name="2000to5000" />
+                <input
+                  type="checkbox"
+                  id="2000to5000"
+                  name="2000to5000"
+                  value="2000to5000"
+                  onChange={(e) => handleCheckboxChange(e)}
+                />
                 <label htmlFor="2000to5000">2000 to 5000 years</label>
               </div>
               <div>
-                <input type="checkbox" id="ageOfTree" name="ageOfTree" />
+                <input
+                  type="checkbox"
+                  id="ageOfTree"
+                  name="ageOfTree"
+                  value="ageOfTree"
+                  onChange={(e) => handleCheckboxChange(e)}
+                />
                 <label htmlFor="ageOfTree">
                   1000- 2000 years - the age of a tree
                 </label>
               </div>
               <div>
-                <input type="checkbox" id="200to1000" name="200to1000" />
+                <input
+                  type="checkbox"
+                  id="200to1000"
+                  name="200to1000"
+                  value="200to1000"
+                  onChange={(e) => handleCheckboxChange(e)}
+                />
                 <label htmlFor="200to1000">200- 1000 years</label>
               </div>
               <div>
-                <input type="checkbox" id="50to200" name="50to200" />
+                <input
+                  type="checkbox"
+                  id="50to200"
+                  name="50to200"
+                  value="50to200"
+                  onChange={(e) => handleCheckboxChange(e)}
+                />
                 <label htmlFor="50to200">50- 200 years</label>
               </div>
               <div>
-                <input type="checkbox" id="20to50" name="20to50" />
+                <input
+                  type="checkbox"
+                  id="20to50"
+                  name="20to50"
+                  value="20to50"
+                  onChange={(e) => handleCheckboxChange(e)}
+                />
                 <label htmlFor="20to50">20-50 years</label>
               </div>
               <div>
-                <input type="checkbox" id="5to20" name="5to20" />
+                <input
+                  type="checkbox"
+                  id="5to20"
+                  name="5to20"
+                  value="5to20"
+                  onChange={(e) => handleCheckboxChange(e)}
+                />
                 <label htmlFor="5to20">5-20 years</label>
               </div>
               <div>
-                <input type="checkbox" id="0to5" name="0to5" />
+                <input
+                  type="checkbox"
+                  id="0to5"
+                  name="0to5"
+                  value="0to5"
+                  onChange={(e) => handleCheckboxChange(e)}
+                />
                 <label htmlFor="0to5">0-5 years</label>
               </div>
             </div>
