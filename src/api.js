@@ -37,6 +37,10 @@ export const postSeed = (seed) => {
   return fetch(`${API_URL}/seeds/${seed.id}`, requestOptions);
 };
 
+export const getSeed = (id) => {
+  return fetch(`${API_URL}/seeds/${id}`);
+};
+
 /**
  * This function iterates over the given JavaScript object, looking for specific
  * keywords and adjusting the structure to conform to what the API expects.
