@@ -11,12 +11,12 @@ import { ReactComponent as AudioIcon } from "../assets/audio.svg";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as ShareIcon } from "../assets/share.svg";
 
-export const Bubble = ({ className }, props) => {
+export const Bubble = ({ className, id }) => {
   const [showModal, setShowModal] = useState(false);
   // TODO: bubble number should be initialized with seed.answers.bubbleNumber
   const [bubbleNumber, setBubbleNumber] = useState(null);
 
-  const getBubble = (props) => {
+  const getBubble = (onClick) => {
     if (bubbleNumber === null) {
       const max = 5;
       const min = 1;
@@ -24,29 +24,25 @@ export const Bubble = ({ className }, props) => {
     }
     switch (bubbleNumber) {
       case 1:
-        return <Bubble1 {...props} />;
+        return <Bubble1 onClick={onClick} />;
       case 2:
-        return <Bubble2 {...props} />;
+        return <Bubble2 onClick={onClick} />;
       case 3:
-        return <Bubble3 {...props} />;
+        return <Bubble3 onClick={onClick} />;
       case 4:
-        return <Bubble4 {...props} />;
+        return <Bubble4 onClick={onClick} />;
       case 5:
-        return <Bubble5 {...props} />;
+        return <Bubble5 onClick={onClick} />;
     }
   };
   // TODO: set size by determining width as percentage of it's parent?
   return (
-    <div>
-      {getBubble({
-        onClick: () => {
-          setShowModal(true);
-        },
-        style: { height: "3.75rem" },
-        // TODO: The bubble should only bounce once a seed has been created, and is added to the homescreen.
-        // className: `bubble ${className}`,
-        className: `${className}`,
-        ...props,
+    <div
+      // TODO: The bubble should only bounce once a seed has been created, and is added to the homescreen.
+      className="bubble"
+    >
+      {getBubble(() => {
+        setShowModal(true);
       })}
       <div>
         <Modal
@@ -82,8 +78,4 @@ export const Bubble = ({ className }, props) => {
       </div>
     </div>
   );
-};
-
-Bubble.propTypes = {
-  className: PropTypes.string,
 };
