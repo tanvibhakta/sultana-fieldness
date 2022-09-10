@@ -49,10 +49,9 @@ export const Profile = () => {
       <div className="created-seeds">
         {/* TODO: Populate from API */}
         <div className="bubbles">
-          <Bubble />
-          <Bubble />
-          <Bubble />
-          <Bubble />
+          {user?.seedCreated?.map((seedId) => {
+            return <Bubble key={seedId} />;
+          })}
         </div>
         <span className="label">created seeds</span>
       </div>
