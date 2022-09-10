@@ -4,7 +4,10 @@ export const checkIfUserExists = (user) => {
   const requestOptions = {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user),
+    body: JSON.stringify({
+      favouriteWord: user.favouriteWord,
+      userName: user.name,
+    }),
   };
 
   return fetch(`${API_URL}/users/check`, requestOptions);
