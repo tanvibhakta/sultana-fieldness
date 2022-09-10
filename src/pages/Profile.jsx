@@ -47,7 +47,6 @@ export const Profile = () => {
         </Link>
       </div>
       <div className="created-seeds">
-        {/* TODO: Populate from API */}
         <div className="bubbles">
           {user?.seedCreated?.map((seedId) => {
             return <Bubble key={seedId} />;
@@ -56,14 +55,10 @@ export const Profile = () => {
         <span className="label">created seeds</span>
       </div>
       <div className="collected-seeds">
-        {/* TODO: Populate from API */}
         <div className="bubbles">
-          <Bubble />
-          <Bubble />
-          <Bubble />
-          <Bubble />
-          <Bubble />
-          <Bubble />
+          {user?.seedCollected?.map((seedId) => {
+            return <Bubble key={seedId} />;
+          })}
         </div>
         <span className="label">collected seeds</span>
       </div>
