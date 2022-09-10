@@ -21,16 +21,18 @@ export const Profile = () => {
             }
           })
           .then((data) => {
-            setUser(data);
+            if (JSON.stringify(user) != JSON.stringify(data)) {
+              setUser(data);
+            }
           })
           .catch((response) => {
             console.error(response.status);
+            setUser(user);
           });
       }
     }
-
     fetchData();
-  }, [user]);
+  });
 
   return (
     <div className="container profile-container">
