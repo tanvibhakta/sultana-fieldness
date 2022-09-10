@@ -54,6 +54,10 @@ export const BubbleInput = () => {
   }, [seed.description]);
 
   const handleSubmit = async (event) => {
+    // TODO: use the below to get the timezone from client and add to 'misc' or
+    //  'answers' option. make sure to update on /upload as well
+    // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
+
     event.preventDefault();
 
     await postSeed(seed).then((response) => {

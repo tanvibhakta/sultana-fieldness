@@ -49,7 +49,7 @@ export const Profile = () => {
       <div className="created-seeds">
         <div className="bubbles">
           {user?.seedCreated?.map((seedId) => {
-            return <Bubble key={seedId} id={seedId} />;
+            return <Bubble key={seedId} id={seedId} name={user.name} />;
           })}
         </div>
         <span className="label">created seeds</span>
@@ -57,7 +57,7 @@ export const Profile = () => {
       <div className="collected-seeds">
         <div className="bubbles">
           {user?.seedCollected?.map((seedId) => {
-            return <Bubble key={seedId} id={seedId} />;
+            return <Bubble key={seedId} id={seedId} name={user.name} />;
           })}
         </div>
         <span className="label">collected seeds</span>
