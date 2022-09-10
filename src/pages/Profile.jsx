@@ -13,8 +13,8 @@ export const Profile = () => {
   useEffect(() => {
     // Async here instead of outer function to prevent race conditions
     async function fetchData() {
-      if (user && user.userName) {
-        await getUser(user.userName)
+      if (user && user.name) {
+        await getUser(user.name)
           .then((response) => {
             if (response.status === 200) {
               return response.json();
@@ -36,7 +36,7 @@ export const Profile = () => {
     <div className="container profile-container">
       <div className="id">
         <img src={MantisComputer} alt="loading..." />
-        <span>User Name: {user?.userName}</span>
+        <span>User Name: {user?.name}</span>
       </div>
       <div className="links">
         <Link to="/">Back to land</Link>

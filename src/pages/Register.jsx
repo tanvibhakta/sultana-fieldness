@@ -65,11 +65,11 @@ export const Register = () => {
         onSubmit={handleSubmit}
         formAction="/post-register"
       >
-        <label htmlFor="userName">Enter a username (required)</label>
+        <label htmlFor="name">Enter a username (required)</label>
         <input
           type="text"
-          name="userName"
-          id="userName"
+          name="name"
+          id="name"
           onChange={handleChange}
           required
         />

@@ -10,8 +10,8 @@ export const checkIfUserExists = (user) => {
   return fetch(`${API_URL}/users/check`, requestOptions);
 };
 
-export const getUser = (userName) => {
-  return fetch(`${API_URL}/users/${userName}`);
+export const getUser = (name) => {
+  return fetch(`${API_URL}/users/${name}`);
 };
 
 export const registerUser = (user) => {
@@ -21,7 +21,7 @@ export const registerUser = (user) => {
     body: JSON.stringify(user),
   };
 
-  return fetch(`${API_URL}/users/${user.userName}`, requestOptions);
+  return fetch(`${API_URL}/users/${user.name}`, requestOptions);
 };
 
 export const postSeed = (seed) => {

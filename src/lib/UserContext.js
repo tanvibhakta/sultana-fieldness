@@ -6,7 +6,7 @@ export const UserContext = createContext(null);
 export function UserContextProvider(props) {
   const [user, setUser] = useStickyState(
     {
-      userName: "",
+      name: "",
       favouriteWord: "",
     },
     "current-user"

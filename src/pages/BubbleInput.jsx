@@ -11,7 +11,7 @@ export const BubbleInput = () => {
   const user = useContext(UserContext).user;
   const [seed, setSeed] = useState({
     description: "",
-    userName: user.userName,
+    name: user.name,
     favouriteWord: user.favouriteWord,
     media: [],
     latitude: "",
