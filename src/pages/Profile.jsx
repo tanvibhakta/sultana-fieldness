@@ -21,8 +21,9 @@ export const Profile = () => {
             }
           })
           .then((data) => {
-            if (JSON.stringify(user) != JSON.stringify(data)) {
-              setUser(data);
+            const userObject = { ...data, favouriteWord: user.favouriteWord };
+            if (JSON.stringify(user) != JSON.stringify(userObject)) {
+              setUser(userObject);
             }
           })
           .catch((response) => {
