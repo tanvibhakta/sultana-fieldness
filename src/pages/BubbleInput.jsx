@@ -6,7 +6,6 @@ import { postSeed } from "../api";
 import save from "../assets/save.png";
 import "./css/bubbleinput.css";
 import { RecordButton } from "../components/RecordButton";
-import { AudioTrack } from "../components/AudioTrack";
 
 export const BubbleInput = () => {
   const user = useContext(UserContext).user;
@@ -17,7 +16,7 @@ export const BubbleInput = () => {
     media: [],
     latitude: "",
     longitude: "",
-    answers: "",
+    answers: window.localStorage.getItem("answers"),
   });
 
   const navigate = useNavigate();
@@ -113,7 +112,6 @@ export const BubbleInput = () => {
           style={{ background: `url(${save})`, backgroundPosition: "center" }}
         />
       </form>
-      {/*{audio.url !== null && <AudioTrack audios={[audio.url]} />}*/}
     </>
   );
 };

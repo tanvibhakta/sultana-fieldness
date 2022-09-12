@@ -7,6 +7,7 @@ import { ReactComponent as See } from "../assets/questions/see.svg";
 import { ReactComponent as BrainKnows } from "../assets/questions/brain-know.svg";
 import { ReactComponent as BrainDontKnow } from "../assets/questions/brain-dont-know.svg";
 import "./css/question.css";
+import { useStickyState } from "../lib/useStickyState";
 
 /**
  * TODO: record responses in state, write api wrapper, post responses to seed
@@ -39,13 +40,16 @@ export const Questions = () => {
   );
 };
 
-export const Question = ({ questionNumber, setQuestionNumber }) => {
-  const [answers, setAnswers] = useState({
-    ageOfStructures: [],
-    distanceFromMotorway: null,
-    locationOfFeet: null,
-    wetnessOfSound: null,
-  });
+export const Question = ({ questionNumber }) => {
+  const [answers, setAnswers] = useStickyState(
+    {
+      ageOfStructures: [],
+      distanceFromMotorway: null,
+      locationOfFeet: null,
+      wetnessOfSound: null,
+    },
+    "answers"
+  );
 
   const handleCheckboxChange = (e) => {
     let ans = answers.ageOfStructures;
@@ -121,7 +125,7 @@ export const Question = ({ questionNumber, setQuestionNumber }) => {
                 console.log("selected", e.target.value);
                 setAnswers({
                   ...answers,
-                  distancefromMotorway: e.target.value,
+                  distanceFromMotorway: e.target.value,
                 });
               }}
               step={1}
