@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./css/recordbutton.css";
+import { nanoid } from "nanoid";
 
 const audioType = "audio/*";
 
@@ -13,6 +14,7 @@ export class RecordButton extends Component {
       medianotFound: false,
       audios: [],
       audioBlob: null,
+      audioFile: null,
       stream: null,
     };
     this.timer = 0;
@@ -150,6 +152,7 @@ export class RecordButton extends Component {
         medianotFound: false,
         audios: [],
         audioBlob: null,
+        audioFile: null,
       },
       () => {
         this.props.handleReset(this.state);
@@ -160,23 +163,24 @@ export class RecordButton extends Component {
   saveAudio() {
     // convert saved chunks to blob
     const blob = new Blob(this.chunks, { type: audioType });
-    // generate video url from blob
-    const audioURL = window.URL.createObjectURL(blob);
+    const file = new File([blob], nanoid());
+    // generate audio url from blob
+    const audioURL = window.URL.createObjectURL(file);
 
     // append videoURL to list of saved videos for rendering
     const audios = [audioURL];
-    this.setState({ audios: audios, audioBlob: blob });
+    this.setState({ audios: audios, audioBlob: blob, audioFile: file });
     this.props.handleAudioStop({
       url: audioURL,
       blob: blob,
+      file: file,
       chunks: this.chunks,
       duration: this.state.time,
     });
   }
 
   render() {
-    const { recording, audios, time, medianotFound, pauseRecord } = this.state;
-    const { title } = this.props;
+    const { recording, time } = this.state;
 
     return (
       <div className="recorder_library_box">
