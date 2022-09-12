@@ -10,13 +10,14 @@ import { ReactComponent as Bubble5 } from "../assets/bubbles/bubble-5.svg";
 import { ReactComponent as AudioIcon } from "../assets/audio.svg";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as ShareIcon } from "../assets/share.svg";
-import { getSeed, getUser } from "../api";
+import { getMedia, getSeed, getUser } from "../api";
 
 export const Bubble = ({ className, id, name }) => {
   const [showModal, setShowModal] = useState(false);
   // TODO: bubble number should be initialized with seed.answers.bubbleNumber
   const [bubbleNumber, setBubbleNumber] = useState(null);
   const [seed, setSeed] = useState(null);
+  const [media, setMedia] = useState(null);
 
   // TODO: use seed.misc.timeZone while calculating locale string
   const d = new Date(seed?.createdAt).toLocaleString("en-GB", {
@@ -59,6 +60,12 @@ export const Bubble = ({ className, id, name }) => {
             setSeed(data);
           }
         })
+        .then(() => {
+          if (seed.media[0]) {
+            const r = getMedia(seed.userName, seed.id, seed.media[0]);
+            setMedia(r);
+          }
+        })
         .catch((response) => {
           console.error(response.status);
         });
@@ -73,6 +80,8 @@ export const Bubble = ({ className, id, name }) => {
     >
       {getBubble(() => {
         setShowModal(true);
+        console.log(seed);
+        console.log(media);
       })}
       {seed && (
         <div>
