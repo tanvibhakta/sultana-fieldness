@@ -9,6 +9,13 @@ import { RecordButton } from "../components/RecordButton";
 
 export const BubbleInput = () => {
   const user = useContext(UserContext).user;
+  const answers = JSON.parse(window.localStorage.getItem("answers"));
+  const bubbleNumber = () => {
+    const max = 5;
+    const min = 1;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+  console.log(answers);
   const [seed, setSeed] = useState({
     description: "",
     name: user.name,
@@ -16,8 +23,9 @@ export const BubbleInput = () => {
     media: [],
     latitude: "",
     longitude: "",
-    answers: window.localStorage.getItem("answers"),
+    answers: JSON.stringify({ bubbleNumber: bubbleNumber(), ...answers }),
   });
+  console.log(seed.answers);
 
   const navigate = useNavigate();
 

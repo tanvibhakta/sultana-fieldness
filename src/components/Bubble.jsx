@@ -17,7 +17,7 @@ const S3_URL = "https://fieldness.s3.ap-south-1.amazonaws.com";
 export const Bubble = ({ className, id, name }) => {
   const [showModal, setShowModal] = useState(false);
   // TODO: bubble number should be initialized with seed.answers.bubbleNumber
-  const [bubbleNumber, setBubbleNumber] = useState(null);
+  const [bubbleNumber, setBubbleNumber] = useState(1);
   const [seed, setSeed] = useState(null);
 
   // TODO: use seed.misc.timeZone while calculating locale string
@@ -28,12 +28,7 @@ export const Bubble = ({ className, id, name }) => {
   });
 
   const getBubble = (onClick) => {
-    if (bubbleNumber === null) {
-      const max = 5;
-      const min = 1;
-      setBubbleNumber(Math.floor(Math.random() * (max - min + 1)) + min);
-    }
-    switch (bubbleNumber) {
+    switch (seed?.answers?.bubbleNumber) {
       case 1:
         return <Bubble1 onClick={onClick} />;
       case 2:
@@ -44,6 +39,8 @@ export const Bubble = ({ className, id, name }) => {
         return <Bubble4 onClick={onClick} />;
       case 5:
         return <Bubble5 onClick={onClick} />;
+      default:
+        return <Bubble3 onClick={onClick} />;
     }
   };
 
