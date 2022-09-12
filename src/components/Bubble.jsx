@@ -84,6 +84,7 @@ export const Bubble = ({ className, id, name }) => {
             }}
             className={"modal purple-background"}
             overlayClassName={"overlay"}
+            appElement={document.getElementById("root")}
           >
             <div className="bubble-container">
               <div className="user-id-and-audio">
