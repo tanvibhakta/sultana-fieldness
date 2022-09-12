@@ -5,7 +5,8 @@ import { UserContext } from "../lib/UserContext";
 import { postSeed } from "../api";
 import save from "../assets/save.png";
 import "./css/bubbleinput.css";
-import MushroomNet from "../assets/gifs/mushroom_net.gif";
+import { RecordButton } from "../components/RecordButton";
+import { AudioTrack } from "../components/AudioTrack";
 
 export const BubbleInput = () => {
   const user = useContext(UserContext).user;
@@ -19,31 +20,13 @@ export const BubbleInput = () => {
     answers: "",
   });
 
-  const fileInputAudio = useRef();
-  const fileInputImage = useRef();
   const navigate = useNavigate();
 
   const handleChange = (event) => {
-    // Structure the object so that it's easy for getFormData to work around it
-    if (event.target.name === "audio" || event.target.name === "image") {
-      const fileInput =
-        event.target.name === "audio" ? fileInputAudio : fileInputImage;
-      setSeed({
-        ...seed,
-        media: [
-          ...seed.media,
-          {
-            file: fileInput.current.files[0],
-            name: fileInput.current.files[0].name,
-          },
-        ],
-      });
-    } else {
-      setSeed({
-        ...seed,
-        [event.target.name]: event.target.value,
-      });
-    }
+    setSeed({
+      ...seed,
+      [event.target.name]: event.target.value,
+    });
   };
 
   useEffect(() => {
@@ -60,7 +43,6 @@ export const BubbleInput = () => {
     // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
 
     event.preventDefault();
-
     await postSeed(seed).then((response) => {
       if (response.status === 201) {
         navigate("/created");
@@ -68,36 +50,70 @@ export const BubbleInput = () => {
     });
   };
 
+  function handleAudioStop(data) {
+    setSeed({
+      ...seed,
+      media: [...seed.media, { file: data.file, name: data.file.name }],
+    });
+  }
+
+  function handleReset() {
+    const reset = {
+      url: null,
+      blob: null,
+      chunks: null,
+      file: null,
+      duration: {
+        h: 0,
+        m: 0,
+        s: 0,
+      },
+    };
+    setSeed({ ...seed, media: [reset] });
+  }
+
   // TODO: Ask for permissions for location, audio recording, video recording APIs here
   return (
-    <form className="bubble_input-container container" onSubmit={handleSubmit}>
-      <div className="bubble_input-description">
-        <label htmlFor="description" className="bubble_input-description-label">
-          Input Text
-        </label>
-        {/*TODO: Put a WISYWIG here, perhaps TinyMCE?*/}
-        <textarea
-          name="description"
-          id="description"
-          className="bubble_input-description-input"
-          value={seed?.description}
-          onChange={handleChange}
-          rows="5"
-          cols="63"
-          required
+    <>
+      <form
+        className="bubble_input-container container"
+        onSubmit={handleSubmit}
+      >
+        <div className="bubble_input-description">
+          <label
+            htmlFor="description"
+            className="bubble_input-description-label"
+          >
+            Input Text
+          </label>
+          {/*TODO: Put a WISYWIG here, perhaps TinyMCE?*/}
+          <textarea
+            name="description"
+            id="description"
+            className="bubble_input-description-input"
+            value={seed?.description}
+            onChange={handleChange}
+            rows="5"
+            cols="63"
+            required
+          />
+        </div>
+        <RecordButton
+          record={true}
+          title={"New recording"}
+          handleAudioStop={(data) => handleAudioStop(data)}
+          handleReset={() => handleReset()}
+          mimeTypeToUseWhenRecording={`audio/webm`}
         />
-      </div>
-      <button className="bubble_input-record">REC</button>
-      {/* TODO: Record audio here */}
-      {/* TODO: Obtain location here */}
-      <input
-        className="bubble_input-submit"
-        type="submit"
-        value="Save>>"
-        style={{ background: `url(${save})`, backgroundPosition: "center" }}
-      />
-      {/*TODO: fix the css with this page!!*/}
-      <img src={MushroomNet} alt="mushroom" className="mushroom_net" />
-    </form>
+        {/* TODO: Obtain location here */}
+        <input
+          className="bubble_input-submit"
+          type="submit"
+          value="Save>>"
+          style={{ background: `url(${save})`, backgroundPosition: "center" }}
+        />
+      </form>
+      {/*{audio.url !== null && <AudioTrack audios={[audio.url]} />}*/}
+    </>
   );
 };

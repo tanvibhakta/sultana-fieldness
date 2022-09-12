@@ -51,7 +51,7 @@ export const getFormData = (object) =>
   Object.keys(object).reduce((formData, key) => {
     if (key === "media") {
       object.media.map((item) =>
-        formData.append("uploadMedia[]", item["file"], item["name"])
+        formData.append("uploadMedia", item["file"], item["name"])
       );
     } else if (key === "name") {
       formData.append("userName", object["name"]);
