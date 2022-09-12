@@ -13,10 +13,11 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
 
   padding-bottom: 2rem;
+  height: 80vh;
 }
 
 .profile-container .collected-seeds {
@@ -25,14 +26,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: end;
 
   padding-bottom: 2rem;
+  height: 80vh;
 }
 
 .profile-container .bubbles {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: scroll;
 }
 
 .profile-container .links {

@@ -13,11 +13,12 @@ export const BubbleInput = () => {
   const user = useContext(UserContext).user;
   const [seed, setSeed] = useState({
     description: "",
-    userName: user.userName,
+    name: user.name,
     favouriteWord: user.favouriteWord,
     media: [],
     latitude: "",
     longitude: "",
+    answers: "",
   });
   const [audio, setAudio] = useState({
     url: null,
@@ -71,6 +72,10 @@ export const BubbleInput = () => {
   }, [seed.description, audio]);
 
   const handleSubmit = async (event) => {
+    // TODO: use the below to get the timezone from client and add to 'misc' or
+    //  'answers' option. make sure to update on /upload as well
+    // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
+
     event.preventDefault();
     await postSeed(seed).then((response) => {
       if (response.status === 201) {

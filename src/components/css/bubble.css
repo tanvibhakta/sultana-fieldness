@@ -44,7 +44,9 @@
 }
 
 .bubble {
-  animation: bubbleBounce 3s ease 0s normal forwards;
+  /*animation: bubbleBounce 3s ease 0s normal forwards;*/
+  height: 3.75rem;
+  width: 4rem;
 }
 
 .bubble-container {

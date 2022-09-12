@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Modal from "react-modal";
 import "./css/bubble.css";
@@ -10,13 +10,23 @@ import { ReactComponent as Bubble5 } from "../assets/bubbles/bubble-5.svg";
 import { ReactComponent as AudioIcon } from "../assets/audio.svg";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as ShareIcon } from "../assets/share.svg";
+import { getMedia, getSeed, getUser } from "../api";
 
-export const Bubble = ({ className }, props) => {
+export const Bubble = ({ className, id, name }) => {
   const [showModal, setShowModal] = useState(false);
   // TODO: bubble number should be initialized with seed.answers.bubbleNumber
   const [bubbleNumber, setBubbleNumber] = useState(null);
+  const [seed, setSeed] = useState(null);
+  const [media, setMedia] = useState(null);
 
-  const getBubble = (props) => {
+  // TODO: use seed.misc.timeZone while calculating locale string
+  const d = new Date(seed?.createdAt).toLocaleString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "2-digit",
+  });
+
+  const getBubble = (onClick) => {
     if (bubbleNumber === null) {
       const max = 5;
       const min = 1;
@@ -24,66 +34,90 @@ export const Bubble = ({ className }, props) => {
     }
     switch (bubbleNumber) {
       case 1:
-        return <Bubble1 {...props} />;
+        return <Bubble1 onClick={onClick} />;
       case 2:
-        return <Bubble2 {...props} />;
+        return <Bubble2 onClick={onClick} />;
       case 3:
-        return <Bubble3 {...props} />;
+        return <Bubble3 onClick={onClick} />;
       case 4:
-        return <Bubble4 {...props} />;
+        return <Bubble4 onClick={onClick} />;
       case 5:
-        return <Bubble5 {...props} />;
+        return <Bubble5 onClick={onClick} />;
     }
   };
-  // TODO: set size by determining width as percentage of it's parent?
+
+  useEffect(() => {
+    // Async here instead of outer function to prevent race conditions
+    async function fetchData() {
+      await getSeed(id)
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          if (JSON.stringify(seed) != JSON.stringify(data)) {
+            setSeed(data);
+          }
+        })
+        .then(() => {
+          if (seed.media[0]) {
+            const r = getMedia(seed.userName, seed.id, seed.media[0]);
+            setMedia(r);
+          }
+        })
+        .catch((response) => {
+          console.error(response.status);
+        });
+    }
+    fetchData();
+  });
+
   return (
-    <div>
-      {getBubble({
-        onClick: () => {
-          setShowModal(true);
-        },
-        style: { height: "3.75rem" },
-        // TODO: The bubble should only bounce once a seed has been created, and is added to the homescreen.
-        // className: `bubble ${className}`,
-        className: `${className}`,
-        ...props,
+    <div
+      // TODO: The bubble should only bounce once a seed has been created, and is added to the homescreen.
+      className="bubble"
+    >
+      {getBubble(() => {
+        setShowModal(true);
+        console.log(seed);
+        console.log(media);
       })}
-      <div>
-        <Modal
-          isOpen={showModal}
-          onRequestClose={() => {
-            setShowModal(false);
-          }}
-          className={"modal purple-background"}
-          overlayClassName={"overlay"}
-        >
-          <div className="bubble-container">
-            <div className="user-id-and-audio">
-              <div>{"<user id>"}</div>
-              <AudioIcon></AudioIcon>
+      {seed && (
+        <div>
+          {/* TODO: set size by determining width as percentage of it's parent?*/}
+          <Modal
+            isOpen={showModal}
+            onRequestClose={() => {
+              setShowModal(false);
+            }}
+            className={"modal purple-background"}
+            overlayClassName={"overlay"}
+            appElement={document.getElementById("root")}
+          >
+            <div className="bubble-container">
+              <div className="user-id-and-audio">
+                <div>{name}</div>
+                <AudioIcon></AudioIcon>
+              </div>
+              <div className="description">{seed.description}</div>
+              <div className="meta">
+                {/* tODO: format
+                   12.234
+                   43.243*/}
+                <span>{seed.geolocation.latitude}</span>
+                <span>{d}</span>
+                <span>{`${seed.country}/${seed.city}`}</span>
+              </div>
+              <div className="collect-and-share">
+                {/* TODO: Add toasts for collecting and copying link*/}
+                <CollectionJar></CollectionJar>
+                <ShareIcon></ShareIcon>
+              </div>
             </div>
-            <div className="description">
-              this is the description of the sounds curated from different
-              places and times. This is the most important part. This is what
-              will be transformative.
-            </div>
-            <div className="meta">
-              <span>geoloc</span>
-              <span>time</span>
-              <span>country/city</span>
-            </div>
-            <div className="collect-and-share">
-              {/* TODO: Add toasts for collecting and copying link*/}
-              <CollectionJar></CollectionJar>
-              <ShareIcon></ShareIcon>
-            </div>
-          </div>
-        </Modal>
-      </div>
+          </Modal>
+        </div>
+      )}
     </div>
   );
-};
-
-Bubble.propTypes = {
-  className: PropTypes.string,
 };

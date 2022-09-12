@@ -10,7 +10,7 @@ export const Form = () => {
 
   const [seed, setSeed] = useState({
     description: "",
-    userName: user.userName,
+    name: user.name,
     favouriteWord: user.favouriteWord,
     media: [],
     latitude: "",
@@ -19,7 +19,7 @@ export const Form = () => {
 
   // Check if a user is registered. If yes, render seed upload form.
   // If not, ask user to register and then upload seeds.
-  return seed.userName ? (
+  return seed.name ? (
     <SeedUploadForm seed={seed} setSeed={setSeed} />
   ) : (
     <>
@@ -48,7 +48,7 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
       if (response.status === 200) {
         setSeed({
           ...seed,
-          userName: user.userName,
+          name: user.name,
           favouriteWord: user.favouriteWord,
         });
       } else if (response.status === 401) {
@@ -77,11 +77,11 @@ const UserCredentialsForm = ({ user, setUser, seed, setSeed }) => {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <label htmlFor="userName">Enter a username (required)</label>
+      <label htmlFor="name">Enter a username (required)</label>
       <input
         type="text"
-        name="userName"
-        id="userName"
+        name="name"
+        id="name"
         onChange={handleChange}
         required
       />

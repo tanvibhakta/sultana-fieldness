@@ -19,9 +19,11 @@ export const LandingPage = () => {
         <Link to="/register" className="button">
           Sign Up/Login
         </Link>
-        <Link to="/profile" className="button">
-          <CollectionJar />
-        </Link>
+        {user?.name && (
+          <Link to="/profile" className="button">
+            <CollectionJar />
+          </Link>
+        )}
         <Link to="/question" className="button">
           <EmptySeed />
         </Link>
