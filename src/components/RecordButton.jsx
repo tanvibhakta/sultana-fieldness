@@ -76,20 +76,9 @@ export class RecordButton extends Component {
   }
 
   async initRecorder() {
-    navigator.getUserMedia =
-      navigator.getUserMedia ||
-      navigator.webkitGetUserMedia ||
-      navigator.mozGetUserMedia ||
-      navigator.msGetUserMedia;
     if (navigator.mediaDevices) {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      if (this.props.mimeTypeToUseWhenRecording) {
-        this.mediaRecorder = new MediaRecorder(stream, {
-          mimeType: this.props.mimeTypeToUseWhenRecording,
-        });
-      } else {
-        this.mediaRecorder = new MediaRecorder(stream);
-      }
+      this.mediaRecorder = new MediaRecorder(stream);
       this.chunks = [];
       this.mediaRecorder.ondataavailable = (e) => {
         if (e.data && e.data.size > 0) {
@@ -123,6 +112,8 @@ export class RecordButton extends Component {
     e.preventDefault();
     // stop the recorder
 
+    this.mediaRecorder.stop();
+
     if (this.stream.getAudioTracks) {
       const tracks = this.stream.getAudioTracks();
       tracks.forEach((track) => {
@@ -131,9 +122,6 @@ export class RecordButton extends Component {
     } else {
       console.error("No Tracks Found");
     }
-
-    this.mediaRecorder.stop();
-
     // say that we're not recording
     this.setState({ recording: false, pauseRecord: false });
     // save the video to memory
