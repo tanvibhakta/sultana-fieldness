@@ -194,9 +194,6 @@ export class RecordButton extends Component {
                 : "00"}
             </span>
           </div>
-          {!recording ? (
-            <p className="help">Press the microphone to record</p>
-          ) : null}
         </div>
         {!recording ? (
           <button
