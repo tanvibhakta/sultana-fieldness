@@ -34,10 +34,7 @@ a {
 
 .arrow {
   width: 3.25rem;
-}
-
-.arrow.right {
-  transform: rotate(-90deg);
+  height: 3.25rem;
 }
 
 .container {

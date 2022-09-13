@@ -5,7 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../lib/UserContext";
 import { ReactComponent as CollectionJar } from "../assets/collection-jar.svg";
 import { ReactComponent as EmptySeed } from "../assets/empty_seed.svg";
-import { ReactComponent as Arrow } from "../assets/arrow.svg";
+import { ReactComponent as FrontArrow } from "../assets/front-arrow.svg";
+import { ReactComponent as BackArrow } from "../assets/back-arrow.svg";
 import { getUser } from "../api";
 
 export const LandingPage = () => {
@@ -51,24 +52,31 @@ export const LandingPage = () => {
 
   return (
     <div className="container landing-page-container">
-      <div className="buttons">
-        <Link to="/info" className="button">
-          i
-        </Link>
-        <Link to="/register" className="button">
-          Sign Up/Login
-        </Link>
-        {user?.name && (
-          <Link to="/profile" className="button">
-            <CollectionJar />
+      <div className="upper-container">
+        <div className="back-to-exhibition">
+          <a href="https://www.particle.art/DisturbingTheBalance/?interact">
+            <BackArrow className="arrow" />
+          </a>
+        </div>
+        <div className="buttons">
+          <Link to="/info" className="button">
+            i
           </Link>
-        )}
-        <Link to="/question" className="button">
-          <EmptySeed />
-        </Link>
-        <Link to="/story" className="button">
-          <Arrow className="arrow right" />
-        </Link>
+          <Link to="/register" className="button">
+            Sign Up/Login
+          </Link>
+          {user?.name && (
+            <Link to="/profile" className="button">
+              <CollectionJar />
+            </Link>
+          )}
+          <Link to="/question" className="button">
+            <EmptySeed />
+          </Link>
+          <Link to="/story" className="button">
+            <FrontArrow className="arrow" />
+          </Link>
+        </div>
       </div>
       <div className="bubbles-container">
         <div className="column">
