@@ -83,7 +83,6 @@ export const Question = ({ questionNumber }) => {
               id="wetSound"
               type="range"
               onChange={(e) => {
-                console.log("selected", e.target.value);
                 setAnswers({ ...answers, wetnessOfSound: e.target.value });
               }}
               min={1}
@@ -122,7 +121,6 @@ export const Question = ({ questionNumber }) => {
               min={1}
               max={6}
               onChange={(e) => {
-                console.log("selected", e.target.value);
                 setAnswers({
                   ...answers,
                   distanceFromMotorway: e.target.value,
@@ -174,7 +172,6 @@ export const Question = ({ questionNumber }) => {
               min={1}
               max={7}
               onChange={(e) => {
-                console.log("selected", e.target.value);
                 setAnswers({
                   ...answers,
                   locationOfFeet: e.target.value,
