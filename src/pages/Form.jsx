@@ -8,13 +8,21 @@ import { UserContext } from "../lib/UserContext";
 export const Form = () => {
   const { user, setUser } = useContext(UserContext);
 
+  const bubbleNumber = () => {
+    const max = 5;
+    const min = 1;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
   const [seed, setSeed] = useState({
+    id: nanoid(),
     description: "",
     name: user.name,
     favouriteWord: user.favouriteWord,
     media: [],
     latitude: "",
     longitude: "",
+    answers: JSON.stringify({ bubbleNumber: bubbleNumber() }),
   });
 
   // Check if a user is registered. If yes, render seed upload form.
@@ -127,15 +135,6 @@ const SeedUploadForm = ({ seed, setSeed }) => {
       });
     }
   };
-
-  useEffect(() => {
-    const seedId = nanoid();
-
-    setSeed({
-      ...seed,
-      id: seedId,
-    });
-  }, [seed.desc]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
