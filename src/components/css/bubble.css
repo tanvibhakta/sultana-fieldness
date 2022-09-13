@@ -47,6 +47,7 @@
   /*animation: bubbleBounce 3s ease 0s normal forwards;*/
   height: 3.75rem;
   width: 4rem;
+  padding: 0.8rem;
 }
 
 .bubble-container {
