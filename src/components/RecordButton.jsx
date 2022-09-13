@@ -108,7 +108,7 @@ export class RecordButton extends Component {
 
   stopRecording(e) {
     clearInterval(this.timer);
-    this.setState({ time: {} });
+    this.setState({ time: {}, miliseconds: 0 });
     e.preventDefault();
     // stop the recorder
 
