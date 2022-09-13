@@ -51,7 +51,7 @@
   font-weight: 500;
   color: white;
 
-  align-self: end;
+  align-self: flex-end;
   border-radius: 38px;
   border: none;
 
