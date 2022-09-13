@@ -25,8 +25,15 @@ export const Bubble = ({ className, id, name }) => {
     year: "2-digit",
   });
 
+  let ans;
+  try {
+    ans = JSON.parse(seed?.answers);
+  } catch {
+    ans = { bubbleNumber: 2 };
+  }
+
   const getBubble = (onClick) => {
-    switch (seed?.answers?.bubbleNumber) {
+    switch (ans?.bubbleNumber) {
       case 1:
         return <Bubble1 onClick={onClick} />;
       case 2:
