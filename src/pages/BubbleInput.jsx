@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { UserContext } from "../lib/UserContext";
 import { postSeed } from "../api";
@@ -70,13 +70,17 @@ export const BubbleInput = () => {
     setSeed({ ...seed, media: [reset] });
   }
 
-  // TODO: Ask for permissions for location, audio recording, video recording APIs here
+  // TODO: Ask for permissions for location, video recording APIs here
   return (
-    <>
-      <form
-        className="bubble_input-container container"
-        onSubmit={handleSubmit}
-      >
+    <div className="bubble_input-container container">
+      {(!user || !user.name) && (
+        <div className="error-message">
+          You are not signed in. Please{" "}
+          <Link to="/register">create an account or sign in</Link> to create a
+          seed.
+        </div>
+      )}
+      <form className="form-container" onSubmit={handleSubmit}>
         <div className="bubble_input-description">
           <label
             htmlFor="description"
@@ -111,6 +115,6 @@ export const BubbleInput = () => {
           style={{ background: `url(${save})`, backgroundPosition: "center" }}
         />
       </form>
-    </>
+    </div>
   );
 };
