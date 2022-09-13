@@ -27,6 +27,9 @@
 .record-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 
-  margin-top: 5rem;
+  width: 80%;
+  min-height: 30%;
 }
