@@ -109,10 +109,11 @@ export const BubbleInput = () => {
         />
         {/* TODO: Obtain location here */}
         <input
-          className="bubble_input-submit"
+          className={`bubble_input-submit ${
+            (!seed || !seed.media[0]) && "disabled"
+          }`}
           type="submit"
-          value="Save>>"
-          style={{ background: `url(${save})`, backgroundPosition: "center" }}
+          value="submit"
         />
       </form>
     </div>
