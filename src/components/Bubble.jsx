@@ -26,7 +26,7 @@ export const Bubble = ({ className, id, name }) => {
   });
 
   const getBubble = (onClick) => {
-    switch (JSON.parse(seed?.answers)?.bubbleNumber) {
+    switch (seed?.answers?.bubbleNumber) {
       case 1:
         return <Bubble1 onClick={onClick} />;
       case 2:
