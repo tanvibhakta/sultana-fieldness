@@ -10,8 +10,6 @@
   font-size: 0.625rem;
 
   align-self: start;
-  position: absolute;
-  bottom: 10rem;
 
   background: #d24c22;
   border-radius: 100%;
@@ -24,4 +22,11 @@
   height: 25%;
   width: 25%;
   background-color: white;
+}
+
+.record-container {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 5rem;
 }

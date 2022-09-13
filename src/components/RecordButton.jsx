@@ -171,54 +171,48 @@ export class RecordButton extends Component {
     const { recording, time } = this.state;
 
     return (
-      <div className="recorder_library_box">
-        <div className="recorder_box">
-          <div className="recorder_box_inner">
-            <div className="record_section">
-              <div className="btn_wrapper">
-                <button
-                  onClick={(e) => this.handleReset(e)}
-                  className="btn clear_btn"
-                >
-                  Clear
-                </button>
-              </div>
-              <div className="duration_section">
-                <div className="duration">
-                  <span className="mins">
-                    {time.m !== undefined
-                      ? `${time.m <= 9 ? "0" + time.m : time.m}`
-                      : "00"}
-                  </span>
-                  <span className="divider">:</span>
-                  <span className="secs">
-                    {time.s !== undefined
-                      ? `${time.s <= 9 ? "0" + time.s : time.s}`
-                      : "00"}
-                  </span>
-                </div>
-                {!recording ? (
-                  <p className="help">Press the microphone to record</p>
-                ) : null}
-              </div>
-              {!recording ? (
-                <button
-                  onClick={(e) => this.startRecording(e)}
-                  className="record_button-record"
-                >
-                  REC
-                </button>
-              ) : (
-                <button
-                  onClick={(e) => this.stopRecording(e)}
-                  className="record_button-record"
-                >
-                  <span className="stop" />
-                </button>
-              )}
-            </div>
-          </div>
+      <div className="record-container">
+        <div className="btn_wrapper">
+          <button
+            onClick={(e) => this.handleReset(e)}
+            className="btn clear_btn"
+          >
+            Clear
+          </button>
         </div>
+        <div className="duration_section">
+          <div className="duration">
+            <span className="mins">
+              {time.m !== undefined
+                ? `${time.m <= 9 ? "0" + time.m : time.m}`
+                : "00"}
+            </span>
+            <span className="divider">:</span>
+            <span className="secs">
+              {time.s !== undefined
+                ? `${time.s <= 9 ? "0" + time.s : time.s}`
+                : "00"}
+            </span>
+          </div>
+          {!recording ? (
+            <p className="help">Press the microphone to record</p>
+          ) : null}
+        </div>
+        {!recording ? (
+          <button
+            onClick={(e) => this.startRecording(e)}
+            className="record_button-record"
+          >
+            REC
+          </button>
+        ) : (
+          <button
+            onClick={(e) => this.stopRecording(e)}
+            className="record_button-record"
+          >
+            <span className="stop" />
+          </button>
+        )}
       </div>
     );
   }
