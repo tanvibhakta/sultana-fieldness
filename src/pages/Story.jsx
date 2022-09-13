@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Path } from "../assets/path.svg";
 import { ReactComponent as Ladybird } from "../assets/ladybird.svg";
 import { ReactComponent as Spider } from "../assets/spider.svg";
+import { ReactComponent as BackArrow } from "../assets/back-arrow.svg";
 import "./css/story.css";
 import floaters from "../assets/floaters.png";
 import floaters2x from "../assets/floaters@2x.png";
@@ -39,7 +40,7 @@ export const Story = () => {
     >
       <StoryPages pageNumber={pageNumber} setPageNumber={setPageNumber} />
       <button className="back_button" onClick={() => goBack()}>
-        {"<<<"}
+        <BackArrow className="arrow" />
       </button>
     </main>
   );

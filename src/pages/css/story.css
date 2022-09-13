@@ -112,4 +112,10 @@
   top: 90vh;
   left: 10vw;
   z-index: 10;
+  background-color: transparent;
+  border: none;
+}
+
+.back_button svg {
+  pointer-events: none;
 }
