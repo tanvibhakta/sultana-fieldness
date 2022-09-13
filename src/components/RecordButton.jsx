@@ -214,21 +214,19 @@ export class RecordButton extends Component {
                 ) : null}
               </div>
               {!recording ? (
-                <a
-                  href="#"
+                <button
                   onClick={(e) => this.startRecording(e)}
                   className="record_button-record"
                 >
                   REC
-                </a>
+                </button>
               ) : (
-                <a
-                  href="#"
+                <button
                   onClick={(e) => this.stopRecording(e)}
                   className="record_button-record"
                 >
                   <span className="stop" />
-                </a>
+                </button>
               )}
             </div>
           </div>

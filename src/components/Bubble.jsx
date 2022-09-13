@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import Modal from "react-modal";
 import "./css/bubble.css";
 import { ReactComponent as Bubble1 } from "../assets/bubbles/bubble-1.svg";
@@ -17,7 +16,6 @@ const S3_URL = "https://fieldness.s3.ap-south-1.amazonaws.com";
 export const Bubble = ({ className, id, name }) => {
   const [showModal, setShowModal] = useState(false);
   // TODO: bubble number should be initialized with seed.answers.bubbleNumber
-  const [bubbleNumber, setBubbleNumber] = useState(1);
   const [seed, setSeed] = useState(null);
 
   // TODO: use seed.misc.timeZone while calculating locale string

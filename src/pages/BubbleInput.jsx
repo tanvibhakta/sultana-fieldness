@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { UserContext } from "../lib/UserContext";
@@ -17,6 +17,7 @@ export const BubbleInput = () => {
   };
   console.log(answers);
   const [seed, setSeed] = useState({
+    id: nanoid(),
     description: "",
     name: user.name,
     favouriteWord: user.favouriteWord,
@@ -25,7 +26,6 @@ export const BubbleInput = () => {
     longitude: "",
     answers: JSON.stringify({ bubbleNumber: bubbleNumber(), ...answers }),
   });
-  console.log(seed.answers);
 
   const navigate = useNavigate();
 
@@ -35,14 +35,6 @@ export const BubbleInput = () => {
       [event.target.name]: event.target.value,
     });
   };
-
-  useEffect(() => {
-    const seedId = nanoid();
-    setSeed({
-      ...seed,
-      id: seedId,
-    });
-  }, [seed.description]);
 
   const handleSubmit = async (event) => {
     // TODO: use the below to get the timezone from client and add to 'misc' or
