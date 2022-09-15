@@ -50,6 +50,10 @@
   padding: 0.8rem;
 }
 
+.bubble.smaller-padding {
+  padding: 0.4rem;
+}
+
 .bubble-container {
   height: 100%;
   width: 100%;

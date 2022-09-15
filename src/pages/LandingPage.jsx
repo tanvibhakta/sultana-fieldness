@@ -91,9 +91,14 @@ export const LandingPage = () => {
             <Bubble key={seedID} id={seedID} name="kaldi moss" />
           ))}
         </div>
-        <div className="column">
+        <div className="column B">
           {columns.B.map((seedID) => (
-            <Bubble key={seedID} id={seedID} name="kaldi moss" />
+            <Bubble
+              key={seedID}
+              id={seedID}
+              name="kaldi moss"
+              className="smaller-padding"
+            />
           ))}
         </div>
         <div className="column">
@@ -101,9 +106,14 @@ export const LandingPage = () => {
             <Bubble key={seedID} id={seedID} name="kaldi moss" />
           ))}
         </div>
-        <div className="column">
+        <div className="column D">
           {columns.D.map((seedID) => (
-            <Bubble key={seedID} id={seedID} name="kaldi moss" />
+            <Bubble
+              key={seedID}
+              id={seedID}
+              name="kaldi moss"
+              className="smaller-padding"
+            />
           ))}
         </div>
         <div className="column">

@@ -73,7 +73,7 @@ export const Bubble = ({ className, id, name }) => {
   return (
     <div
       // TODO: The bubble should only bounce once a seed has been created, and is added to the homescreen.
-      className="bubble"
+      className={`bubble ${className}`}
     >
       {getBubble(() => {
         setShowModal(true);
