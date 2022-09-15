@@ -35,18 +35,25 @@ export const LandingPage = () => {
     fetchData();
   });
 
-  const columns = { A: [], B: [], C: [], D: [] };
+  const columns = { A: [], B: [], C: [], D: [], E: [] };
   landing?.seedCreated.map((seedID, i) => {
-    if (i < 3) {
-      columns.A.push(seedID);
-    } else if (i < 9) {
-      columns.B.push(seedID);
-    } else if (i < 13) {
-      columns.C.push(seedID);
-    } else if (i < 17) {
-      columns.D.push(seedID);
-    } else {
-      //  TODO: What if the number of seeds increases 17?
+    const modulus = i % 5;
+    switch (modulus) {
+      case 0:
+        columns.A.push(seedID);
+        break;
+      case 1:
+        columns.B.push(seedID);
+        break;
+      case 2:
+        columns.C.push(seedID);
+        break;
+      case 3:
+        columns.D.push(seedID);
+        break;
+      case 4:
+        columns.E.push(seedID);
+        break;
     }
   });
 
@@ -96,6 +103,11 @@ export const LandingPage = () => {
         </div>
         <div className="column">
           {columns.D.map((seedID) => (
+            <Bubble key={seedID} id={seedID} name="kaldi moss" />
+          ))}
+        </div>
+        <div className="column">
+          {columns.E.map((seedID) => (
             <Bubble key={seedID} id={seedID} name="kaldi moss" />
           ))}
         </div>
