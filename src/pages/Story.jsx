@@ -141,7 +141,7 @@ const StoryPages = ({ pageNumber }) => {
         >
           <p>
             These floaters are an artefact created by the interface between a
-            being and the environment
+            being and the enviormnet
           </p>
           <p>
             If you look at the sky, you may see small wriggly things that look
