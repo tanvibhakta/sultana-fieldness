@@ -7,12 +7,18 @@
   /*width: calc(100vw - 15%);*/
   /*height: calc(100vw - 15%);*/
 
-  /*margin-left: -12%;*/
-
   border-radius: 20%;
 
   color: white;
   font-size: 0.75rem;
+}
+
+.regular-background {
+  background: linear-gradient(
+    180deg,
+    rgb(187, 140, 215) 0%,
+    rgb(226, 181, 114) 100%
+  );
 }
 
 .green-background {

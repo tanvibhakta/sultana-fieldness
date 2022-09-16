@@ -49,3 +49,13 @@
 .back-to-exhibition {
   padding-top: 3rem;
 }
+
+.regular-background {
+  width: 80%;
+  border-radius: 4%;
+}
+
+.intro-text {
+  color: white;
+  padding: 3rem;
+}

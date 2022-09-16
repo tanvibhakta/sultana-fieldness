@@ -8,10 +8,12 @@ import { ReactComponent as EmptySeed } from "../assets/empty_seed.svg";
 import { ReactComponent as FrontArrow } from "../assets/front-arrow.svg";
 import { ReactComponent as BackArrow } from "../assets/back-arrow.svg";
 import { getUser } from "../api";
+import Modal from "react-modal";
 
 export const LandingPage = () => {
   const user = useContext(UserContext).user;
   const [landing, setLanding] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   useEffect(() => {
     // Async here instead of outer function to prevent race conditions
@@ -59,6 +61,34 @@ export const LandingPage = () => {
 
   return (
     <div className="container landing-page-container">
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={() => {
+          setIsModalOpen(false);
+        }}
+        className={"regular-background"}
+        overlayClassName={"overlay"}
+        appElement={document.getElementById("root")}
+      >
+        <div className="intro-text">
+          <p>Welcome to Fieldness.</p>
+          <p>
+            Use headphones or increase your volume to hear the seeds on this
+            page.
+          </p>
+          <p> Tap on the seeds to hear them.</p>
+          <p>
+            Create a profile for best experience and to be able to collect
+            sounds.{" "}
+          </p>{" "}
+          <p>
+            {" "}
+            Tap your way around, make sure to take the journey, create a seed,
+            explore your own page and collect seeds you like.
+          </p>{" "}
+          <p> Enjoy listening!</p>
+        </div>
+      </Modal>
       <div className="upper-container">
         <div className="back-to-exhibition">
           <a href="https://www.particle.art/DisturbingTheBalance/?interact">
